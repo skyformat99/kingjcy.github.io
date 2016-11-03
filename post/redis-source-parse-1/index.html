@@ -14,22 +14,22 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>redis源码解析 - My New Hugo Site</title>
+    <title>redis源码解析 - kingjcy Blog</title>
     
 <meta name="description" content="&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
 
-<meta property="og:title" content="redis源码解析 - My New Hugo Site">
+<meta property="og:title" content="redis源码解析 - kingjcy Blog">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://kingjcy.github.io/post/redis-source-parse-1/">
 <meta property="og:image" content="http://kingjcy.github.io/images/default.png">
-<meta property="og:site_name" content="My New Hugo Site">
+<meta property="og:site_name" content="kingjcy Blog">
 <meta property="og:description" content="&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="My New Hugo Site">
+<meta name="twitter:site" content="kingjcy Blog">
 <meta name="twitter:url" content="http://kingjcy.github.io/post/redis-source-parse-1/">
-<meta name="twitter:title" content="redis源码解析 - My New Hugo Site">
+<meta name="twitter:title" content="redis源码解析 - kingjcy Blog">
 <meta name="twitter:description" content="&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
 <meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
 
@@ -42,7 +42,7 @@
       "@type": "WebPage",
       "@id":"http:\/\/kingjcy.github.io\/"
     },
-    "headline": "redis源码解析 - My New Hugo Site",
+    "headline": "redis源码解析 - kingjcy Blog",
     "image": {
       "@type": "ImageObject",
       "url": "http:\/\/kingjcy.github.io\/images\/default.png",
@@ -53,11 +53,11 @@
     "dateModified": "2016-07-28T15:39:45JST",
     "author": {
       "@type": "Person",
-      "name": "My New Hugo Site"
+      "name": "kingjcy Blog"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "My New Hugo Site",
+      "name": "kingjcy Blog",
       "logo": {
         "@type": "ImageObject",
         "url": "http:\/\/kingjcy.github.io\/images/logo.png",
@@ -88,7 +88,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://kingjcy.github.io/">My New Hugo Site</a>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
           </div>
 
           
@@ -354,7 +354,7 @@
 
     <footer class="l-footer">
       <div class="container">
-        <p><span class="h-logo">&copy; My New Hugo Site</span></p>
+        <p>Copyright (c) 2016. All rights reserved.</p>
         <aside>
           <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
           <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
