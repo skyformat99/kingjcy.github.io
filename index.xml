@@ -12,10 +12,10 @@
     
     <item>
       <title>工具系列(一)：git和github的使用总结</title>
-      <link>http://kingjcy.github.io/post/gitandgithub/</link>
+      <link>http://kingjcy.github.io/blog/2016/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
       <pubDate>Wed, 02 Nov 2016 16:50:34 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/gitandgithub/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -68,10 +68,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>redis源码解析</title>
-      <link>http://kingjcy.github.io/post/redis-source-parse-1/</link>
+      <link>http://kingjcy.github.io/blog/2016/07/28/redis%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
       <pubDate>Thu, 28 Jul 2016 15:39:45 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/redis-source-parse-1/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/07/28/redis%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
       <description>&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -201,10 +201,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>redis cluster</title>
-      <link>http://kingjcy.github.io/post/redis-cluster/</link>
+      <link>http://kingjcy.github.io/blog/2016/07/21/redis-cluster/</link>
       <pubDate>Thu, 21 Jul 2016 17:12:36 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/redis-cluster/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/07/21/redis-cluster/</guid>
       <description>&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。
 首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，
 可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;
@@ -321,10 +321,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>Installation_of_some_applications</title>
-      <link>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</link>
+      <link>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</link>
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</guid>
       <description>&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -580,10 +580,10 @@ DirectoryIndex index.html index.html.var index.php
     
     <item>
       <title>life experience</title>
-      <link>http://kingjcy.github.io/post/life_experience/</link>
+      <link>http://kingjcy.github.io/blog/2016/05/10/life-experience/</link>
       <pubDate>Tue, 10 May 2016 15:03:35 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/life_experience/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/05/10/life-experience/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;人生课堂&amp;mdash;交通事故&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -612,10 +612,10 @@ DirectoryIndex index.html index.html.var index.php
     
     <item>
       <title>My Future Direction</title>
-      <link>http://kingjcy.github.io/post/myfuturedirection/</link>
+      <link>http://kingjcy.github.io/blog/2016/05/06/my-future-direction/</link>
       <pubDate>Fri, 06 May 2016 17:24:35 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/myfuturedirection/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/05/06/my-future-direction/</guid>
       <description>&lt;p&gt;今天写下这个也许有点早了，就像我之前想的Linux c/c++ 服务端就是并发编程的一样，并不是你看到那样，只是你还没有深入，没有达到要求，但是也写下来吧！对我以后的发展方向与结果也有一个印证。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -672,10 +672,10 @@ DirectoryIndex index.html index.html.var index.php
     
     <item>
       <title>觉得很有想法，也许对以后的道路会有影响。</title>
-      <link>http://kingjcy.github.io/post/technology-manage/</link>
+      <link>http://kingjcy.github.io/blog/2016/04/29/%E8%A7%89%E5%BE%97%E5%BE%88%E6%9C%89%E6%83%B3%E6%B3%95%E4%B9%9F%E8%AE%B8%E5%AF%B9%E4%BB%A5%E5%90%8E%E7%9A%84%E9%81%93%E8%B7%AF%E4%BC%9A%E6%9C%89%E5%BD%B1%E5%93%8D/</link>
       <pubDate>Fri, 29 Apr 2016 16:25:18 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/technology-manage/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/04/29/%E8%A7%89%E5%BE%97%E5%BE%88%E6%9C%89%E6%83%B3%E6%B3%95%E4%B9%9F%E8%AE%B8%E5%AF%B9%E4%BB%A5%E5%90%8E%E7%9A%84%E9%81%93%E8%B7%AF%E4%BC%9A%E6%9C%89%E5%BD%B1%E5%93%8D/</guid>
       <description>&lt;p&gt;觉得很有想法，也许对以后的道路会有影响。虽然在国内也许不适用，但是总是有个梦。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -687,10 +687,10 @@ DirectoryIndex index.html index.html.var index.php
     
     <item>
       <title>用hugo&#43;github构建自己的blog</title>
-      <link>http://kingjcy.github.io/post/hugo-github-blog/</link>
+      <link>http://kingjcy.github.io/blog/2016/04/19/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</link>
       <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/post/hugo-github-blog/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/04/19/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</guid>
       <description>&lt;h3 id=&#34;使用hugo-github搭建属于自己的blog网站&#34;&gt;使用hugo+github搭建属于自己的blog网站&lt;/h3&gt;
 
 &lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;
