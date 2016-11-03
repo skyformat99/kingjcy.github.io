@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kingjcy blog</title>
-    <link>http://kingjcy.github.io/index.xml</link>
-    <description>Recent content on kingjcy blog</description>
+    <title>2016-rsses on kingjcy blog</title>
+    <link>http://kingjcy.github.io/2016/index.xml</link>
+    <description>Recent content in 2016-rsses on kingjcy blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 02 Nov 2016 16:50:34 +0800</lastBuildDate>
-    <atom:link href="http://kingjcy.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kingjcy.github.io/2016/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>工具系列(一)：git和github的使用总结</title>
@@ -766,44 +766,6 @@ DirectoryIndex index.html index.html.var index.php
 &lt;p&gt;至于git版本控制和github直接的传输，这边就不多讲了，如果需要可以参考我的另外一篇博文《git和github的使用》。&lt;/p&gt;
 
 &lt;p&gt;终于搭建完了，欢迎指正,tks。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>http://kingjcy.github.io/about</link>
-      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://kingjcy.github.io/about</guid>
-      <description>&lt;p&gt;kingjcy，程序员。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;经历&#34;&gt;经历&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2014-至今 后端研发，服务中间件开发（江苏新大陆科技有限公司，南京）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;技能&#34;&gt;技能&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;一直做c/c++开发，主要是linux下c/c++开发，go语言辅助,java，python,php 根据需要偶尔用。&lt;/li&gt;
-&lt;li&gt;大学捣鼓过前端，对于标记性语言目前仅限了解。&lt;/li&gt;
-&lt;li&gt;目前专注于服务器端开发，包括一些基础组件，分布式系统，分布式存储等等。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;相关链接&#34;&gt;相关链接&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Email: 574209887@qq.com&lt;/li&gt;
-&lt;li&gt;Github: &lt;a href=&#34;https://github.com/kingjcy&#34;&gt;https://github.com/kingjcy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;开源项目&#34;&gt;开源项目&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;frp&lt;/a&gt;，可以用于内网穿透，远程ssh到内网服务器，或者多个内网机器共用一个80端口对外提供web服务。（水平有限，仅限参与）&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
   </channel>

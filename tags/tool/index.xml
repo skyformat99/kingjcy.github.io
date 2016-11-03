@@ -11,10 +11,10 @@
     
     <item>
       <title>工具系列(一)：git和github的使用总结</title>
-      <link>http://kingjcy.github.io/post/gitandgithub/</link>
+      <link>http://kingjcy.github.io/2016/gitandgithub/</link>
       <pubDate>Wed, 02 Nov 2016 16:50:34 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/gitandgithub/</guid>
+      <guid>http://kingjcy.github.io/2016/gitandgithub/</guid>
       <description>&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -67,10 +67,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>用hugo&#43;github构建自己的blog</title>
-      <link>http://kingjcy.github.io/post/hugo-github-blog/</link>
+      <link>http://kingjcy.github.io/2016/hugo-github-blog/</link>
       <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/post/hugo-github-blog/</guid>
+      <guid>http://kingjcy.github.io/2016/hugo-github-blog/</guid>
       <description>&lt;h3 id=&#34;使用hugo-github搭建属于自己的blog网站&#34;&gt;使用hugo+github搭建属于自己的blog网站&lt;/h3&gt;
 
 &lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;

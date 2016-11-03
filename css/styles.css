@@ -14,16 +14,16 @@ body {
 }
 
 p {
-  margin: 0;
+  margin: 1;
 }
 
 ul,ol {
-  margin: 0;
-  padding: 0;
+  margin: 1;
+  padding: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  margin: 1;
 }
 
 h1 { font-size: 1.8rem; line-height: 2rem; margin: 1.5rem 0; }
@@ -172,7 +172,7 @@ article.single .thumb {
 article.li .thumb {
   float: right;
   width: 12rem;
-  height: 7.5rem;
+  height: 9.5rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
