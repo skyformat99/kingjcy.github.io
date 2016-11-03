@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>工具系列(一)：git和github的使用总结</title>
+      <link>http://kingjcy.github.io/post/gitandgithub/</link>
+      <pubDate>Wed, 02 Nov 2016 16:50:34 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/gitandgithub/</guid>
+      <description>&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;##git&lt;/p&gt;
+
+&lt;p&gt;git是一个分布式版本控制系统，它没有中央服务器，本地便是一个版本库。它是通过推送自己修改的内容给对方来实现版本控制的。&lt;/p&gt;
+
+&lt;p&gt;svn则与之相反，svn是一种集中式的版本控制系统，它拥有中央服务器，需要先从中央服务器中下载最新的版本，然后进行修改，最后在将修改的推送到中央服务器上，所以必须能连接上服务器，不然不利于开发。&lt;/p&gt;
+
+&lt;p&gt;相对而言，git适用于随时随地的本地开发。&lt;/p&gt;
+
+&lt;p&gt;###安装&lt;/p&gt;
+
+&lt;p&gt;linux下安装（centos）&lt;/p&gt;
+
+&lt;p&gt;1.yum基础软件包管理工具&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yum install git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;目前的yum源安装最高版本应该是1.7.1&lt;/p&gt;
+
+&lt;p&gt;2.编译安装&lt;/p&gt;
+
+&lt;p&gt;首先到github[&lt;a href=&#34;https://github.com/git/git/releases&#34;&gt;https://github.com/git/git/releases&lt;/a&gt;] 上下载最新的release版本。安装之前需要先安装git的依赖包：：curl、zlib、openssl、expat，还有libiconv。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;`
+$ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
+
+&lt;p&gt;$ cd git-2.0.0&lt;/p&gt;
+
+&lt;p&gt;$ make configure&lt;/p&gt;
+
+&lt;p&gt;$ ./configure &amp;ndash;prefix=/usr&lt;/p&gt;
+
+&lt;p&gt;$ make all doc info&lt;/p&gt;
+
+&lt;p&gt;$ sudo make install install-doc install-html install-info`&lt;/p&gt;
+
+&lt;p&gt;然后就可以检查版本安装是否成功了&lt;code&gt;git --version&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;###操作使用&lt;/p&gt;
+
+&lt;p&gt;git是一个本地管理的软件，首先要掌握本地的使用命令：&lt;/p&gt;
+
+&lt;p&gt;1.git init  在当前目录建立仓库，也就是初始化本地目录环境，可以看见有一个隐藏文件.git 要输出这个仓库，直接删除这个目录（暴力方法）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis源码解析</title>
+      <link>http://kingjcy.github.io/post/redis-source-parse-1/</link>
+      <pubDate>Thu, 28 Jul 2016 15:39:45 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-source-parse-1/</guid>
+      <description>&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;struct:（结构体）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;adlist.c 用于对list的定义，它是个双向链表结构&lt;/li&gt;
+&lt;li&gt;dict.c 主要对于内存中的hash进行管理&lt;/li&gt;
+&lt;li&gt;sds.c 用于对字符串的定义&lt;/li&gt;
+&lt;li&gt;sparkline.c 一个拥有sample列表的序列&lt;/li&gt;
+&lt;li&gt;t_hash.c hash在Server/Client中的应答操作。主要通过redisObject进行类型转换。&lt;/li&gt;
+&lt;li&gt;t_list.c list在Server/Client中的应答操作。主要通过redisObject进行类型转换。&lt;/li&gt;
+&lt;li&gt;t_set.c  set在Server/Client中的应答操作。主要通过redisObject进行类型转换。&lt;/li&gt;
+&lt;li&gt;t_string.c string在Server/Client中的应答操作。主要通过redisObject进行类型转换。&lt;/li&gt;
+&lt;li&gt;t_zset.c zset在Server/Client中的应答操作。主要通过redisObject进行类型转换。&lt;/li&gt;
+&lt;li&gt;ziplist.c  ziplist是一个类似于list的存储对象。它的原理类似于zipmap。&lt;/li&gt;
+&lt;li&gt;zipmap.c  zipmap是一个类似于hash的存储对象。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;data:（数据操作）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;aof.c 全称为append only file，作用就是记录每次的写操作,在遇到断电等问题时可以用它来恢复数据库状态。&lt;/li&gt;
+&lt;li&gt;config.c 用于将配置文件redis.conf文件中的配置读取出来的属性通过程序放到server对象中。&lt;/li&gt;
+&lt;li&gt;db.c对于Redis内存数据库的相关操作。&lt;/li&gt;
+&lt;li&gt;multi.c用于事务处理操作。&lt;/li&gt;
+&lt;li&gt;rdb.c  对于Redis本地数据库的相关操作，默认文件是dump.rdb（通过配置文件获得），包括的操作包括保存，移除，查询等等。&lt;/li&gt;
+&lt;li&gt;replication.c 用于主从数据库的复制操作的实现。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;tool:（工具）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;bitops.c 位操作相关类&lt;/li&gt;
+&lt;li&gt;debug.c 用于调试时使用&lt;/li&gt;
+&lt;li&gt;endianconv.c 高低位转换，不同系统，高低位顺序不同&lt;/li&gt;
+&lt;li&gt;help.h  辅助于命令的提示信息&lt;/li&gt;
+&lt;li&gt;lzf_c.c 压缩算法系列&lt;/li&gt;
+&lt;li&gt;lzf_d.c  压缩算法系列&lt;/li&gt;
+&lt;li&gt;rand.c 用于产生随机数&lt;/li&gt;
+&lt;li&gt;release.c 用于发步时使用&lt;/li&gt;
+&lt;li&gt;sha1.c sha加密算法的实现&lt;/li&gt;
+&lt;li&gt;util.c  通用工具方法&lt;/li&gt;
+&lt;li&gt;crc64.c 循环冗余校验&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;event:（事件）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;ae.c 用于Redis的事件处理，包括句柄事件和超时事件。&lt;/li&gt;
+&lt;li&gt;ae_epoll.c 实现了epoll系统调用的接口&lt;/li&gt;
+&lt;li&gt;ae_evport.c 实现了evport系统调用的接口&lt;/li&gt;
+&lt;li&gt;ae_kqueue.c 实现了kqueuex系统调用的接口&lt;/li&gt;
+&lt;li&gt;ae_select.c 实现了select系统调用的接口&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;baseinfo:（基本信息）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;asciilogo,c redis的logo显示&lt;/li&gt;
+&lt;li&gt;version.h定有Redis的版本号&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;compatible:（兼容）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;fmacros.h 兼容Mac系统下的问题&lt;/li&gt;
+&lt;li&gt;solarisfixes.h 兼容solary下的问题&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;main:（主程序）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;redis.c redis服务端程序&lt;/li&gt;
+&lt;li&gt;redis_cli.c redis客户端程序&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;net:（网络）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;anet.c 作为Server/Client通信的基础封装&lt;/li&gt;
+&lt;li&gt;networking.c 网络协议传输方法定义相关的都放在这个文件里面了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;wrapper:（封装类）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;bio.c background I/O的意思，开启后台线程用的&lt;/li&gt;
+&lt;li&gt;hyperloglog.c 一种日志类型的&lt;/li&gt;
+&lt;li&gt;intset.c  整数范围内的使用set，并包含相关set操作。&lt;/li&gt;
+&lt;li&gt;latency.c 延迟类&lt;/li&gt;
+&lt;li&gt;migrate.c 命令迁移类，包括命令的还原迁移等&lt;/li&gt;
+&lt;li&gt;notify.c 通知类&lt;/li&gt;
+&lt;li&gt;object.c  用于创建和释放redisObject对象&lt;/li&gt;
+&lt;li&gt;pqsort.c  排序算法类&lt;/li&gt;
+&lt;li&gt;pubsub.c 用于订阅模式的实现，有点类似于Client广播发送的方式。&lt;/li&gt;
+&lt;li&gt;rio.c redis定义的一个I/O类&lt;/li&gt;
+&lt;li&gt;slowlog.c 一种日志类型的，与hyperloglog.c类似&lt;/li&gt;
+&lt;li&gt;sort.c 排序算法类，与pqsort.c使用的场景不同&lt;/li&gt;
+&lt;li&gt;syncio.c 用于同步Socket和文件I/O操作。&lt;/li&gt;
+&lt;li&gt;zmalloc.c 关于Redis的内存分配的封装实现&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;others:（存放了一些我暂时还不是很清楚的类,所以没有解释了）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;scripting.c&lt;/li&gt;
+&lt;li&gt;sentinel.c&lt;/li&gt;
+&lt;li&gt;setproctitle.c&lt;/li&gt;
+&lt;li&gt;valgrind.sh&lt;/li&gt;
+&lt;li&gt;redisassert.h&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;test:（测试）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;memtest.c 内存检测&lt;/li&gt;
+&lt;li&gt;redis_benchmark.c 用于redis性能测试的实现。&lt;/li&gt;
+&lt;li&gt;redis_check_aof.c 用于更新日志检查的实现。&lt;/li&gt;
+&lt;li&gt;redis_check_dump.c 用于本地数据库检查的实现。&lt;/li&gt;
+&lt;li&gt;testhelp.c 一个C风格的小型测试框架。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这些都是参考网上人家的阅读经验来的，去阅读吧！后续的源码解析直接放在我的github上[&lt;a href=&#34;https://github.com/kingjcy&#34;&gt;https://github.com/kingjcy&lt;/a&gt;]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installation_of_some_applications</title>
+      <link>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</guid>
+      <description>&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;我的安装规则&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1.一般用yum,rpm安装的都是在root权限下&lt;/p&gt;
+
+&lt;p&gt;2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下&lt;/p&gt;
+
+&lt;p&gt;3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;go&#34;&gt;go&lt;/h2&gt;
+
+&lt;h3 id=&#34;go安装&#34;&gt;go安装:&lt;/h3&gt;
+
+&lt;p&gt;1 下载安装包 go1.5.linux-amd64.tar.gz&lt;/p&gt;
+
+&lt;p&gt;2 在linux下找一个目录进行解压 tar zxf go1.5.linux-amd64.tar.gz&lt;/p&gt;
+
+&lt;p&gt;3 编辑文件/etc/profile，在结尾添加环境变量&lt;/p&gt;
+
+&lt;p&gt;export GOROOT=/home/test/Go/go&amp;mdash;-源码安装路径&lt;/p&gt;
+
+&lt;p&gt;export PATH=$GOROOT/bin:$PATH&amp;mdash;&amp;mdash;声明应用&lt;/p&gt;
+
+&lt;p&gt;export GOPATH=/home/test/Go/go-project&amp;mdash;你的项目路劲&lt;/p&gt;
+
+&lt;p&gt;4 执行source /etc/profile，使修改生效&lt;/p&gt;
+
+&lt;p&gt;5 执行go version，查看是否安装成功。&lt;/p&gt;
+
+&lt;h3 id=&#34;godep-go包管理工具-安装&#34;&gt;godep(go包管理工具)安装：&lt;/h3&gt;
+
+&lt;p&gt;1.确保已经有go语言的环境并且设置好了 GOPATH 环境变量。&lt;/p&gt;
+
+&lt;p&gt;2.使用 go get -u github.com/tools/godep 下载 godep 包并自动安装。&lt;/p&gt;
+
+&lt;p&gt;3.godep 可执行程序会放在 $GOPATH/bin 目录下。所以想直接用 godep 执行命令的话需要将该路径加入到全局的环境变量 PATH 中，可以将export PATH=&amp;ldquo;$PATH:$GOPATH/bin&amp;rdquo;加入到系统启动脚本中。&lt;/p&gt;
+
+&lt;h2 id=&#34;java&#34;&gt;java:&lt;/h2&gt;
+
+&lt;p&gt;人们常说的Java X=Java SE X=JDK1.X，都是一回事。&lt;/p&gt;
+
+&lt;h3 id=&#34;jdk的安装&#34;&gt;jdk的安装：&lt;/h3&gt;
+
+&lt;p&gt;1.上网下载安装包 jdk-7u72-linux-x64.tar.gz 解压&lt;/p&gt;
+
+&lt;p&gt;2.设置环境变量***
+    vim /etc/profile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/usr/java/jdk1.7.0_55
+export PATH=.:$JAVA_HOME/bin:$PATH
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.检查版本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;java -version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;maven的安装&#34;&gt;maven的安装：&lt;/h3&gt;
+
+&lt;p&gt;1.首先到Maven官网下载安装包：apache-maven-3.0.3-bin.tar.gz&lt;/p&gt;
+
+&lt;p&gt;2.进入下载文件夹，找到下载的文件，运行如下命令解压&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar -zxvf  apache-maven-2.2.1-bin.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解压后的文件夹名为apache-maven-3.0.3&lt;/p&gt;
+
+&lt;p&gt;3.使用mv命令将apache-maven-3.0.3文件夹拷贝到自己指定的文件夹，比如/usr/local/下&lt;/p&gt;
+
+&lt;p&gt;mv -rf apache-maven-3.0.3 /usr/local/&lt;/p&gt;
+
+&lt;p&gt;4.配置环境变量，编辑/etc/profile文件，添加如下代码&lt;/p&gt;
+
+&lt;p&gt;MAVEN_HOME=/usr/local/apache-maven-3.0.3
+   export MAVEN_HOME
+   export PATH=${PATH}:${MAVEN_HOME}/bin&lt;/p&gt;
+
+&lt;p&gt;5.保存文件，并运行如下命令使环境变量生效&lt;/p&gt;
+
+&lt;p&gt;source /etc/profile&lt;/p&gt;
+
+&lt;p&gt;6.在控制台输入如下命令，如果能看到Maven相关版本信息，则说明Maven已经安装成功&lt;/p&gt;
+
+&lt;p&gt;mvn -v&lt;/p&gt;
+
+&lt;h3 id=&#34;zookeeper的安装&#34;&gt;zookeeper的安装：&lt;/h3&gt;
+
+&lt;p&gt;1.从官网下载 zookeeper，解压。&lt;/p&gt;
+
+&lt;p&gt;使用默认配置启动 zookeeper sh ./bin/zkServer.sh start，监听地址为 2181。&lt;/p&gt;
+
+&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
+
+&lt;h3 id=&#34;redis的安装&#34;&gt;redis的安装：&lt;/h3&gt;
+
+&lt;p&gt;1、下载解压包 tar -zxf redis-3.0.7.tar.gz 到安装目录解压&lt;/p&gt;
+
+&lt;p&gt;2、make&lt;/p&gt;
+
+&lt;p&gt;3、make install&lt;/p&gt;
+
+&lt;p&gt;4、用 redis-server 配置文件 启动&lt;/p&gt;
+
+&lt;h3 id=&#34;gem-ruby第三方插件管理器-的安装&#34;&gt;gem（ruby第三方插件管理器）的安装：&lt;/h3&gt;
+
+&lt;p&gt;1、首先具备ruby的解释器，ruby是类似于shell，python的脚本语言&lt;/p&gt;
+
+&lt;p&gt;2、下载安装包 rubygems-1.8.7.tgz 解压&lt;/p&gt;
+
+&lt;p&gt;3、进入目录，执行ruby setup.rb安装&lt;/p&gt;
+
+&lt;p&gt;4、用gem安装ruby的插件&lt;/p&gt;
+
+&lt;p&gt;比如安装redis的ruby插件&lt;/p&gt;
+
+&lt;p&gt;先下载插件文件 redis-3.2.2.gem&lt;/p&gt;
+
+&lt;p&gt;然后执行gem install -l redis-3.2.2.gem本地安装即可。&lt;/p&gt;
+
+&lt;p&gt;在线可以用yum安装&lt;/p&gt;
+
+&lt;p&gt;安装基本的包:&lt;/p&gt;
+
+&lt;p&gt;prompt$ yum install -y ruby&lt;/p&gt;
+
+&lt;p&gt;安装额外的Ruby包和文档:&lt;/p&gt;
+
+&lt;p&gt;prompt$ yum install -y ruby-devel ruby-docs ruby-ri ruby-rdoc&lt;/p&gt;
+
+&lt;p&gt;安装RubyGems:&lt;/p&gt;
+
+&lt;p&gt;prompt$ yum install -y rubygems&lt;/p&gt;
+
+&lt;p&gt;然后一样使用&lt;/p&gt;
+
+&lt;h2 id=&#34;lamp&#34;&gt;LAMP&lt;/h2&gt;
+
+&lt;h3 id=&#34;apache的安装&#34;&gt;Apache的安装：&lt;/h3&gt;
+
+&lt;p&gt;下载安装包&lt;/p&gt;
+
+&lt;p&gt;下载安装 apache 依赖关联包（共四个：apr，apr-iconv，apr-util，pcre）&lt;/p&gt;
+
+&lt;p&gt;正常的解压(tar -zxvf package)，配置（./configure），编译（make），安装（make install）&lt;/p&gt;
+
+&lt;h3 id=&#34;mysql的安装&#34;&gt;mysql的安装：&lt;/h3&gt;
+
+&lt;p&gt;1、源码安装，不用传统的configure，用cmake&lt;/p&gt;
+
+&lt;p&gt;2、二进制文件&amp;ndash;我没有找，直接可执行的&lt;/p&gt;
+
+&lt;p&gt;3、rpm安装，下载rpm包，用rpm -ivh  &amp;ndash;nodeps &amp;ndash;force  安装时不再分析包之间的依赖关系而直接安装,对于本机器来说，由于libgc版本过低需要更新，所以还是直接有源安装比较好，用yum/rpm。&lt;/p&gt;
+
+&lt;h3 id=&#34;php的安装&#34;&gt;php的安装&lt;/h3&gt;
+
+&lt;p&gt;1、安装PHP&lt;/p&gt;
+
+&lt;p&gt;（1）获得PHP源码：php-5.4.1.tar.gz。&lt;/p&gt;
+
+&lt;p&gt;（2）解压缩源码文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #tar -zvxf php-5.4.1.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;（3）安装libxm12以及libxml2-devel，不然编译源码时会出现“Configure: error: xml2-config not found. Please check your libxml2 installation.”问题。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #yum install -y libxml2 libxm12-devel
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(4)编译源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#cd /usr/local/php-5.4.1
+#./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql=/usr/local/mysql
+
+#make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(5)安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#make install 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、配置PHP&lt;/p&gt;
+
+&lt;p&gt;(1)将PHP源码包（/usr/local/php-5.4.1）中的php.ini-development文件复制到/usr/local/lib/下，更名为php.ini。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#cp /usr/local/php-5.4.1/php.ini-development /usr/local/lib/php.ini
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(2)修改Apache配置文件（gedit /usr/local/apache2/conf/httpd.conf）以支持对PHP的解析。如果httpd.conf中没有下列语句，就将它们分别添加到LoadModule和AddType项的后面。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LoadModule php5_module modules/libphp5.so
+
+AddType application/x-httpd-php .php
+
+在DirectoryIndex index.html index.html.var一行后加入index.php，即改为：
+
+DirectoryIndex index.html index.html.var index.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重启Apache服务器：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#/usr/local/apache2/bin/apachectl restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(3)测试PHP：&lt;/p&gt;
+
+&lt;p&gt;在Apache服务器的文件根目录（/usr/local/apache2/htdocs/）下新建一个PHP文件test.php，并输入以下内容：&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;?php
+    phpinfo();
+?&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;在浏览器中输入&lt;a href=&#34;http://localhost/test.php，如果看到下图，则表示已成功安装了PHP。&#34;&gt;http://localhost/test.php，如果看到下图，则表示已成功安装了PHP。&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;python的安装&#34;&gt;python的安装：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;                                                                                                                                                                                           1、在官方网站下载python安装包，这里注意python.org/download路径被屏蔽，需要使用http://www.python.org/页面上的中文“下载”链接进行下载。
+
+                                                                                                                                                                                           这里下载了python最新的3.2.2版本：Python-3.2.2.tgz
+
+                                                                                                                                                                                           下载后，文件目录在/home/python/下，这也是我python的安装目录
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、解压：&lt;/p&gt;
+
+&lt;p&gt;[root@www python]# tar zxvf    Python-3.2.2.tgz&lt;/p&gt;
+
+&lt;p&gt;3、打开安装目录，执行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@www python]# cd Python-3.2.2
+
+[root@www Python-3.2.2]#./configure
+
+[root@www Python-3.2.2]# make
+
+[root@www Python-3.2.2]# makeinstall
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;值此，安装完成。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;以上都是我对这些应用的一个安装过程，其实再联网的情况下，用yum/rpm是最好的，但是要搞懂安装的过程可以用源码安装，编译安装，其实就是变成可以执行文件，然后放到我们的可执行文件环境变量所指的路劲下
+，也可以直接下载可执行文件的包，解压安装。linux下大体就是这些方式，还有一些特殊的方式，具体看安装步骤.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用hugo&#43;github构建自己的blog</title>
+      <link>http://kingjcy.github.io/post/hugo-github-blog/</link>
+      <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/hugo-github-blog/</guid>
+      <description>&lt;h3 id=&#34;使用hugo-github搭建属于自己的blog网站&#34;&gt;使用hugo+github搭建属于自己的blog网站&lt;/h3&gt;
+
+&lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;
+
+&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;
+
+&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;
+
+&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hugo&#34;&gt;hugo&lt;/h2&gt;
+
+&lt;p&gt;这个比较方便的静态页面生成器，首先需要安装，我的系统是centos 64位的.&lt;/p&gt;
+
+&lt;h3 id=&#34;install&#34;&gt;install&lt;/h3&gt;
+
+&lt;p&gt;2、直接下载二进制文件，这也是我说的方便的地方。&lt;/p&gt;
+
+&lt;p&gt;Hugo二进制下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载下来后，首先要生成自己的站点：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new site mysite&lt;/code&gt;&amp;ndash;这边hugo的二进制文件不一定是这个名字，可以起个别名alias来用&lt;/p&gt;
+
+&lt;p&gt;这时会在mysite目录下生成一些目录和文件，这边简单的介绍一下，config.toml是网站的配置文件，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。&lt;/p&gt;
+
+&lt;p&gt;然后进入站点目录mysite，新建文档&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd mysite&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new about.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这边新建一个md文件会出现在content目录下，一般这个about.md文件是一个关于本站的介绍或者blog个人介绍，在这边将一下md文件的编辑，其实就是MarkDown格式文件的编写，具体的格式可以参考本文的编辑，或者去网上去搜索一下就ok,这边我说几点，我经常记错&lt;/p&gt;
+
+&lt;p&gt;1、就是&amp;rdquo;+++&amp;ldquo;内的赋值用&amp;rdquo;=&amp;ldquo;，&amp;rdquo;&amp;mdash;&amp;ldquo;内的用&amp;rdquo;:&amp;ldquo;。&lt;/p&gt;
+
+&lt;p&gt;2、&lt;code&gt;###&lt;/code&gt;后面必须有空格。&lt;/p&gt;
+
+&lt;p&gt;3、有空行才能换行。&lt;/p&gt;
+
+&lt;p&gt;一般我们写博文，会放在content/post下，正如我这边编写的第一篇文&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new post/first.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后用vim编辑器进行编辑，编辑好后，就可以将你编辑的文字生成静态网页了，当然你肯定需要一个模板，这样可以使你的网页根据美观，这边在讲一下模板的使用&lt;/p&gt;
+
+&lt;p&gt;1、模板放在站点的themes下，一般木有这个文件夹，我们需要新增一个&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir themes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd themes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2、模板可以到hugo官网上去找,那边可以showcase预览一下自己喜欢的，具体的安装方式也有介绍，就是用&lt;code&gt;git clone&lt;/code&gt;把源码下到themes目录下就好&lt;/p&gt;
+
+&lt;p&gt;官网：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3、编辑模板的配置文件，这个视具体模板，可以参考我的配置&lt;a href=&#34;https://github.com/kingjcy/&#34;&gt;https://github.com/kingjcy/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下面就是生成我们需要的静态网页了，也就是前端的html文件&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo --theme=hyde --baseUrl=&amp;quot;http://kingjcy.github.io/&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;不出意外的话，应该在站点目录下生成一个public文件夹，这个就是我们需要的所有文件了，至此第一步已经完成了。&lt;/p&gt;
+
+&lt;h2 id=&#34;github-pages&#34;&gt;github pages&lt;/h2&gt;
+
+&lt;p&gt;这个就简单了，因为本身就是github提供现成的东西，首先新增一个repo，命名为：&lt;code&gt;kingjcy.github.io&lt;/code&gt; （kingjcy替换为你的github用户名）。&lt;/p&gt;
+
+&lt;p&gt;然后将第一步的public加入git版本，上传到这个项目，就可以访问你的个人blog：&lt;code&gt;http://kingjcy.github.io/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;至于git版本控制和github直接的传输，这边就不多讲了，如果需要可以参考我的另外一篇博文《git和github的使用》。&lt;/p&gt;
+
+&lt;p&gt;终于搭建完了，欢迎指正,tks。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

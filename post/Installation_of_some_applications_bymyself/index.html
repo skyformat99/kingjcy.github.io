@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Installation_of_some_applications - My New Hugo Site</title>
+    
+<meta name="description" content="&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;我的安装规则&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;1.一般用yum,rpm安装的都是在root权限下&lt;/p&gt;&lt;p&gt;2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下&lt;/p&gt;&lt;p&gt;3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="Installation_of_some_applications - My New Hugo Site">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="My New Hugo Site">
+<meta property="og:description" content="&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;我的安装规则&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;1.一般用yum,rpm安装的都是在root权限下&lt;/p&gt;&lt;p&gt;2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下&lt;/p&gt;&lt;p&gt;3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="My New Hugo Site">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/">
+<meta name="twitter:title" content="Installation_of_some_applications - My New Hugo Site">
+<meta name="twitter:description" content="&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;我的安装规则&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;1.一般用yum,rpm安装的都是在root权限下&lt;/p&gt;&lt;p&gt;2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下&lt;/p&gt;&lt;p&gt;3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "Installation_of_some_applications - My New Hugo Site",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-07-21T00:00:00JST",
+    "dateModified": "2016-07-21T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "My New Hugo Site"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "My New Hugo Site",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3e最近安装了好多应用，这边也做了一个整合和思考：\x3c\/p\x3e\n\n\x3cblockquote\x3e\n\x3cp\x3e我的安装规则\x3c\/p\x3e\n\x3c\/blockquote\x3e\n\n\x3cp\x3e1.一般用yum,rpm安装的都是在root权限下\x3c\/p\x3e\n\n\x3cp\x3e2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下\x3c\/p\x3e\n\n\x3cp\x3e3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">My New Hugo Site</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">Installation_of_some_applications</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-07-21T00:00:00JST">Jul 21, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">Installation_of_some_applications</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>最近安装了好多应用，这边也做了一个整合和思考：</p>
+
+<blockquote>
+<p>我的安装规则</p>
+</blockquote>
+
+<p>1.一般用yum,rpm安装的都是在root权限下</p>
+
+<p>2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下</p>
+
+<p>3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。</p>
+
+<p></p>
+
+<h2 id="go">go</h2>
+
+<h3 id="go安装">go安装:</h3>
+
+<p>1 下载安装包 go1.5.linux-amd64.tar.gz</p>
+
+<p>2 在linux下找一个目录进行解压 tar zxf go1.5.linux-amd64.tar.gz</p>
+
+<p>3 编辑文件/etc/profile，在结尾添加环境变量</p>
+
+<p>export GOROOT=/home/test/Go/go&mdash;-源码安装路径</p>
+
+<p>export PATH=$GOROOT/bin:$PATH&mdash;&mdash;声明应用</p>
+
+<p>export GOPATH=/home/test/Go/go-project&mdash;你的项目路劲</p>
+
+<p>4 执行source /etc/profile，使修改生效</p>
+
+<p>5 执行go version，查看是否安装成功。</p>
+
+<h3 id="godep-go包管理工具-安装">godep(go包管理工具)安装：</h3>
+
+<p>1.确保已经有go语言的环境并且设置好了 GOPATH 环境变量。</p>
+
+<p>2.使用 go get -u github.com/tools/godep 下载 godep 包并自动安装。</p>
+
+<p>3.godep 可执行程序会放在 $GOPATH/bin 目录下。所以想直接用 godep 执行命令的话需要将该路径加入到全局的环境变量 PATH 中，可以将export PATH=&ldquo;$PATH:$GOPATH/bin&rdquo;加入到系统启动脚本中。</p>
+
+<h2 id="java">java:</h2>
+
+<p>人们常说的Java X=Java SE X=JDK1.X，都是一回事。</p>
+
+<h3 id="jdk的安装">jdk的安装：</h3>
+
+<p>1.上网下载安装包 jdk-7u72-linux-x64.tar.gz 解压</p>
+
+<p>2.设置环境变量***
+    vim /etc/profile:</p>
+
+<pre><code>export JAVA_HOME=/usr/java/jdk1.7.0_55
+export PATH=.:$JAVA_HOME/bin:$PATH
+</code></pre>
+
+<p>3.检查版本</p>
+
+<pre><code>java -version
+</code></pre>
+
+<h3 id="maven的安装">maven的安装：</h3>
+
+<p>1.首先到Maven官网下载安装包：apache-maven-3.0.3-bin.tar.gz</p>
+
+<p>2.进入下载文件夹，找到下载的文件，运行如下命令解压</p>
+
+<pre><code>tar -zxvf  apache-maven-2.2.1-bin.tar.gz
+</code></pre>
+
+<p>解压后的文件夹名为apache-maven-3.0.3</p>
+
+<p>3.使用mv命令将apache-maven-3.0.3文件夹拷贝到自己指定的文件夹，比如/usr/local/下</p>
+
+<p>mv -rf apache-maven-3.0.3 /usr/local/</p>
+
+<p>4.配置环境变量，编辑/etc/profile文件，添加如下代码</p>
+
+<p>MAVEN_HOME=/usr/local/apache-maven-3.0.3
+   export MAVEN_HOME
+   export PATH=${PATH}:${MAVEN_HOME}/bin</p>
+
+<p>5.保存文件，并运行如下命令使环境变量生效</p>
+
+<p>source /etc/profile</p>
+
+<p>6.在控制台输入如下命令，如果能看到Maven相关版本信息，则说明Maven已经安装成功</p>
+
+<p>mvn -v</p>
+
+<h3 id="zookeeper的安装">zookeeper的安装：</h3>
+
+<p>1.从官网下载 zookeeper，解压。</p>
+
+<p>使用默认配置启动 zookeeper sh ./bin/zkServer.sh start，监听地址为 2181。</p>
+
+<h2 id="redis">redis</h2>
+
+<h3 id="redis的安装">redis的安装：</h3>
+
+<p>1、下载解压包 tar -zxf redis-3.0.7.tar.gz 到安装目录解压</p>
+
+<p>2、make</p>
+
+<p>3、make install</p>
+
+<p>4、用 redis-server 配置文件 启动</p>
+
+<h3 id="gem-ruby第三方插件管理器-的安装">gem（ruby第三方插件管理器）的安装：</h3>
+
+<p>1、首先具备ruby的解释器，ruby是类似于shell，python的脚本语言</p>
+
+<p>2、下载安装包 rubygems-1.8.7.tgz 解压</p>
+
+<p>3、进入目录，执行ruby setup.rb安装</p>
+
+<p>4、用gem安装ruby的插件</p>
+
+<p>比如安装redis的ruby插件</p>
+
+<p>先下载插件文件 redis-3.2.2.gem</p>
+
+<p>然后执行gem install -l redis-3.2.2.gem本地安装即可。</p>
+
+<p>在线可以用yum安装</p>
+
+<p>安装基本的包:</p>
+
+<p>prompt$ yum install -y ruby</p>
+
+<p>安装额外的Ruby包和文档:</p>
+
+<p>prompt$ yum install -y ruby-devel ruby-docs ruby-ri ruby-rdoc</p>
+
+<p>安装RubyGems:</p>
+
+<p>prompt$ yum install -y rubygems</p>
+
+<p>然后一样使用</p>
+
+<h2 id="lamp">LAMP</h2>
+
+<h3 id="apache的安装">Apache的安装：</h3>
+
+<p>下载安装包</p>
+
+<p>下载安装 apache 依赖关联包（共四个：apr，apr-iconv，apr-util，pcre）</p>
+
+<p>正常的解压(tar -zxvf package)，配置（./configure），编译（make），安装（make install）</p>
+
+<h3 id="mysql的安装">mysql的安装：</h3>
+
+<p>1、源码安装，不用传统的configure，用cmake</p>
+
+<p>2、二进制文件&ndash;我没有找，直接可执行的</p>
+
+<p>3、rpm安装，下载rpm包，用rpm -ivh  &ndash;nodeps &ndash;force  安装时不再分析包之间的依赖关系而直接安装,对于本机器来说，由于libgc版本过低需要更新，所以还是直接有源安装比较好，用yum/rpm。</p>
+
+<h3 id="php的安装">php的安装</h3>
+
+<p>1、安装PHP</p>
+
+<p>（1）获得PHP源码：php-5.4.1.tar.gz。</p>
+
+<p>（2）解压缩源码文件：</p>
+
+<pre><code> #tar -zvxf php-5.4.1.tar.gz
+</code></pre>
+
+<p>（3）安装libxm12以及libxml2-devel，不然编译源码时会出现“Configure: error: xml2-config not found. Please check your libxml2 installation.”问题。</p>
+
+<pre><code> #yum install -y libxml2 libxm12-devel
+</code></pre>
+
+<p>(4)编译源码：</p>
+
+<pre><code>#cd /usr/local/php-5.4.1
+#./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql=/usr/local/mysql
+
+#make
+</code></pre>
+
+<p>(5)安装</p>
+
+<pre><code>#make install 
+</code></pre>
+
+<p>2、配置PHP</p>
+
+<p>(1)将PHP源码包（/usr/local/php-5.4.1）中的php.ini-development文件复制到/usr/local/lib/下，更名为php.ini。</p>
+
+<pre><code>#cp /usr/local/php-5.4.1/php.ini-development /usr/local/lib/php.ini
+</code></pre>
+
+<p>(2)修改Apache配置文件（gedit /usr/local/apache2/conf/httpd.conf）以支持对PHP的解析。如果httpd.conf中没有下列语句，就将它们分别添加到LoadModule和AddType项的后面。</p>
+
+<pre><code>LoadModule php5_module modules/libphp5.so
+
+AddType application/x-httpd-php .php
+
+在DirectoryIndex index.html index.html.var一行后加入index.php，即改为：
+
+DirectoryIndex index.html index.html.var index.php
+</code></pre>
+
+<p>重启Apache服务器：</p>
+
+<pre><code>#/usr/local/apache2/bin/apachectl restart
+</code></pre>
+
+<p>(3)测试PHP：</p>
+
+<p>在Apache服务器的文件根目录（/usr/local/apache2/htdocs/）下新建一个PHP文件test.php，并输入以下内容：</p>
+
+<p>&lt;?php
+    phpinfo();
+?&gt;</p>
+
+<p>在浏览器中输入<a href="http://localhost/test.php，如果看到下图，则表示已成功安装了PHP。">http://localhost/test.php，如果看到下图，则表示已成功安装了PHP。</a></p>
+
+<h3 id="python的安装">python的安装：</h3>
+
+<pre><code>                                                                                                                                                                                           1、在官方网站下载python安装包，这里注意python.org/download路径被屏蔽，需要使用http://www.python.org/页面上的中文“下载”链接进行下载。
+
+                                                                                                                                                                                           这里下载了python最新的3.2.2版本：Python-3.2.2.tgz
+
+                                                                                                                                                                                           下载后，文件目录在/home/python/下，这也是我python的安装目录
+</code></pre>
+
+<p>2、解压：</p>
+
+<p>[root@www python]# tar zxvf    Python-3.2.2.tgz</p>
+
+<p>3、打开安装目录，执行</p>
+
+<pre><code>[root@www python]# cd Python-3.2.2
+
+[root@www Python-3.2.2]#./configure
+
+[root@www Python-3.2.2]# make
+
+[root@www Python-3.2.2]# makeinstall
+</code></pre>
+
+<p>值此，安装完成。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>以上都是我对这些应用的一个安装过程，其实再联网的情况下，用yum/rpm是最好的，但是要搞懂安装的过程可以用源码安装，编译安装，其实就是变成可以执行文件，然后放到我们的可执行文件环境变量所指的路劲下
+，也可以直接下载可执行文件的包，解压安装。linux下大体就是这些方式，还有一些特殊的方式，具体看安装步骤.</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/applications/">applications</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/gitandgithub/" class="list-group-item">工具系列(一)：git和github的使用总结</a>
+      
+      <a href="http://kingjcy.github.io/post/redis-source-parse-1/" class="list-group-item">redis源码解析</a>
+      
+      <a href="http://kingjcy.github.io/post/redis-cluster/" class="list-group-item">redis cluster</a>
+      
+      <a href="http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/" class="list-group-item">Installation_of_some_applications</a>
+      
+      <a href="http://kingjcy.github.io/post/life_experience/" class="list-group-item">life experience</a>
+      
+      <a href="http://kingjcy.github.io/post/myfuturedirection/" class="list-group-item">My Future Direction</a>
+      
+      <a href="http://kingjcy.github.io/post/technology-manage/" class="list-group-item">觉得很有想法，也许对以后的道路会有影响。</a>
+      
+      <a href="http://kingjcy.github.io/post/hugo-github-blog/" class="list-group-item">用hugo&#43;github构建自己的blog</a>
+      
+      <a href="http://kingjcy.github.io/about" class="list-group-item">关于我</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/thought" class="list-group-item">thought</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/applications" class="list-group-item">applications</a>
+      
+      <a href="http://kingjcy.github.io/tags/life" class="list-group-item">life</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; My New Hugo Site</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
