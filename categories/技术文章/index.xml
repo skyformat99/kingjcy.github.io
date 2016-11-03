@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kingjcy Blog</title>
+    <title>fatedier blog</title>
     <link>http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml</link>
-    <description>Recent content on kingjcy Blog</description>
+    <description>Recent content on fatedier blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
     <atom:link href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>工具系列(一)：git和github的使用总结</title>
-      <link>http://kingjcy.github.io/blog/2016/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <link>http://kingjcy.github.io/post/gitandgithub/</link>
       <pubDate>Wed, 02 Nov 2016 16:50:34 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/blog/2016/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <guid>http://kingjcy.github.io/post/gitandgithub/</guid>
       <description>&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -67,10 +67,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>redis源码解析</title>
-      <link>http://kingjcy.github.io/blog/2016/07/28/redis%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+      <link>http://kingjcy.github.io/post/redis-source-parse-1/</link>
       <pubDate>Thu, 28 Jul 2016 15:39:45 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/blog/2016/07/28/redis%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
+      <guid>http://kingjcy.github.io/post/redis-source-parse-1/</guid>
       <description>&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -200,10 +200,10 @@ $ tar -zxf git-2.0.0.tar.gz&lt;/p&gt;
     
     <item>
       <title>Installation_of_some_applications</title>
-      <link>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</link>
+      <link>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</link>
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</guid>
+      <guid>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</guid>
       <description>&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -459,10 +459,10 @@ DirectoryIndex index.html index.html.var index.php
     
     <item>
       <title>用hugo&#43;github构建自己的blog</title>
-      <link>http://kingjcy.github.io/blog/2016/04/19/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</link>
+      <link>http://kingjcy.github.io/post/hugo-github-blog/</link>
       <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/blog/2016/04/19/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</guid>
+      <guid>http://kingjcy.github.io/post/hugo-github-blog/</guid>
       <description>&lt;h3 id=&#34;使用hugo-github搭建属于自己的blog网站&#34;&gt;使用hugo+github搭建属于自己的blog网站&lt;/h3&gt;
 
 &lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;

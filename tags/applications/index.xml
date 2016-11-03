@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kingjcy Blog</title>
+    <title>fatedier blog</title>
     <link>http://kingjcy.github.io/tags/applications/index.xml</link>
-    <description>Recent content on kingjcy Blog</description>
+    <description>Recent content on fatedier blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
     <atom:link href="http://kingjcy.github.io/tags/applications/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Installation_of_some_applications</title>
-      <link>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</link>
+      <link>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</link>
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kingjcy.github.io/blog/2016/07/21/installation_of_some_applications/</guid>
+      <guid>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</guid>
       <description>&lt;p&gt;最近安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;
 
 &lt;blockquote&gt;
