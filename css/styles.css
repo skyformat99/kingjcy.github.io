@@ -140,7 +140,7 @@ section.bordered {
 }
 
 article .title {
-  margin: 0;
+  margin: 5;
   margin-bottom: .5rem;
 }
 
@@ -179,7 +179,7 @@ article.li .thumb {
 
 article.li.sm>header {
   border-bottom: none;
-  margin-bottom: 0;
+  margin-bottom: 5;
 }
 
 .article-body h2 {
