@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>kingjcy Blog</title>
     <link>http://kingjcy.github.io/tags/life/index.xml</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on kingjcy Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
     <atom:link href="http://kingjcy.github.io/tags/life/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>life experience</title>
-      <link>http://kingjcy.github.io/post/life_experience/</link>
+      <link>http://kingjcy.github.io/blog/2016/05/10/life-experience/</link>
       <pubDate>Tue, 10 May 2016 15:03:35 +0800</pubDate>
       
-      <guid>http://kingjcy.github.io/post/life_experience/</guid>
+      <guid>http://kingjcy.github.io/blog/2016/05/10/life-experience/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;人生课堂&amp;mdash;交通事故&lt;/p&gt;
 &lt;/blockquote&gt;
