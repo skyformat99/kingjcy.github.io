@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2015/11/22/vim%E7%BC%96%E8%BE%91%E5%88%A9%E5%99%A8/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>vim编辑利器 - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;vim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，&amp;rdquo;工欲善其事，必先利其器&amp;rdquo;，学习vim肯定是不错的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="vim编辑利器 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2015/11/22/vim%E7%BC%96%E8%BE%91%E5%88%A9%E5%99%A8/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;vim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，&amp;rdquo;工欲善其事，必先利其器&amp;rdquo;，学习vim肯定是不错的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2015/11/22/vim%E7%BC%96%E8%BE%91%E5%88%A9%E5%99%A8/">
+<meta name="twitter:title" content="vim编辑利器 - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;vim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，&amp;rdquo;工欲善其事，必先利其器&amp;rdquo;，学习vim肯定是不错的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "vim编辑利器 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-11-22T14:25:28JST",
+    "dateModified": "2015-11-22T14:25:28JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3evim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，\x26rdquo;工欲善其事，必先利其器\x26rdquo;，学习vim肯定是不错的。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">vim编辑利器</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-11-22T14:25:28JST">Nov 22, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">vim编辑利器</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>vim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，&rdquo;工欲善其事，必先利其器&rdquo;，学习vim肯定是不错的。</p>
+
+<p></p>
+
+<blockquote>
+<h1 id="vim的安装与配置">vim的安装与配置</h1>
+</blockquote>
+
+<p>我的macos系统是自带的vim编辑器，当然也可以安装最新版的vim</p>
+
+<p>首先去下载源码<a href="https://github.com/vim/vim">https://github.com/vim/vim</a></p>
+
+<p>然后正常安装</p>
+
+<pre><code>$cd src
+$./configure
+$make &amp;&amp; make install
+</code></pre>
+
+<p>就安装好了，可以运行vim检查是否安装成功。</p>
+
+<p>vim的配置主要是修改vim的配置文件～／.vimrc，这个可以百度到很详细的配置，在这里就不赘述了。</p>
+
+<blockquote>
+<h1 id="vim插件">vim插件</h1>
+</blockquote>
+
+<h3 id="vim插件管理器">vim插件管理器</h3>
+
+<p>vundle是一款特别好用的vim插件的管理器，安装也是非常简单。</p>
+
+<p><code>git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle</code></p>
+
+<p>然后修改配置文件~/.vimrc</p>
+
+<pre><code>filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle '其他的 github 位置...'
+filetype plugin indent on
+</code></pre>
+
+<p>vundle本身也是一个插件，所以也需要安装，目前vundle这个项目托管在github上，地址是</p>
+
+<p><a href="https://github.com/gmarik/vundle">https://github.com/gmarik/vundle</a></p>
+
+<p>所以上面配置文件中加上了这个插件的安装</p>
+
+<p>最后打开vim，输入:BundleInstall会显示安装的过程，done代表安装完成。</p>
+
+<h2 id="source-instght类">source instght类</h2>
+
+<h3 id="ctags">ctags</h3>
+
+<p>Ctags工具是用来遍历源代码文件生成tags文件，这些tags文件能被编辑器或其它工具用来快速查找定位源代码中的符号（tag/symbol），如变量名，函数名等。比如，tags文件就是Taglist和OmniCppComplete工作的基础。</p>
+
+<h4 id="安装">安装</h4>
+
+<p>我的macos系统下直接使用homebrew</p>
+
+<pre><code>brew install ctags
+</code></pre>
+
+<p>也可以直接用源码安装，最好下载<a href="http://ctags.sourceforge.net/">EXUBERANT ctags</a>，这个提供了比较强大的基础功能。正常安装</p>
+
+<pre><code>cd src
+./configure
+make &amp;&amp; make install
+</code></pre>
+
+<h4 id="常用命令">常用命令</h4>
+
+<ol>
+<li>ctags -R * 对当前目录下所有的文件包含子目录下的文件进行递归创建tag文件，当vi运行后会自动加载tag文件中所有的对象包含</li>
+</ol>
+
+<ul>
+<li>用#define定义的宏</li>
+<li>枚举型变量的值</li>
+<li>函数的定义、原型和声明</li>
+<li>名字空间（namespace）</li>
+<li>类型定义（typedefs）</li>
+<li>变量（包括定义和声明）</li>
+<li>类（class）、结构（struct）、枚举类型（enum）和联合（union）</li>
+<li>类、结构和联合中成员变量或函数</li>
+</ul>
+
+<ol>
+<li>vi -t tag tag为变量，函数或者其他，就是对当前目录下进行tag对象查找，找到就打开文件并定位到这一行。</li>
+<li>:ts 如果函数或者变量有在这个项目中有多处定义的话，用这个命令列出来可供选择</li>
+<li>:tp  上面列表当前选择的上一个</li>
+<li>:tn  列表当前选择的下一个</li>
+<li>Ctrl+] 查找当前变量或者函数的定义处并打开定位</li>
+<li>Ctrl+t 回退Ctrl+]的操作，都可以多处查找</li>
+</ol>
+
+<h3 id="taglist">taglist</h3>
+
+<p>TagList插件,是一款基于ctags,在vim代码窗口旁以分割窗口形式显示当前的代码结构概览,增加代码浏览的便利程度。</p>
+
+<h4 id="安装-1">安装</h4>
+
+<ol>
+<li>下载安装包<a href="http://www.vim.org/scripts/script.php?script_id=273">http://www.vim.org/scripts/script.php?script_id=273</a></li>
+<li>进入~/.vim目录，将Taglist安装包解压，解压后会在~/.vim目录中生成几个新子目录，如plugin和doc（安装其它插件时，可能还会新建autoload等其它目录）。</li>
+<li>进入~/.vim/doc目录，在Vim下运行&rdquo;helptags .&ldquo;命令。此步骤是将doc下的帮助文档加入到Vim的帮助主题中，这样我们就可以通过在Vim中运行“help taglist.txt”查看taglist帮助。</li>
+<li>修改配置文件,可以根据需要修改，不修改也可以</li>
+</ol>
+
+<h4 id="基本用法">基本用法</h4>
+
+<ol>
+<li>打开与关闭  :Tlist 可以在vim配置中设置快捷键map <F8> :TlistToggle</li>
+<li>左右窗口切换 Ctrl+w左右，也可以用Ctrl+h,l</li>
+<li>u更新tag
+其他的我觉的用处不大，需要的适合了解一些就好。</li>
+</ol>
+
+<h3 id="cscope">cscope</h3>
+
+<p>Cscope是一个类似ctags的工具。 你可以把它想作是超过频的ctags，因为它功能比ctags强大很多。</p>
+
+<h4 id="安装-2">安装</h4>
+
+<p>macos上直接使用</p>
+
+<pre><code>brew install cscope
+</code></pre>
+
+<p>就好。至于源码安装和上面的ctags一样，这边就不多说了。</p>
+
+<h4 id="基本使用">基本使用</h4>
+
+<p>首先在目录下使用“cscope -Rqb”生成cscope.out文件;</p>
+
+<p>使用时先在VIM的命令行下调用“cscope add/../../cscope.out”（或cs add /../../cscope.out)命令添加一个cscope数据库，然后就可以调“cscope find”（或 cs f ）命令进行查找了。</p>
+
+<p>VIM支持8种cscope的查询功能，如下：</p>
+
+<ul>
+<li>c:Find functions calling this function//查找调用本函数的函数</li>
+<li>d:Find functions called by this function //查找本函数调用的函数</li>
+<li>e:Find this egrep pattern//查找egrep模式，相当于egrep功能，但查找速度快多了</li>
+<li>f:Find this file //查找并打开文件，类似vim的find功能</li>
+<li>g:Find this definition//查找函数、宏、枚举等定义的位置，类似ctags的功能</li>
+<li>i:Find files #including this file //查找包含本文件的文件</li>
+<li>s:Find this C symbol //查找C语言符号，即查找函数名、宏、枚举值等出现的地方</li>
+<li>t:Find assignments to //查找指定的字符串</li>
+</ul>
+
+<h2 id="markdown类">MarkDown类</h2>
+
+<h3 id="vim-markdown">vim-markdown</h3>
+
+<p>vim-markdown是md文档高亮方案的插件，通过vundle安装</p>
+
+<pre><code>Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+</code></pre>
+
+<p>然后运行BundleInstall安装就可以，运行vim打开md文档就可以看到高亮了。</p>
+
+<h3 id="vim-instant-markdown">vim-instant-markdown</h3>
+
+<p>这是一个实时预览的插件，当你用vim打开markdown文档的时候，会自动打开一个浏览器窗口，并且可以实时预览。此插件目前只支持OSX 和 Unix/Linuxes操作系统。</p>
+
+<p>安装之前需要安装nodejs和npm</p>
+
+<pre><code>brew install node
+</code></pre>
+
+<p>就都安装好了，npm是一款nodejs包的管理工具。然后还是通过vundle来安装</p>
+
+<pre><code>Plugin 'suan/vim-instant-markdown'
+</code></pre>
+
+<p>安装好后编辑md文件就会实时的打开一个浏览器窗口显示文档内容，其实就是访问本地的<a href="http://localhost:8090">http://localhost:8090</a></p>
+
+<blockquote>
+<h1 id="vim使用">vim使用</h1>
+</blockquote>
+
+<h3 id="恢复文件">恢复文件</h3>
+
+<p>当文件还没有保存就意外关闭时，只要用-r就行</p>
+
+<pre><code>vi -r filename 
+</code></pre>
+
+<p>然后删除.swp文件。</p>
+
+<h3 id="打开多个文件">打开多个文件</h3>
+
+<ol>
+<li>直接用vim file1 file2&hellip;filen</li>
+<li>打开vim，然后用open file来打开</li>
+</ol>
+
+<p>同时显示多个文件：</p>
+
+<p>其实就是分屏</p>
+
+<p>split，横分屏</p>
+
+<p>vsplit竖分屏</p>
+
+<p>窗口切换用Ctrl+w左右键，或者Ctrl+h，l</p>
+
+<p>文件切换</p>
+
+<p>bn／ctrl+6 下一个文件</p>
+
+<p>bp   上一个文件</p>
+
+<h3 id="光标操作">光标操作</h3>
+
+<p>翻页 Ctrl+f 向下 Ctrl+b 向上
+翻半页 Ctrl+d Ctrl+u</p>
+
+<h3 id="编辑">编辑</h3>
+
+<p>撤销 u  恢复  Ctrl+r
+打开文件 open name</p>
+
+<p>set nu 或者 set number //显示行号；</p>
+
+<p>set nonu 或者 set nonumber //关闭自动显示行号；</p>
+
+<p>set ic //查找时忽略大小写；</p>
+
+<p>set noic //查找时不忽略大小写。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/vim/">vim</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

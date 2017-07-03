@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/hugo/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>用hugo&#43;github构建自己的blog</title>
+      <link>http://kingjcy.github.io/blog/2014/08/02/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</link>
+      <pubDate>Sat, 02 Aug 2014 17:26:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2014/08/02/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/</guid>
+      <description>&lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;
+
+&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;
+
+&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;
+
+&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;hugo&#34;&gt;hugo&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这个比较方便的静态页面生成器，首先需要安装，我的系统是centos 64位的.&lt;/p&gt;
+
+&lt;h3 id=&#34;install&#34;&gt;install&lt;/h3&gt;
+
+&lt;p&gt;2、直接下载二进制文件，这也是我说的方便的地方。&lt;/p&gt;
+
+&lt;p&gt;Hugo二进制下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载下来后，首先要生成自己的站点：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new site mysite&lt;/code&gt;&amp;ndash;这边hugo的二进制文件不一定是这个名字，可以起个别名alias来用&lt;/p&gt;
+
+&lt;p&gt;这时会在mysite目录下生成一些目录和文件，这边简单的介绍一下，config.toml是网站的配置文件，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。&lt;/p&gt;
+
+&lt;p&gt;然后进入站点目录mysite，新建文档&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd mysite&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new about.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这边新建一个md文件会出现在content目录下，一般这个about.md文件是一个关于本站的介绍或者blog个人介绍，在这边将一下md文件的编辑，其实就是MarkDown格式文件的编写，具体的格式可以参考本文的编辑，或者去网上去搜索一下就ok,这边我说几点，我经常记错&lt;/p&gt;
+
+&lt;p&gt;1、就是&amp;rdquo;+++&amp;ldquo;内的赋值用&amp;rdquo;=&amp;ldquo;，&amp;rdquo;&amp;mdash;&amp;ldquo;内的用&amp;rdquo;:&amp;ldquo;。&lt;/p&gt;
+
+&lt;p&gt;2、&lt;code&gt;###&lt;/code&gt;后面必须有空格。&lt;/p&gt;
+
+&lt;p&gt;3、有空行才能换行。&lt;/p&gt;
+
+&lt;p&gt;一般我们写博文，会放在content/post下，正如我这边编写的第一篇文&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo new post/first.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后用vim编辑器进行编辑，编辑好后，就可以将你编辑的文字生成静态网页了，当然你肯定需要一个模板，这样可以使你的网页根据美观，这边在讲一下模板的使用&lt;/p&gt;
+
+&lt;p&gt;1、模板放在站点的themes下，一般木有这个文件夹，我们需要新增一个&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir themes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd themes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2、模板可以到hugo官网上去找,那边可以showcase预览一下自己喜欢的，具体的安装方式也有介绍，就是用&lt;code&gt;git clone&lt;/code&gt;把源码下到themes目录下就好&lt;/p&gt;
+
+&lt;p&gt;官网：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3、编辑模板的配置文件，这个视具体模板，可以参考我的配置&lt;a href=&#34;https://github.com/kingjcy/&#34;&gt;https://github.com/kingjcy/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下面就是生成我们需要的静态网页了，也就是前端的html文件&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hugo --theme=hyde --baseUrl=&amp;quot;http://kingjcy.github.io/&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;不出意外的话，应该在站点目录下生成一个public文件夹，这个就是我们需要的所有文件了，至此第一步已经完成了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;github-pages&#34;&gt;github pages&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这个就简单了，因为本身就是github提供现成的东西，首先新增一个repo，命名为：&lt;code&gt;kingjcy.github.io&lt;/code&gt; （kingjcy替换为你的github用户名）。&lt;/p&gt;
+
+&lt;p&gt;然后将第一步的public加入git版本，上传到这个项目，就可以访问你的个人blog：&lt;code&gt;http://kingjcy.github.io/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;至于git版本控制和github直接的传输，这边就不多讲了，如果需要可以参考我的另外一篇博文《git和github的使用》。&lt;/p&gt;
+
+&lt;p&gt;终于搭建完了，欢迎指正,tks。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

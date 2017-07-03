@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/kernel/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>centos内核升级</title>
+      <link>http://kingjcy.github.io/blog/2016/11/25/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/</link>
+      <pubDate>Fri, 25 Nov 2016 11:20:34 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2016/11/25/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/</guid>
+      <description>&lt;p&gt;最近在研究docker，在安装的时候遇到了升级内核的需求，docker需要内核在3.10.X，所以这边进行内核升级的研究。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h1 id=&#34;内核升级&#34;&gt;内核升级&lt;/h1&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;内核升级有两种方式：&lt;/p&gt;
+
+&lt;p&gt;1.在elrepo源中存在内核版本，所以导入elrepo源可以直接用yum安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -import https://www.elrepo.prg/RPM-GPG-KEY-elrepo.org
+Yum -enanlerepo=elrepokernel install kernel-it -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后修改配置文件就可以了——这个没有实际验证。我采用了编译内核的方法升级的，具体如下&lt;/p&gt;
+
+&lt;p&gt;2.编译内核
+1. 首先先看内核&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`uname -r`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yum grouplist&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一般是安装这两个软件包组，这样做会确定你拥有编译时所需的一切工具
+&lt;code&gt;yum groupinstall &amp;quot;Development Tools&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;你必须这样才能让 make *config 这个指令正确地执行
+&lt;code&gt;yum install ncurses-devel&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果你没有 X 环境，这一条可以不用
+&lt;code&gt;yum install qt-devel&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建 CentOS-6 内核时需要这些依赖包
+&lt;code&gt;yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下载内核源码&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;官网 &lt;a href=&#34;http://www.kernel.org&#34;&gt;http://www.kernel.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;可以看到有stable, longterm等版本，longterm是比stable更稳定的版本，会长时间更新，因此我选择 3.10.104。
+
+    [root@sean ~]#wget  https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.104.tar.xz  貌似下不下来，直接去官网下
+    [root@sean ~]# tar -xf linux-3.10.58.tar.xz -C /usr/src/
+    [root@sean ~]# cd /usr/src/linux-3.10.58/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;复制一份已有的系统配置进行修改&lt;/p&gt;
+
+&lt;p&gt;[root@sean linux-3.10.58]# cp /boot/config-2.6.32-220.el6.x86_64 .config&lt;/p&gt;
+
+&lt;p&gt;在配置文件中追加一些内容兼容docker&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CONFIG_NF_NAT_IPV4=y
+CONFIG_IP_NF_TARGET_MASQUERADE=y
+CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y
+CONFIG_MEMCG_SWAP=y
+CONFIG_MEMCG_SWAP_ENABLED=y
+CONFIG_AUFS_FS=y
+CONFIG_DM_THIN_PROVISIONING=y
+CONFIG_OVERLAY_FS=y
+CONFIG_CGROUP_PERF=y
+CONFIG_CFS_BANDWIDTH=y
+HYPERVISOR_GUEST=y
+CONFIG_VMWARE_BALLOON=m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对配置文件的修改有两种工具可以使用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用make menuconfig工具来勾选选择General setup&amp;ndash;&amp;gt;Control Group support-&amp;gt;Memory Resource Controller for Control Groups，y为选择，n为未选择，m为模块&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;make oldconfig会读取当前目录下的.config文件，在.config文件里没有找到的选项则提示用户填写，然后备份.config文件为.config.old，并生成新的.config文件&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;可以使用这个shell命令来完成配置文件的修改，就是在配置文件中没有找到选项的填y&lt;/p&gt;
+
+&lt;p&gt;sh -c &amp;lsquo;yes &amp;ldquo;&amp;rdquo; | make oldconfig&amp;rsquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编译:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@sean linux-3.10.58]# make -j4 bzImage  //生成内核文件
+[root@sean linux-3.10.58]# make -j4 modules  //编译模块
+[root@sean linux-3.10.58]# make -j4 modules_install  //编译安装模块
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-j后面的数字是线程数，用于加快编译速度，一般的经验是，逻辑CPU，就填写那个数字，例如有8核，则为-j8。（modules部分耗时30多分钟）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改系统配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/grub.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;default改为0，就是指向配置文件中的第一个，一般新安装的在第一个&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重启&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;升级成功，可以查看一下&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;关于编译失败&lt;br /&gt;
+编译过程中由于一些原因需要重新编译的，先清理环境变量，以及编译现场&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make mrproper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;清除编译文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make clean
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

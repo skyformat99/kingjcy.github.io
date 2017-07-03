@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/osx/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/osx/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mac os</title>
+      <link>http://kingjcy.github.io/blog/2017/05/24/mac-os/</link>
+      <pubDate>Wed, 24 May 2017 16:21:43 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2017/05/24/mac-os/</guid>
+      <description>&lt;p&gt;这边主要是记录在使用mac os中的一些常用的东西。mac os和linux有这个很多相同的东西，可以互相学习&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;界面安装软件必须要加入到应用程序中才能和mac os系统中的环境变量一致，liteide的环境变量设置由于没有加入(直接图标拖入应用程序就好)到应用程序中导致环境变量一直无法修改，折腾了好半天才发现。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;brew很重要，类似于linux中的yum，rpm。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

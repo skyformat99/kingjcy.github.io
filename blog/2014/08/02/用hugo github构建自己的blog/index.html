@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2014/08/02/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>用hugo&#43;github构建自己的blog - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;这个是我用hugo&#43;github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="用hugo&#43;github构建自己的blog - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2014/08/02/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;这个是我用hugo&#43;github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2014/08/02/%E7%94%A8hugo&#43;github%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/">
+<meta name="twitter:title" content="用hugo&#43;github构建自己的blog - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;这个是我用hugo&#43;github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "用hugo\x2bgithub构建自己的blog - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-08-02T17:26:28JST",
+    "dateModified": "2014-08-02T17:26:28JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3e这个是我用hugo\x2bgithub搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。\x3c\/p\x3e\n\n\x3cp\x3e首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：\x3c\/p\x3e\n\n\x3cp\x3e1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。\x3c\/p\x3e\n\n\x3cp\x3e2、github pages 这个是github提供的一个托管工作，相当好用。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">用hugo&#43;github构建自己的blog</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-08-02T17:26:28JST">Aug 2, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">用hugo&#43;github构建自己的blog</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。</p>
+
+<p>首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：</p>
+
+<p>1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。</p>
+
+<p>2、github pages 这个是github提供的一个托管工作，相当好用。</p>
+
+<p></p>
+
+<blockquote>
+<h2 id="hugo">hugo</h2>
+</blockquote>
+
+<p>这个比较方便的静态页面生成器，首先需要安装，我的系统是centos 64位的.</p>
+
+<h3 id="install">install</h3>
+
+<p>2、直接下载二进制文件，这也是我说的方便的地方。</p>
+
+<p>Hugo二进制下载地址：<a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a></p>
+
+<p>下载下来后，首先要生成自己的站点：</p>
+
+<p><code>hugo new site mysite</code>&ndash;这边hugo的二进制文件不一定是这个名字，可以起个别名alias来用</p>
+
+<p>这时会在mysite目录下生成一些目录和文件，这边简单的介绍一下，config.toml是网站的配置文件，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。</p>
+
+<p>然后进入站点目录mysite，新建文档</p>
+
+<p><code>cd mysite</code></p>
+
+<p><code>hugo new about.md</code></p>
+
+<p>这边新建一个md文件会出现在content目录下，一般这个about.md文件是一个关于本站的介绍或者blog个人介绍，在这边将一下md文件的编辑，其实就是MarkDown格式文件的编写，具体的格式可以参考本文的编辑，或者去网上去搜索一下就ok,这边我说几点，我经常记错</p>
+
+<p>1、就是&rdquo;+++&ldquo;内的赋值用&rdquo;=&ldquo;，&rdquo;&mdash;&ldquo;内的用&rdquo;:&ldquo;。</p>
+
+<p>2、<code>###</code>后面必须有空格。</p>
+
+<p>3、有空行才能换行。</p>
+
+<p>一般我们写博文，会放在content/post下，正如我这边编写的第一篇文</p>
+
+<p><code>hugo new post/first.md</code></p>
+
+<p>然后用vim编辑器进行编辑，编辑好后，就可以将你编辑的文字生成静态网页了，当然你肯定需要一个模板，这样可以使你的网页根据美观，这边在讲一下模板的使用</p>
+
+<p>1、模板放在站点的themes下，一般木有这个文件夹，我们需要新增一个</p>
+
+<p><code>mkdir themes</code></p>
+
+<p><code>cd themes</code></p>
+
+<p>2、模板可以到hugo官网上去找,那边可以showcase预览一下自己喜欢的，具体的安装方式也有介绍，就是用<code>git clone</code>把源码下到themes目录下就好</p>
+
+<p>官网：<a href="https://gohugo.io/overview/introduction/">https://gohugo.io/overview/introduction/</a></p>
+
+<p>3、编辑模板的配置文件，这个视具体模板，可以参考我的配置<a href="https://github.com/kingjcy/">https://github.com/kingjcy/</a></p>
+
+<p>下面就是生成我们需要的静态网页了，也就是前端的html文件</p>
+
+<p><code>hugo --theme=hyde --baseUrl=&quot;http://kingjcy.github.io/&quot;</code></p>
+
+<p>不出意外的话，应该在站点目录下生成一个public文件夹，这个就是我们需要的所有文件了，至此第一步已经完成了。</p>
+
+<blockquote>
+<h2 id="github-pages">github pages</h2>
+</blockquote>
+
+<p>这个就简单了，因为本身就是github提供现成的东西，首先新增一个repo，命名为：<code>kingjcy.github.io</code> （kingjcy替换为你的github用户名）。</p>
+
+<p>然后将第一步的public加入git版本，上传到这个项目，就可以访问你的个人blog：<code>http://kingjcy.github.io/</code></p>
+
+<p>至于git版本控制和github直接的传输，这边就不多讲了，如果需要可以参考我的另外一篇博文《git和github的使用》。</p>
+
+<p>终于搭建完了，欢迎指正,tks。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/tool/">tool</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/hugo/">hugo</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/github/">github</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/blog/">blog</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

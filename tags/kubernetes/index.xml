@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/kubernetes/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>kubernetes入门</title>
+      <link>http://kingjcy.github.io/blog/2016/11/24/kubernetes%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 24 Nov 2016 09:41:30 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2016/11/24/kubernetes%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;kubernetes是一种以容器为核心的，自动化部署应用程序的分布式的容器管理平台。它具有部署面广，可扩展，各种自动化的特性，容器是操作系统虚拟化，而不是硬件虚拟化，能够很好的隔离，互不干扰，并且很容易构建等特性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;kubernetes架构是master/save，下面我们对每个节点上的组件进行了解&lt;/p&gt;
+
+&lt;p&gt;master组件&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;apiserver是集群的核心，它提供来kubernetes的API，提供了集群管理的接口，是集群内各模块数据传输和通信的中心，还拥有完备的集群安全机制&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;集群管理接口&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;本地端口&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用于http请求&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认8080，可以通过启动参数“&amp;ndash;insecure-port”修改&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认ip为localhost，可以通过启动参数“&amp;ndash;insecure-bind-address”来修改&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;不需要认证或者授权&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安全端口&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用于https请求&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认端口6443，可以通过启动参数“&amp;ndash;secure-port”修改&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认ip为非本地网络接口，可以通过启动参数“&amp;ndash;bind-address”来修改&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;需要认证或者授权&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认不启动&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我们可以通过三种方式来访问apiserver提供的接口&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;REST API&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;比如访问nodes，我们可以访问/api/v1/proxy/nodes/{names}&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;各种语言的client lib&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;命令行kubectl&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;kubectl的原理是将输入的转化为REST API来调用，将返回结果输出。只是对REST API的一种封装，可以说是apiserver的一个客户端&lt;/p&gt;
+
+&lt;p&gt;用法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl [command] [options]
+
+[command]
+1. help 帮助命令，可以查找所有的命令，在我们不会用的适合，要学会使用这个命令。
+    kubectl help
+2. get   获取信息
+    kubectl get po
+3. describe  获取相关的详细信息
+    kubectl describe po rc-nginx-2-btv4j
+4. create  创建
+    kubectl create -f rc-nginx.yaml
+5. replace  更新替换
+    kubectl replace -f rc-nginx.yaml 
+6. patch  如果一个容器已经在运行，这时需要对一些容器属性进行修改，又不想删除容器，或不方便通过replace的方式进行更新。kubernetes还提供了一种在容器运行时，直接对容器进行修改的方式，就是patch命令.
+    kubectl patch pod rc-nginx-2-kpiqt -p &#39;{&amp;quot;metadata&amp;quot;:{&amp;quot;labels&amp;quot;:{&amp;quot;app&amp;quot;:&amp;quot;nginx-3&amp;quot;}}}&#39;
+7. edit edit提供了另一种更新resource源的操作
+
+    kubectl edit po rc-nginx-btv4j 
+    上面命令的效果等效于：
+    kubectl get po rc-nginx-btv4j -o yaml &amp;gt;&amp;gt; /tmp/nginx-tmp.yaml 
+    vim /tmp/nginx-tmp.yaml 
+    /*do some changes here */ 
+    kubectl replace -f /tmp/nginx-tmp.yaml 
+
+8. Delete  删除
+    kubectl delete -f rc-nginx.yaml
+    kubectl delete po rc-nginx-btv4j
+    kubectl delete po -lapp=nginx-2
+
+9. logs    显示日志，跟docker的logs命令类似。如果要获得tail -f 的方式，也可以使用-f选项。
+    kubectl logs rc-nginx-2-kpiqt 
+10. rolling-update  滚动更新.
+    kubectl rolling-update rc-nginx-2 -f rc-nginx.yaml，
+    这个还提供如果在升级过程中，发现有问题还可以中途停止update，并回滚到前面版本 
+    kubectl rolling-update rc-nginx-2 —rollback
+
+11. scale 扩容缩容
+    kubectl scale rc rc-nginx-3 —replicas=4 
+
+12. 以上都是常用的，其他的可以使用时通过help去使用
+
+[options]
+1. -n=--namespace 指定命名空间
+2. 其他的可以通过kubectl options来查看使用
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;apiserver的作用和原理&lt;/p&gt;
+
+&lt;p&gt;apiserver负责各个模块之间的通信，集群里的功能模块通过apiserver将信息存入到etcd中，其他模块通过apiserver读取这些信息，实现来模块之间的交互，比如，node上的kubelet隔一段时间将自身的信息报告给apiserver，apiserver接受这些信息存入到etcd中，controller manager 中的node controller定期读取这些信息然后作出相应的处理。&lt;/p&gt;
+
+&lt;p&gt;apiserver是一套基于restful类型的接口，我们来通过源码解析看服务的启动和实现&lt;/p&gt;
+
+&lt;p&gt;看源码，先了解kubernetes的源码结构，cmd是入口，pkg是主要实现。&lt;/p&gt;
+
+&lt;p&gt;看apiserver的入口文件kubernetes-1.6.1/cmd/kube-apiserver/apiserver.go,比较简单，主要是初始化一些结构，然后调用run来实现apiserver的启动。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func main() {
+    rand.Seed(time.Now().UTC(). UnixNano())
+
+    s := options.NewServerRunOptions()  //新建一个APIServer对象，APIServer结构体
+    s.AddFlags(pflag.CommandLine)       //命令行参数输入
+
+    flag.InitFlags()                    //解析并格式化传入的参数，填充kubeletserver结构体
+    logs.InitLogs()                     //初始化日志
+    defer logs.FlushLogs()              //刷新日志到磁盘，这边用了defer，可见是在进程推出后保存日志
+
+    verflag.PrintAndExitIfRequested()
+
+    if err := app.Run(s); err != nil {          //启动，run
+        fmt.Fprintf(os.Stderr, &amp;quot;%v\n&amp;quot;, err)
+        os.Exit(1)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后主要在run函数中实现&lt;/p&gt;
+
+&lt;p&gt;scheduler&lt;/p&gt;
+
+&lt;p&gt;controller-manager是管理器的控制者。使用是集群管理控制中心。内部对应控制器如下&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;replication controller副本控制 ,它的主要作用是确保规定数量的pod正常运行。当然他是通过rc机制实现的。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;它的作用：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;重新调度 就是上面说的能确保规定数量的pod运行&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;弹性伸缩 可以通过spec.replicas来改变pod的数量&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;滚动更新 一个一个pod的更新&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;node controller节点管理。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;首先我们需要了解kubelet通过apiserver想etcd中存储的节点信息有节点健康状况，节点资源，节点名称地址，操作系统版本，docker版本，kubelet版本等等，其中一个节点健康状况分为三种True，false，unknown三种状态，也是最直接的节点状态&lt;/p&gt;
+
+&lt;p&gt;然后这个控制器就会重etcd中逐个节点读取这些状态，将来自kubelet状态来改变node controller中nodestatusmap中状态，对于状态不对的node节点加入一个队列，等待确认node是否有问题，有问题就进行信息同步，并且删除节点。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;resourcequota controller资源配额&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这一个功能十分必要，它确保任何对象任何时候都不会超量占用资源，确保来系统的稳定性。目前k8s支持三个层次的资源配额&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;容器级别  可以限制cpu和memory&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;pod级别  对pod内所有容器的可用资源进行限制&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;namespace级别  pod数量，rc数量 service数量，rq数量，secret数量，persistent volume数量&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;实现机制：准入机制（admission caotrol）&lt;/p&gt;
+
+&lt;p&gt;在etcd中会维护一个资源配额记录，每次用户通过apiserver进行请求时，这个控制器会先进行计算，如果资源不过就会拒绝请求。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;namespace controller主要是监控namespace的状态，在其失效的情况下,对其进行处理&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;serviceAccount controller和token controller&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这是两个安全监控，在apiserver启动的时候使用serviceaccount，就会产生一个key和crt，那么在controller mansge启动的时候通过参数指定这个key就会自动创建一个secret，也会创建一个token controller完成对serviceaccount的监控。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;service controller和endpoint controller&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这两个就是对service和endpoint进行监控对管理器。&lt;/p&gt;
+
+&lt;p&gt;save组件&lt;/p&gt;
+
+&lt;p&gt;kubelet&lt;/p&gt;
+
+&lt;p&gt;proxy&lt;/p&gt;
+
+&lt;p&gt;pod: 一种应用的实例，例如一个web站点，包含前端，后端，数据库这三个容器，放在一个pod中对外就是一个web服务。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pod的四种状态
+
+pending pod已经创建，但是内部镜像还没有完全创建
+running 容器已经创建，至少有一个容器处于运行状态
+succeeded  pod内容器都成功终止，且不会重启
+failed  所有容器已经退出，至少有一个是因为发生错误而退出
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;service：pod的路由代理的抽象，外围通过service提供的地址进行交互，而service来和变化的pod进行交互。&lt;/p&gt;
+
+&lt;p&gt;endpoint：&lt;/p&gt;
+
+&lt;p&gt;replicationController：pod的服务抽象，动态解决pod的扩容缩容问题。保持pod的资源的备份数一定。&lt;/p&gt;
+
+&lt;p&gt;Label:是联系pod和service，replicationController的一种标志，它是由key/value形成的，比如一个pod的label：app=bake,那么service和replicationController也可以通过label:app=bake来对pod进行操作。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2016/12/14/systemctl%E5%92%8Csystemd/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>systemctl和systemd - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。&lt;/p&gt;&lt;p&gt;Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="systemctl和systemd - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2016/12/14/systemctl%E5%92%8Csystemd/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。&lt;/p&gt;&lt;p&gt;Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2016/12/14/systemctl%E5%92%8Csystemd/">
+<meta name="twitter:title" content="systemctl和systemd - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。&lt;/p&gt;&lt;p&gt;Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "systemctl和systemd - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-12-14T15:28:30JST",
+    "dateModified": "2016-12-14T15:28:30JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3eSystemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。\x3c\/p\x3e\n\n\x3cp\x3eSystemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">systemctl和systemd</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-12-14T15:28:30JST">Dec 14, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">systemctl和systemd</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。</p>
+
+<p>Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。</p>
+
+<p></p>
+
+<h2 id="基础使用">基础使用</h2>
+
+<ul>
+<li>systemctl &ndash;version       查看版本</li>
+<li>systemctl start/stop/restart/reload/status firewalld.service 启动，停止，重启重载，检查某个单元是否运行</li>
+<li>systemctl list-unit-files &ndash;type=service  列出所有的服务</li>
+<li>systemctl enable/disable http.service 开机启动禁止服务</li>
+<li>systemctl kill http 杀死某个服务</li>
+<li>systemctl show http 检查某个服务的配置</li>
+</ul>
+
+<p>将一个新服务加到开机启动中，在centos 6的system v中是使用chkconfig etcd on,而在centos 7的systemd中使用的是systemctl enable etcd.service</p>
+
+<p>都需要一个配置文件，centos 7下在/lib/systemd/system/下，这个是系统的，如果是用户的，则在对应的用户里</p>
+
+<pre><code>[Unit]              服务的说明   
+Description=etcd    描述
+After=              服务类别
+
+[Service]           服务的参数
+Type=forking        后台运行的方式 
+Environment=ETCD_NAME=kubernetes  可以这样设置环境变量
+ExecStart=/usr/lib/etcd         启动命令，必须是绝对路径 
+ExecReload=
+ExecStop=
+PrivateTmp=true  
+
+[Install]       安装的设置
+WantedBy=multi-user.target  多用户模式
+</code></pre></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

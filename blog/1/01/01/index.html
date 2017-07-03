@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/1/01/01/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title> - kingjcy Blog</title>
+    
+<meta name="description" content="##全局模块 #user nobody; #用户名和组 user user group 默认都是nobody worker_processes 1; #工作进程数，通常和cpu数目相等，或者两倍于cpu，那nginx用的是fork，而不是线程，默认是1#error_log logs/error.log; #错误日志路径，缺省值: ${prefix}/logs/error.log，级别有debug|info|notice|warn|error|crit|alert|emerg，常用前几个 #error_log logs/error.log notice; #error_log logs/error.log info;#pid logs/nginx.pid; #进程id指定nginx进程运行文件存放地址，应该也用上面的${prefix}#worker_rlimit_nofile 204800;#指定进程可以打开的最大描述符：数目。#这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。#现在在Linux 2.6内核下开启文件打开数为65535，worker_rlimit_nofile就相应应该填写65535。#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。##事件模块 events { worker_connections 1024; #单个进程的最大连接数,默认512,max_client=worker_processes*worker_connections,但是在反向代理的情况下要除4，这是一个经验值，在浏览器连接的情况下，最大连接数必须小于最大文件数cat /proc/sys/fs/file-max#accept_mutex on; #设置网路连接序列化，防止惊群现象发生，默认为on #multi_accept on; #设置一个进程是否同时接受多个网络连接，默认为off #use epoll; #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport，linux下建议使用epoll #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。 #分页大小可以用命令getconf PAGESIZE 取得。 #[root@web001 ~]# getconf PAGESIZE #4096 #但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。 #client_header_buffer_size 4k; #这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。 #open_file_cache max=65535 inactive=60s; #这个是指多长时间检查一次缓存的有效信息。 #语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息.">
+
+<meta property="og:title" content=" - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/1/01/01/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="##全局模块 #user nobody; #用户名和组 user user group 默认都是nobody worker_processes 1; #工作进程数，通常和cpu数目相等，或者两倍于cpu，那nginx用的是fork，而不是线程，默认是1#error_log logs/error.log; #错误日志路径，缺省值: ${prefix}/logs/error.log，级别有debug|info|notice|warn|error|crit|alert|emerg，常用前几个 #error_log logs/error.log notice; #error_log logs/error.log info;#pid logs/nginx.pid; #进程id指定nginx进程运行文件存放地址，应该也用上面的${prefix}#worker_rlimit_nofile 204800;#指定进程可以打开的最大描述符：数目。#这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。#现在在Linux 2.6内核下开启文件打开数为65535，worker_rlimit_nofile就相应应该填写65535。#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。##事件模块 events { worker_connections 1024; #单个进程的最大连接数,默认512,max_client=worker_processes*worker_connections,但是在反向代理的情况下要除4，这是一个经验值，在浏览器连接的情况下，最大连接数必须小于最大文件数cat /proc/sys/fs/file-max#accept_mutex on; #设置网路连接序列化，防止惊群现象发生，默认为on #multi_accept on; #设置一个进程是否同时接受多个网络连接，默认为off #use epoll; #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport，linux下建议使用epoll #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。 #分页大小可以用命令getconf PAGESIZE 取得。 #[root@web001 ~]# getconf PAGESIZE #4096 #但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。 #client_header_buffer_size 4k; #这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。 #open_file_cache max=65535 inactive=60s; #这个是指多长时间检查一次缓存的有效信息。 #语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/1/01/01/">
+<meta name="twitter:title" content=" - kingjcy Blog">
+<meta name="twitter:description" content="##全局模块 #user nobody; #用户名和组 user user group 默认都是nobody worker_processes 1; #工作进程数，通常和cpu数目相等，或者两倍于cpu，那nginx用的是fork，而不是线程，默认是1#error_log logs/error.log; #错误日志路径，缺省值: ${prefix}/logs/error.log，级别有debug|info|notice|warn|error|crit|alert|emerg，常用前几个 #error_log logs/error.log notice; #error_log logs/error.log info;#pid logs/nginx.pid; #进程id指定nginx进程运行文件存放地址，应该也用上面的${prefix}#worker_rlimit_nofile 204800;#指定进程可以打开的最大描述符：数目。#这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。#现在在Linux 2.6内核下开启文件打开数为65535，worker_rlimit_nofile就相应应该填写65535。#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。##事件模块 events { worker_connections 1024; #单个进程的最大连接数,默认512,max_client=worker_processes*worker_connections,但是在反向代理的情况下要除4，这是一个经验值，在浏览器连接的情况下，最大连接数必须小于最大文件数cat /proc/sys/fs/file-max#accept_mutex on; #设置网路连接序列化，防止惊群现象发生，默认为on #multi_accept on; #设置一个进程是否同时接受多个网络连接，默认为off #use epoll; #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport，linux下建议使用epoll #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。 #分页大小可以用命令getconf PAGESIZE 取得。 #[root@web001 ~]# getconf PAGESIZE #4096 #但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。 #client_header_buffer_size 4k; #这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。 #open_file_cache max=65535 inactive=60s; #这个是指多长时间检查一次缓存的有效信息。 #语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息.">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": " - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "0001-01-01T00:00:00JST",
+    "dateModified": "0001-01-01T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "##全局模块 #user nobody; #用户名和组 user user group 默认都是nobody worker_processes 1; #工作进程数，通常和cpu数目相等，或者两倍于cpu，那nginx用的是fork，而不是线程，默认是1\n#error_log logs\/error.log; #错误日志路径，缺省值: ${prefix}\/logs\/error.log，级别有debug|info|notice|warn|error|crit|alert|emerg，常用前几个 #error_log logs\/error.log notice; #error_log logs\/error.log info;\n#pid logs\/nginx.pid; #进程id指定nginx进程运行文件存放地址，应该也用上面的${prefix}\n#worker_rlimit_nofile 204800;\n#指定进程可以打开的最大描述符：数目。\n#这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。\n#现在在Linux 2.6内核下开启文件打开数为65535，worker_rlimit_nofile就相应应该填写65535。\n#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。\n##事件模块 events { worker_connections 1024; #单个进程的最大连接数,默认512,max_client=worker_processes*worker_connections,但是在反向代理的情况下要除4，这是一个经验值，在浏览器连接的情况下，最大连接数必须小于最大文件数cat \/proc\/sys\/fs\/file-max\n#accept_mutex on; #设置网路连接序列化，防止惊群现象发生，默认为on #multi_accept on; #设置一个进程是否同时接受多个网络连接，默认为off #use epoll; #事件驱动模型，select|poll|kqueue|epoll|resig|\/dev\/poll|eventport，linux下建议使用epoll #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。 #分页大小可以用命令getconf PAGESIZE 取得。 #[root@web001 ~]# getconf PAGESIZE #4096 #但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。 #client_header_buffer_size 4k; #这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。 #open_file_cache max=65535 inactive=60s; #这个是指多长时间检查一次缓存的有效信息。 #语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息."
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active"></li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="0001-01-01T00:00:00JST">Jan 1, 0001</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title"></h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>##全局模块
+#user  nobody;         #用户名和组 user user group 默认都是nobody
+worker_processes  1;    #工作进程数，通常和cpu数目相等，或者两倍于cpu，那nginx用的是fork，而不是线程，默认是1</p>
+
+<p>#error_log  logs/error.log;         #错误日志路径，缺省值: ${prefix}/logs/error.log，级别有debug|info|notice|warn|error|crit|alert|emerg，常用前几个
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;</p>
+
+<p>#pid        logs/nginx.pid;         #进程id指定nginx进程运行文件存放地址，应该也用上面的${prefix}</p>
+
+<p>#worker_rlimit_nofile 204800;</p>
+
+<p>#指定进程可以打开的最大描述符：数目。</p>
+
+<p>#这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。</p>
+
+<p>#现在在Linux 2.6内核下开启文件打开数为65535，worker_rlimit_nofile就相应应该填写65535。</p>
+
+<p>#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。</p>
+
+<p>##事件模块
+events {
+    worker_connections  1024;       #单个进程的最大连接数,默认512,max_client=worker_processes*worker_connections,但是在反向代理的情况下要除4，这是一个经验值，在浏览器连接的情况下，最大连接数必须小于最大文件数cat /proc/sys/fs/file-max</p>
+
+<pre><code>#accept_mutex on;   #设置网路连接序列化，防止惊群现象发生，默认为on   
+#multi_accept on;  #设置一个进程是否同时接受多个网络连接，默认为off
+#use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport，linux下建议使用epoll
+
+#客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。
+#分页大小可以用命令getconf PAGESIZE 取得。
+#[root@web001 ~]# getconf PAGESIZE
+#4096
+#但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。
+#client_header_buffer_size 4k;
+
+#这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。
+#open_file_cache max=65535 inactive=60s;
+
+
+#这个是指多长时间检查一次缓存的有效信息。
+#语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息.
+#open_file_cache_valid 80s;
+
+#open_file_cache指令中的inactive参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive时间内一次没被使用，它将被移除。
+#语法:open_file_cache_min_uses number 默认值:open_file_cache_min_uses 1 使用字段:http, server, location  这个指令指定了在open_file_cache指令无效的参数中一定的时间范围内可以使用的最小文件数,如果使用更大的值,文件描述符在cache中总是打开状态.
+#open_file_cache_min_uses 1;
+
+#语法:open_file_cache_errors on | off 默认值:open_file_cache_errors off 使用字段:http, server, location 这个指令指定是否在搜索一个文件是记录cache错误.
+#open_file_cache_errors on;
+</code></pre>
+
+<p>}</p>
+
+<p>##http模块,利用它的反向代理功能提供负载均衡支持，这个访问的地址是：http模块名://server_name的地址:listen的端口+local的路径
+http {
+    include       mime.types;      #包含这个文件，这个文件主要是文件扩展名和文件类型映射表
+    default_type  application/octet-stream; #默认类型，也就是二进制类型，可以去mime.types中看</p>
+
+<pre><code>#log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '      #自定义日志的格式   
+#                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+#                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+#日志格式设置。
+#$remote_addr与$http_x_forwarded_for用以记录客户端的ip地址；
+
+#$remote_user：用来记录客户端用户名称；
+
+#$time_local： 用来记录访问时间与时区；
+
+#$request： 用来记录请求的url与http协议；
+
+#$status： 用来记录请求状态；成功是200，
+
+#$body_bytes_sent ：记录发送给客户端文件主体内容大小；
+
+#$http_referer：用来记录从那个页面链接访问过来的；
+
+#$http_user_agent：记录客户浏览器的相关信息；
+
+
+#access_log  logs/access.log  main;     #日志名和路径，可以用上面的配置指定格式
+
+sendfile        on;     #允许sendfile方式传输文件，默认为off，指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，对于普通应用，必须设为 on,如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，以平衡磁盘与网络I/O处理速度，降低系统的uptime.
+#tcp_nopush     on;     #是否允许使用socket的TCP_NOPUSH或TCP_CORK选项,在 nginx 中，tcp_nopush 配置和 tcp_nodelay &quot;互斥&quot;。它可以配置一次发送数据的包大小。也就是说，它不是按时间累计  0.2 秒后发送包，而是当包累计到一定大小后就发送。在 nginx 中，tcp_nopush 必须和 sendfile 搭配使用。
+
+#keepalive_timeout  0;  #连接超时时间，默认为75s
+keepalive_timeout  65;
+#tcp_nodelay        on;
+
+#gzip  on;      #压缩文件
+
+#设定负载均衡的服务器列表
+#upstream load_balance_server {
+#    server 192.168.1.11:80   weight=5;
+#    server 192.168.1.12:80   weight=1;
+#    server 192.168.1.13:80   weight=6;
+
+#设定负载均衡的服务器列表,默认一台台服务器轮询
+#ip_hash; nginx中的ip_hash技术能够将某个ip的请求定向到同一台后端，这样一来这个ip下的某个客户端和某个后端就能建立起稳固的session
+#1.down  表示单前的 server 暂时不参与负载 
+#2.weight  默认为 1.weight 越大，负载的权重就越大。 
+#3.backup： 其它所有的非 backup 机器 down 或者忙的时候，请求 backup机器。所以这台机器压力会最轻。
+#upstream allserver {  
+#
+#   #ip_hash;  
+#
+#   server 127.0.0.1:8083 down;         
+#
+#   server 127.0.0.1:8084 weight=3;     #weigth参数表示权值，权值越高被分配到的几率越大
+#
+#   server 127.0.0.1:8001;          
+#
+#   server 127.0.0.1:8002 backup;       #热备
+#}
+
+#error_page 404 https://www.baidu.com; #错误页
+
+
+## server模块，也就是服务器，可以做转发，到上面的的负载均衡真实服务器
+server {
+    listen       80;            #监听端口
+    server_name  localhost;         #监听地址
+
+    #charset koi8-r;            #编码格式
+
+    #access_log  logs/host.access.log  main; #日志 
+
+##local模块,http://localhost:80/ 访问的就是这个地址，然后下面可以转向upstream
+    location / {
+        root   html;            #根目录
+        index  index.html index.htm;    #默认index
+
+    #proxy_pass  http://allserver;  #请求转向allserver定义的服务器列表，就是上面的负载均衡
+    #以下是一些反向代理的配置(可选择性配置)
+        #proxy_redirect off;
+        #proxy_set_header Host $host;
+        #proxy_set_header X-Real-IP $remote_addr;
+        #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
+        #proxy_set_header X-Forwarded-For $remote_addr;
+        #proxy_connect_timeout 90;          #nginx跟后端服务器连接超时时间(代理连接超时)
+        #proxy_send_timeout 90;             #后端服务器数据回传时间(代理发送超时)
+        #proxy_read_timeout 90;             #连接成功后，后端服务器响应时间(代理接收超时)
+        #proxy_buffer_size 4k;              #设置代理服务器（nginx）保存用户头信息的缓冲区大小
+        #proxy_buffers 4 32k;               #proxy_buffers缓冲区，网页平均在32k以下的话，这样设置
+        #proxy_busy_buffers_size 64k;       #高负荷下缓冲大小（proxy_buffers*2）
+        #proxy_temp_file_write_size 64k;    #设定缓存文件夹大小，大于这个值，将从upstream服务器传
+
+
+        #deny 127.0.0.1;  #拒绝的ip
+        #allow 172.18.5.54; #允许的ip 
+    }
+
+
+#设定查看Nginx状态的地址   http://localhost:80//NginxStatus
+    #location /NginxStatus {
+    #    stub_status on;
+    #    access_log on;
+    #    #auth_basic &quot;NginxStatus&quot;;
+    #    #auth_basic_user_file confpasswd;
+    #    #htpasswd文件的内容可以用apache提供的htpasswd工具来产生。
+    #}
+
+
+location /stub_status {
+                      stub_status on;
+                      access_log   off;
+                      allow 127.0.0.1;
+                      deny all;
+                      } 
+
+    #error_page  404              /404.html; #错误页面
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.h是服务器
+    location = /50x.html {    
+        root   html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+
+
+# another virtual host using mix of IP-, name-, and port-based configuration
+#
+#server {
+#    listen       8000;
+#    listen       somename:8080;
+#    server_name  somename  alias  another.alias;
+
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+
+
+# HTTPS server
+#
+#server {
+#    listen       443 ssl;
+#    server_name  localhost;
+
+#    ssl_certificate      cert.pem;
+#    ssl_certificate_key  cert.key;
+
+#    ssl_session_cache    shared:SSL:1m;
+#    ssl_session_timeout  5m;
+
+#    ssl_ciphers  HIGH:!aNULL:!MD5;
+#    ssl_prefer_server_ciphers  on;
+
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+</code></pre>
+
+<p>}</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

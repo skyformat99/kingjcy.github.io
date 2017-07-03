@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/python/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>python以及爬虫学习</title>
+      <link>http://kingjcy.github.io/blog/2017/02/07/python%E4%BB%A5%E5%8F%8A%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Tue, 07 Feb 2017 15:57:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2017/02/07/python%E4%BB%A5%E5%8F%8A%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&lt;p&gt;最近对爬虫技术很感兴趣，于是就来学习一下，在学习对过程中突然发现爬虫技术真的很强大，同时让我收益匪浅，把学习过程中的一些重要的东西记录下来，便于分享与备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;python基础&#34;&gt;python基础&lt;/h2&gt;
+
+&lt;p&gt;学习爬虫需要python，html，css,js等基础知识，其中python尤为重要，python只是偶尔用一些,这边再复习巩固一下python基础知识。&lt;/p&gt;
+
+&lt;h3 id=&#34;运算符&#34;&gt;运算符&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;+-*/加减乘除//整除**乘方%求余&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;in  是否在内，成功返回true、false&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;转义字符／，防止转义r&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;多行字符用三引号来表示&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;转化为utf-8用u&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;运行python脚本&#34;&gt;运行python脚本&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;显式使用python&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在脚本中加#!/usr/bin/env python&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;python启动参数是sys.argv[1]  第一个参数1&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;文本文件编码&#34;&gt;文本文件编码&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;基本数据类型&#34;&gt;基本数据类型：&lt;/h3&gt;
+
+&lt;p&gt;一、列表和元组&lt;/p&gt;
+
+&lt;p&gt;a=[&amp;lsquo;a&amp;rsquo;,&amp;lsquo;b&amp;rsquo;,&amp;lsquo;c&amp;rsquo;]&lt;/p&gt;
+
+&lt;p&gt;注意：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在python中双引号和单引号是一样的&lt;/li&gt;
+&lt;li&gt;索引可以分方向，左边从0开始，右边从-1开始的&lt;/li&gt;
+&lt;li&gt;分片&amp;ndash;用冒号：隔开，可以取一点范围内的值，可以在后面加步长，步长可以是负数，表示反向&lt;/li&gt;
+&lt;li&gt;空用内建值none，类似于NULL&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;列表方法：
+* append 追加
+* count 计数
+* extend 追加列表
+* index 找索引
+* insert 插入
+* pop    顶
+* remove 移除   == del list[index]
+* reverse 反向
+* sort  排序&amp;mdash;&amp;ndash;可以用cmp，key，reverse&lt;/p&gt;
+
+&lt;p&gt;.join(a)    对a进行循环显示&lt;/p&gt;
+
+&lt;p&gt;元组，不可以变序列&amp;mdash;&amp;ndash;用，隔开，即便是一个元素值&lt;/p&gt;
+
+&lt;p&gt;a=(&amp;lsquo;a&amp;rsquo;,&amp;lsquo;b&amp;rsquo;,&amp;lsquo;c&amp;rsquo;)&lt;/p&gt;
+
+&lt;p&gt;tuple（）&amp;mdash;-将序列转化为元组&lt;/p&gt;
+
+&lt;p&gt;二、字符串：是不可变的&lt;/p&gt;
+
+&lt;p&gt;字符串格式化类似于c，用%（s）&lt;/p&gt;
+
+&lt;p&gt;方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;find  查找，未找到返回-1，可以在参数中提供起始点和终点&lt;/li&gt;
+&lt;li&gt;join 在各个字符串之间加上&amp;mdash;-split去除&lt;/li&gt;
+&lt;li&gt;replace 替代&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;strip去除两端的空格&lt;/p&gt;
+
+&lt;p&gt;s.isalnum() #所有字符都是数字或者字母
+s.isalpha() #所有字符都是字母
+s.isdigit() #所有字符都是数字
+s.islower() #所有字符都是小写
+s.isupper() #所有字符都是大写
+s.istitle() #所有单词都是首字母大写，像标题
+s.isspace() #所有字符都是空白字符、\t、\n&lt;/p&gt;
+
+&lt;p&gt;s.upper() #把所有字符中的小写字母转换成大写字母
+s.lower() #把所有字符中的大写字母转换成小写字母
+s.capitalize()  #把第一个字母转化为大写字母，其余小写
+s.title()  #把每个单词的第一个字母转化为大写，其余小写&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;三、字典（映射mapping）&amp;mdash;-存储的键值对，可以用dict函数形成键值对&lt;/p&gt;
+
+&lt;p&gt;a={&amp;lsquo;a&amp;rsquo;:&amp;lsquo;b&amp;rsquo;,&amp;lsquo;c&amp;rsquo;:&amp;rsquo;d&amp;rsquo;}&lt;/p&gt;
+
+&lt;p&gt;方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;clear（）清除字典中的所有项&lt;/li&gt;
+&lt;li&gt;copy（）浅复制&amp;ndash;复制后的改变原来的也会改变，deepcopy（）深复制，两个不搭嘎&lt;/li&gt;
+&lt;li&gt;fromkey（）给对应的键建立字典，默认值为None&lt;/li&gt;
+&lt;li&gt;get获取，不存在时不会出错，还可以指定不存在时返回什么值，有点类似于nvl&amp;mdash;setdefault（）&lt;/li&gt;
+&lt;li&gt;hash_key（）查找字典中是否有对应的键值&lt;/li&gt;
+&lt;li&gt;items（） 将字典项以元组的形式展开&amp;mdash;-对应的迭代器iteritems&lt;/li&gt;
+&lt;li&gt;keys（）将字典中的键以列表的形式返回&amp;mdash;&amp;ndash;对应的迭代器iterkeys&lt;/li&gt;
+&lt;li&gt;pop（）将一个键值对应的键值对删除&amp;ndash;popitem（）类似于list.pop&lt;/li&gt;
+&lt;li&gt;update（）用字典更新字典&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;values（）&amp;ndash;itervalues（）   以列表的形式返回字典中的值&lt;/p&gt;
+
+&lt;p&gt;info={&amp;lsquo;a&amp;rsquo;:&amp;lsquo;b&amp;rsquo;}
+for k,v in info.items():
+    print i&lt;/p&gt;
+
+&lt;p&gt;a b&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;四、集合set&lt;/p&gt;
+
+&lt;p&gt;set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。&lt;/p&gt;
+
+&lt;p&gt;五、变量&lt;/p&gt;
+
+&lt;p&gt;变量必须以字母或者下划线开头，如果有特殊符号需要用三个单引号来赋值，比如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a=&#39;&#39;&#39;this is aa&#39;aa !&#39;&#39;&#39;
+print a
+
+this is aa&#39;aa !&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;基本语句&#34;&gt;基本语句&lt;/h3&gt;
+
+&lt;p&gt;一、顺序语句&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;输出语句 print  可以输出多个用，号隔开&lt;/li&gt;
+&lt;li&gt;导入语句 import +功能&amp;mdash;-from 模块 import 功能  as 别名（有一样的功能）&lt;/li&gt;
+&lt;li&gt;赋值语句 可以同时多个赋值操作，类似于go的多返回值&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;二、条件语句&lt;/p&gt;
+
+&lt;p&gt;false&amp;mdash;None 0 &amp;ldquo;&amp;rdquo; () [] {}&amp;mdash;其他都为真&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if condition:
+    语句
+    elif condition:
+        语句
+    else:
+        语句
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意要加冒号&lt;/p&gt;
+
+&lt;p&gt;一致性比较符is，成员资格运算符in&amp;mdash;-condition&lt;/p&gt;
+
+&lt;p&gt;三、循环语句&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;for word in xx&lt;range(1,19),列表&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以加一个else来表达循环结束
+else:
+    print &amp;lsquo;the loop is over!&amp;ldquo;&amp;rsquo;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;while true/flase:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以加一个else来表达循环结束
+else:
+    print &amp;lsquo;the loop is over!&amp;rsquo;&lt;/p&gt;
+
+&lt;p&gt;都要注意冒号，可以使用break，continue。都是以tab键来判断里面的语句是否结束。&lt;/p&gt;
+
+&lt;h3 id=&#34;标准使用函数&#34;&gt;标准使用函数：&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;输出 print&lt;/p&gt;
+
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt;print &amp;lsquo;hello&amp;rsquo;,&amp;lsquo;world&amp;rsquo;&lt;/p&gt;
+
+&lt;p&gt;hello world&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;格式化输出类似于c。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a=10
+b=20
+print &#39;a is %s,b is %s&#39; % (a,b)
+
+a is 10,b is 20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;输入 input&amp;mdash;-返回字符串 raw_input，如果要转化为int类型直接int(字符串)，数字转化为字符串也是str(a)&lt;/p&gt;
+
+&lt;p&gt;name = raw_input(&amp;lsquo;please enter words:&amp;lsquo;)&lt;/p&gt;
+
+&lt;p&gt;print &amp;lsquo;hello&amp;rsquo;,name&lt;/p&gt;
+
+&lt;p&gt;please enter words:world&lt;/p&gt;
+
+&lt;p&gt;hello,world&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;长度 len&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最大值 max&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最小值 min&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;把内容列表化 list&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;删除  del&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;python open&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;file内建函数open()&lt;/p&gt;
+
+&lt;p&gt;file_object = open(file_name,access_mode = &amp;lsquo;r&amp;rsquo;,buffering = -1)&lt;/p&gt;
+
+&lt;p&gt;文件对象的访问模式：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;r——读方式
+w——写方式
+a——追加模式
+r+,w+,a+——以读写模式打开
+rb，wb，ab——以二进制模式读写追加
+rb+,wb+,ab+——以二进制读写模式打开
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;输入/输出&lt;/p&gt;
+
+&lt;p&gt;read(size),readline(),readlines(),write()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;其他
+file.close() —— 关闭文件
+file.fileno() —— 返回文件的描述符(file descriptor,FD,整型值)
+file.flush() —— 直接把内部缓冲区中的数据立刻写入文件，而不是被动地等待输出缓冲区被写入。
+最后用close关闭&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;python csv&lt;/p&gt;
+
+&lt;p&gt;reader
+writer&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工厂函数file()&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;open()和file()函数具有相同的功能，可以任意替换。您所看到任何使用open()的地方，都可以使用file()替换它。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Python sys&amp;ndash;sys模块中的函数非常多，挑几个有用的来讲讲。&lt;/p&gt;
+
+&lt;p&gt;1.sys.argv —— 对命令行参数的访问
+sys.argv是命令行参数的列表
+len(sys.argv) 是命令行参数个数(也就是argc）
+2.sys.platform() —— 输出平台信息
+3.sys.exit(n) 退出
+5.sys.stdin,stdout,stderr —— 标准输入输出，错误输出&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Python sqlite&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Sqllite是一个小巧的内嵌型数据库，也就是说没有独立的维护进程。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. 导入模块
+
+&amp;gt;&amp;gt;&amp;gt; import sqlite3
+
+2. 创建/打开数据库
+
+可以打开数据库：
+cx = sqlite3.connect(&#39;./test.db&#39;)
+也可以存在内存当中：
+con = sqlite3.connect(&amp;quot;:memory:&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;type(a) 判断a是什么类型&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;函数定义&#34;&gt;函数定义&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;def function(params):
+    block
+    return expression/value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;import&#34;&gt;import&lt;/h3&gt;
+
+&lt;p&gt;可以使用import导入包，或者from + import来导入包中的部分模块.这个很重要，类似于c中引用标准库或者其他库。&lt;/p&gt;
+
+&lt;p&gt;每个python文件*.py都是一个模块。都可以用import导入&lt;/p&gt;
+
+&lt;p&gt;import语句使用以下几种方式导入包中的模块:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Graphics.Primitive.fill 导入模块Graphics.Primitive.fill,只能以全名访问模块属性,例如 Graphics.Primitive.fill.floodfill(img,x,y,color). 
+from Graphics.Primitive import fill 导入模块fill ,只能以 fill.属性名这种方式访问模块属性,例如 fill.floodfill(img,x,y,color). 
+from Graphics.Primitive.fill import floodfill 导入模块fill ,并将函数floodfill放入当前名称空间,直接访问被导入的属性，例如 floodfill(img,x,y,color).
+
+from os import *   导入os模块的所有功能，下面就不用加os.mkdir,直接用mkdir
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;模块&#34;&gt;模块&lt;/h3&gt;
+
+&lt;p&gt;os操作系统的基本命令，shell里面的命令基本都有&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import os
+os.mkdir(&#39;/tmp/aaa&#39;) 创建目录
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果不知道命令的作用就用help&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;help(os.system)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在这个模块中有一个很强大的命令os.system,可以执行所有的shell命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;os.system(&#39;ifconfig | grep ip&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行成功就返回0，在python命令行历也有&lt;/p&gt;
+
+&lt;p&gt;定义自己的模块&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;自己写的py文件，去掉后缀就是模块名，中间可以实现一些函数。然后import这个模块，就可以像标准库一样，用模块名加函数名调用。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;time&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;time.strftime(&#39;%Y%m%d&#39;)
+time.sleep(2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;sys&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f = file(filename)
+line=f.readline()
+f.close()            类似于c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;class&#34;&gt;class&lt;/h3&gt;
+
+&lt;p&gt;Python 的 Class 比较特别，和我们习惯的静态语言类型定义有很大区别。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. 使用一个名为 __init__ 的方法来完成初始化。
+
+    def __init__(self,name):
+        self.name = name            每个类都有一个self变量
+
+2. 使用一个名为 __del__ 的方法来完成类似析购操作。
+3. 所有的实例方法都拥有一个 self 参数来传递当前实例，类似于 this。
+4. 可以使用 __class__ 来访问类型成员
+5. 继承 class a(b)     a继承b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Class 有一些特殊的属性，便于我们获得一些额外的信息：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MyClass.__doc__ # 类型帮助信息 
+MyClass.__name__ # 类型名称 
+MyClass.__module__ # 类型所在模块 
+MyClass.__bases__ # 类型所继承的基类(Python 支持多继承) 
+MyClass.__dict__ # 类型字典，存储所有类型成员信息 
+MyClass().__class__ # 实例的类型
+MyClass().__module__ # 实例类型所在模块 
+MyClass().__dict__ # 对象字典，存储所有实例成员  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;错误机制&#34;&gt;错误机制&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;try:
+    语句
+except IndexError:
+    pass                       抛出异常
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;捕捉到错误就到except中执行相关语句，类似与c++里对try&amp;hellip;catch&lt;/p&gt;
+
+&lt;h2 id=&#34;python常用运维&#34;&gt;python常用运维&lt;/h2&gt;
+
+&lt;h2 id=&#34;python爬虫入门&#34;&gt;python爬虫入门&lt;/h2&gt;
+
+&lt;p&gt;网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动的抓取万维网信息的程序或者脚本。&lt;/p&gt;
+
+&lt;p&gt;在上面已经巩固来python的基础，下面需要用到的是python的urllib和urllib2这两个库，还有很重要的正则表达式，如果这些掌握了就可以抓取一些简单的网站了，继续进阶功能强大的框架。&lt;/p&gt;
+
+&lt;h3 id=&#34;urllib和urllib2&#34;&gt;urllib和urllib2&lt;/h3&gt;
+
+&lt;p&gt;如果把网页比作一个人，那么HTML便是他的骨架，JS便是他的肌肉，CSS便是它的衣服。urllib就是把这些代码扒下来。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;重点api&lt;/p&gt;
+
+&lt;p&gt;urlopen(url, data, timeout)&lt;/p&gt;
+
+&lt;p&gt;第一个参数url即为URL，第二个参数data是访问URL时要传送的数据，第三个timeout是设置超时时间。&lt;/p&gt;
+
+&lt;p&gt;第二三个参数是可以不传送的，data默认为空None，timeout默认为 socket._GLOBAL_DEFAULT_TIMEOUT&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;正常会构建一个request对象，将相关的参数传递进去然后进行服务器请求，urlopen支持request对象的请求。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传递参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;get是以链接中直接加参数的形式去直接访问，post则在结构体中传递参数，不会在网址中展示。&lt;/p&gt;
+
+&lt;p&gt;实例对比展示&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;post&lt;/p&gt;
+
+&lt;p&gt;import urllib
+import urllib2&lt;/p&gt;
+
+&lt;p&gt;values = {}
+values[&amp;lsquo;username&amp;rsquo;] = &amp;ldquo;1016903103@qq.com&amp;rdquo;
+values[&amp;lsquo;password&amp;rsquo;] = &amp;ldquo;XXXX&amp;rdquo;
+#values = {&amp;lsquo;username&amp;rsquo;:&amp;ldquo;1016903103@qq.com&amp;rdquo;,&amp;ldquo;password&amp;rdquo;:&amp;ldquo;XXXX&amp;rdquo;}  也可以这样定义
+data = urllib.urlencode(values)
+url = &amp;ldquo;&lt;a href=&#34;http://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&amp;quot;&#34;&gt;http://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&amp;quot;&lt;/a&gt;
+request = urllib2.Request(url,data)
+response = urllib2.urlopen(request)
+print response.read()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;get&lt;/p&gt;
+
+&lt;p&gt;import urllib
+import urllib2&lt;/p&gt;
+
+&lt;p&gt;values={}
+values[&amp;lsquo;username&amp;rsquo;] = &amp;ldquo;1016903103@qq.com&amp;rdquo;
+values[&amp;lsquo;password&amp;rsquo;]=&amp;ldquo;XXXX&amp;rdquo;
+data = urllib.urlencode(values)
+url = &amp;ldquo;&lt;a href=&#34;http://passport.csdn.net/account/login&amp;quot;&#34;&gt;http://passport.csdn.net/account/login&amp;quot;&lt;/a&gt;
+geturl = url + &amp;ldquo;?&amp;rdquo;+data
+request = urllib2.Request(geturl)
+response = urllib2.urlopen(request)
+print response.read()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这样就可以将对应的网址的html扒下来了，下面就是获取我们所需要的内容了,但是在这个之前还有很多的特殊情况要处理&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;有些网站会对访问进行识别，这个时候就需要进行header属性的设置了&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我们一般可以是用F12打开浏览器的网络监听，也就是开发者工具，来查看http包的内容。如下图&lt;/p&gt;
+
+&lt;p&gt;在header中有这些属性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;User-Agent : 有些服务器或 Proxy 会通过该值来判断是否是浏览器发出的请求
+Content-Type : 在使用 REST 接口时，服务器会检查该值，用来确定 HTTP Body 中的内容该怎样解析。
+application/xml ： 在 XML RPC，如 RESTful/SOAP 调用时使用
+application/json ： 在 JSON RPC 调用时使用
+application/x-www-form-urlencoded ： 浏览器提交 Web 表单时使用
+在使用服务器提供的 RESTful 或 SOAP 服务时， Content-Type 设置错误会导致服务器拒绝服务
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如User-Agent表示请求者的身份，Referer表示是不是它自己，我们可以将他加入到请求参数中一起在header中有这些属性,我们来实战一下&lt;/p&gt;
+
+&lt;p&gt;在上面的post方法请求中加入header参数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib
+import urllib2
+
+values = {}
+values[&#39;username&#39;] = &amp;quot;1016903103@qq.com&amp;quot;
+values[&#39;password&#39;] = &amp;quot;XXXX&amp;quot;
+#values = {&#39;username&#39;:&amp;quot;1016903103@qq.com&amp;quot;,&amp;quot;password&amp;quot;:&amp;quot;XXXX&amp;quot;}  也可以这样定义
+data = urllib.urlencode(values) 
+url = &amp;quot;http://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&amp;quot;
+user-agent = &amp;quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36&amp;quot;
+header = {&amp;quot;User-Agent&amp;quot;:user-agent,&amp;quot;Referer&amp;quot;:&amp;quot;http://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&amp;quot;}
+request = urllib2.Request(url,data,header)
+response = urllib2.urlopen(request)
+print response.read()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样就可以突破了一些限制，将对应的网站扒下来&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;超时时间和代理&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;超时时间直接在上面的urlopen的参数中设置即可，代理主要是为了防止某些网站禁止一个IP过于频繁的访问。代理的使用如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib2
+enable_proxy = True
+proxy_handler = urllib2.ProxyHandler({&amp;quot;http&amp;quot; : &#39;http://some-proxy.com:8080&#39;})
+null_proxy_handler = urllib2.ProxyHandler({})
+if enable_proxy:
+    opener = urllib2.build_opener(proxy_handler)
+else:
+    opener = urllib2.build_opener(null_proxy_handler)
+urllib2.install_opener(opener)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在里有一个opener的概念，他是一种扒取网页的模式，我们之前用的都是默认的一种opener，也就是urllib中的urlopen，它具有更加通用的模式。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;HTTP的PUT和DELETE方法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;虽然这两种方法在HTTP请求中很少用，但是urllib也是支持的，直接看使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib2
+request = urllib2.Request(uri, data=data)
+request.get_method = lambda: &#39;PUT&#39; # or &#39;DELETE&#39;
+response = urllib2.urlopen(request)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就是设置requesr的get_method属性设置为对应的PUT或者DELETE。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用DEBUGLOG&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;打印DEBUGLOG主要是方便调试，使用方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib2
+httpHandler = urllib2.HTTPHandler(debuglevel=1)
+httpsHandler = urllib2.HTTPSHandler(debuglevel=1)
+opener = urllib2.build_opener(httpHandler, httpsHandler)
+urllib2.install_opener(opener)
+response = urllib2.urlopen(&#39;http://www.baidu.com&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;出错处理&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;URLerror&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们一般是使用try-exceot来捕捉错误的，有一个类URlerror来存储错误类型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib2
+
+request = urllib2.Request(&#39;http://www.xxxxx.com&#39;)
+try:
+    urllib2.urlopen(request)
+except urllib2.URLError, e:
+    print e.reason
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTTPerror&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTTPError是URLError的子类,它包含来一个数字的状态码，如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;100：继续  客户端应当继续发送请求。客户端应当继续发送请求的剩余部分，或者如果请求已经完成，忽略这个响应。
+101： 转换协议  在发送完这个响应最后的空行后，服务器将会切换到在Upgrade 消息头中定义的那些协议。只有在切换新的协议更有好处的时候才应该采取类似措施。
+102：继续处理   由WebDAV（RFC 2518）扩展的状态码，代表处理将被继续执行。
+200：请求成功      处理方式：获得响应的内容，进行处理
+201：请求完成，结果是创建了新资源。新创建资源的URI可在响应的实体中得到    处理方式：爬虫中不会遇到
+202：请求被接受，但处理尚未完成    处理方式：阻塞等待
+204：服务器端已经实现了请求，但是没有返回新的信 息。如果客户是用户代理，则无须为此更新自身的文档视图。    处理方式：丢弃
+300：该状态码不被HTTP/1.0的应用程序直接使用， 只是作为3XX类型回应的默认解释。存在多个可用的被请求资源。    处理方式：若程序中能够处理，则进行进一步处理，如果程序中不能处理，则丢弃
+301：请求到的资源都会分配一个永久的URL，这样就可以在将来通过该URL来访问此资源    处理方式：重定向到分配的URL
+302：请求到的资源在一个不同的URL处临时保存     处理方式：重定向到临时的URL
+304：请求的资源未更新     处理方式：丢弃
+400：非法请求     处理方式：丢弃
+401：未授权     处理方式：丢弃
+403：禁止     处理方式：丢弃
+404：没有找到     处理方式：丢弃
+500：服务器内部错误  服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码出现错误时出现。
+501：服务器无法识别  服务器不支持当前请求所需要的某个功能。当服务器无法识别请求的方法，并且无法支持其对任何资源的请求。
+502：错误网关  作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。
+503：服务出错   由于临时的服务器维护或者过载，服务器当前无法处理请求。这个状况是临时的，并且将在一段时间以后恢复。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们知道，HTTPError的父类是URLError，根据编程经验，父类的异常应当写到子类异常的后面，如果子类捕获不到，那么可以捕获父类的异常，所以正常这样使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import urllib2
+
+req = urllib2.Request(&#39;http://blog.csdn.net/cqcre&#39;)
+try:
+    urllib2.urlopen(req)
+except urllib2.HTTPError, e:
+    print e.code
+except urllib2.URLError, e:
+    print e.reason
+else:
+    print &amp;quot;OK&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Cookie，指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）&lt;/p&gt;
+
+&lt;p&gt;比如说有些网站需要登录后才能访问某个页面，在登录之前，你想抓取某个页面内容是不允许的。那么我们可以利用Urllib2库保存我们登录的Cookie，然后再抓取其他页面就达到目的了。&lt;/p&gt;
+
+&lt;p&gt;主要是通过cookielib来实现的&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;首先cookiejar可以获取cookie然后存放到变量中去&lt;/p&gt;
+
+&lt;p&gt;import urllib2
+import cookielib
+#声明一个CookieJar对象实例来保存cookie
+cookie = cookielib.CookieJar()
+#利用urllib2库的HTTPCookieProcessor对象来创建cookie处理器
+handler=urllib2.HTTPCookieProcessor(cookie)
+#通过handler来构建opener
+opener = urllib2.build_opener(handler)
+#此处的open方法同urllib2的urlopen方法，也可以传入request
+response = opener.open(&amp;lsquo;&lt;a href=&#34;http://www.baidu.com&#39;&#34;&gt;http://www.baidu.com&#39;&lt;/a&gt;)
+for item in cookie:
+    print &amp;lsquo;Name = &amp;lsquo;+item.name
+    print &amp;lsquo;Value = &amp;lsquo;+item.value&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用filecookiejar将变量保存到文件中去&lt;/p&gt;
+
+&lt;p&gt;import cookielib
+import urllib2&lt;/p&gt;
+
+&lt;p&gt;#设置保存cookie的文件，同级目录下的cookie.txt
+filename = &amp;lsquo;cookie.txt&amp;rsquo;
+#声明一个MozillaCookieJar对象实例来保存cookie，之后写入文件
+cookie = cookielib.MozillaCookieJar(filename)
+#利用urllib2库的HTTPCookieProcessor对象来创建cookie处理器
+handler = urllib2.HTTPCookieProcessor(cookie)
+#通过handler来构建opener
+opener = urllib2.build_opener(handler)
+#创建一个请求，原理同urllib2的urlopen
+response = opener.open(&amp;ldquo;&lt;a href=&#34;http://www.baidu.com&amp;quot;&#34;&gt;http://www.baidu.com&amp;quot;&lt;/a&gt;)
+#保存cookie到文件
+cookie.save(ignore_discard=True, ignore_expires=True)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重文件中获取cookie并用于访问&lt;/p&gt;
+
+&lt;p&gt;import cookielib
+import urllib2&lt;/p&gt;
+
+&lt;p&gt;#创建MozillaCookieJar实例对象
+cookie = cookielib.MozillaCookieJar()
+#从文件中读取cookie内容到变量
+cookie.load(&amp;lsquo;cookie.txt&amp;rsquo;, ignore_discard=True, ignore_expires=True)
+#创建请求的request
+req = urllib2.Request(&amp;ldquo;&lt;a href=&#34;http://www.baidu.com&amp;quot;&#34;&gt;http://www.baidu.com&amp;quot;&lt;/a&gt;)
+#利用urllib2的build_opener方法创建一个opener
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
+response = opener.open(req)
+print response.read()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;结合这三者就可以实现利用cookie来模拟登陆了。&lt;/p&gt;
+
+&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
+
+&lt;p&gt;正则表达式是内容匹配的重点，本身就是一种匹配的规则，在python中使用比较常见，这边东西比较多而乱，也比较重要，所以单独的系统的巩固学习了一下，具体可以参考我的另一篇博文《正则表达式》&lt;/p&gt;
+
+&lt;h3 id=&#34;框架&#34;&gt;框架&lt;/h3&gt;
+
+&lt;p&gt;基本使用会了，可以更加功能强大且方便的框架&lt;/p&gt;
+
+&lt;h2 id=&#34;实战&#34;&gt;实战&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;可以用上述的基本知识完成对糗事百科，百度贴吧这样网站的抓取。
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/vm/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/vm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>虚拟机以及虚拟化技术</title>
+      <link>http://kingjcy.github.io/blog/2015/05/23/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sat, 23 May 2015 17:44:38 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2015/05/23/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF/</guid>
+      <description>&lt;p&gt;虚拟网络连接的几种模式&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;nat&lt;/p&gt;
+
+&lt;p&gt;虚拟机访问网络的所有数据都是由主机提供的，虚拟机并不真实存在于网络中，主机与网络中的任何机器都不能查看和访问到虚拟机的存在。虚拟机可以访问到主机和网络中的其他机器，但是不能访问其他虚拟机，默认配置,当然可以手动修改。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;IP:10.0.2.15 
+GATEWAY:10.0.2.2 
+DNS：10.0.2.3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;桥接&lt;/p&gt;
+
+&lt;p&gt;桥接是通过主机网卡，架设了一条桥，直接连入到网络中了。因此，它使得虚拟机能被分配到一个网络中独立的IP，所有网络功能完全和在网络中的真实机器一样。虚拟机可以与主机，互联网上的其他机器进行互相访问，也可以和其他虚拟机进行访问，ip需要设置为DHCP进行分配的，和主机的ip在同一个网段，因为是桥接的网桥，所有和主机之间的通信必须通过网桥，如果主机没有链接外网，就没有dhcp给虚拟机分配ip，主机和虚拟机之间也不能通信。&lt;/p&gt;
+
+&lt;p&gt;当然可以手动指定ip，桥接网卡其实就是虚拟出一个网卡virbr0，这个网卡可以设定一定的范围。虚拟机还有一个本身的网卡eth0，我们可以对eth0进行指定ip，就可以了，实际上还是通过桥接虚拟出的网卡virbr0到虚拟机网卡eth0的访问。貌似无线热点不能这么用，可能需要一个交换机或者路由器，而热点不知道什么原理，但是在本地虚拟机使用的时候，DHCP分配的ip一般是不会变化的，除非ip被占用，在大型物理机上就需要指定IP了。&lt;/p&gt;
+
+&lt;p&gt;Internal&lt;/p&gt;
+
+&lt;p&gt;内部网络模式，虚拟机与外网完全断开，只实现虚拟机于虚拟机之间的内部网络模式。虚拟机只能和虚拟机进行通信，不能和主机或者其他互联网中的机器进行通讯。IP: VirtualBox的DHCP服务器会为它分配IP ，一般得到的是192.168.56.101，因为是从101起分的，也可手工指定192.168.56.*。&lt;/p&gt;
+
+&lt;p&gt;host-only&lt;/p&gt;
+
+&lt;p&gt;主机模式，这是一种比较复杂的模式，需要有比较扎实的网络基础知识才能玩转。可以说前面几种模式所实现的功能，在这种模式下，通过虚拟机及网卡的设置都可以被实现。&lt;/p&gt;
+
+&lt;p&gt;我们可以理解为Vbox在主机中模拟出一张专供虚拟机使用的网卡，所有虚拟机都是连接到该网卡上的，我们可以通过设置这张网卡来实现上网及其他很多功能，比如（网卡共享、网卡桥接等）。&lt;/p&gt;
+
+&lt;p&gt;虚拟机与主机关系
+默认不能相互访问，双方不属于同一IP段，host-only网卡默认IP段为192.168.56.X 子网掩码为255.255.255.0，后面的虚拟机被分配到的也都是这个网段。通过网卡共享、网卡桥接等，可以实现虚拟机于主机相互访问。&lt;/p&gt;
+
+&lt;p&gt;虚拟机与网络主机关系
+默认不能相互访问，原因同上，通过设置，可以实现相互访问。&lt;/p&gt;
+
+&lt;p&gt;虚拟机与虚拟机关系
+默认可以相互访问，都是同处于一个网段。&lt;/p&gt;
+
+&lt;p&gt;设置主机访问虚拟机，先将虚拟机的模式设置为host-only模式，然后只要将虚拟机的对应的配置文件/etc/sysconfig/network-scripts/ifcfg-eth0修改为static的模式指定ip，不用dhcp来分配。主机就可以通过指定的ip来访问虚拟机。&lt;/p&gt;
+
+&lt;h2 id=&#34;virtualbox&#34;&gt;virtualbox&lt;/h2&gt;
+
+&lt;p&gt;安装vbox本身和安装对应的虚拟机这边就不多说了，只要有对应的iso镜像文件按着步骤安装就好了。mac比较实用的虚拟机有pd（这个和mac系统本身具有兼容性，付费比较贵一些，可以翻墙去国外下载破解版）和vmf（也是付费，相对来说便宜点），vmbox性能方面相对来说差一点。&lt;/p&gt;
+
+&lt;h3 id=&#34;vbox的一种网路设置方式-适合在网络和离线环境经常切换的情况下使用-不影响主机对虚拟机的ssh&#34;&gt;vbox的一种网路设置方式，适合在网络和离线环境经常切换的情况下使用，不影响主机对虚拟机的ssh&lt;/h3&gt;
+
+&lt;p&gt;关闭虚拟机，打开vbox本身的设置，选择网络&lt;/p&gt;
+
+&lt;p&gt;然后设置对应的虚拟机网卡，网卡1设置为host-only，网卡2设置为桥接模式，桥接我们的无线网卡。&lt;/p&gt;
+
+&lt;p&gt;然后启动虚拟机，设置网卡1的配置文件为static的ip，重启network，可以通过这个指定的ip来ssh到这个虚拟机，这个受用于离线环境下，没有办法通过无线网卡桥接，在有网络的情况下，输入ifconfig来查看这个虚拟机分配的ip，就可以用这个IP访问虚拟机了。当然也可以固定为host-only的ip，比较方便。&lt;/p&gt;
+
+&lt;p&gt;然后修改/etc/sysconfig/network-scripts/ifcfg-etho这个配置文件大体需要设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;BOOTPROTO=&amp;quot;static&amp;quot;
+onboot=&amp;quot;yes&amp;quot;
+IPADDR=&amp;quot;192.168.56.X&amp;quot;
+NETMASK=&amp;quot;255.255.255.0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;network是系统服务，如修改则可以用systemcrtl重启系统服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl restart network
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;kvm&#34;&gt;kvm&lt;/h2&gt;
+
+&lt;p&gt;虚拟化技术&amp;mdash;&amp;ndash;对资源的一种抽象和整合，在硬件和软件之间有一层软件层（hypervisor）&lt;/p&gt;
+
+&lt;p&gt;KVM，即Kernel-based Virtual Machine的简称，是一个开源的系统虚拟化模块，自Linux 2.6.20之后集成在Linux的各个主要发行版本中。它使用Linux自身的调度器进行管理，所以相对于Xen，其核心源码很少。KVM目前已成为学术界的主流VMM之一。KVM的虚拟化需要硬件支持（如Intel VT技术vmx或者AMD V技术svm,都是cpu技术)。是基于硬件的完全虚拟化。而Xen早期则是基于软件模拟的Para-Virtualization，所以在安装 KVM 之前检查一下 CPU 是否提供了虚拟技术的支持，可以用下面到命令查看&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;egrep &#39;vmx|svm&#39; /proc/cpuinfo   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置环境&lt;/p&gt;
+
+&lt;p&gt;软件包组：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   virtualization            提供虚拟机的环境，主要包含qemu-kvm
+   virtualization-client      管理和安装虚拟机实例的客户端，主要有Python-virtinst,virt-manager,virt-viewer
+   virtualization-platform    提供访问和控制虚拟客户端的接口，主要有libvirt，libvirt-client
+   virtualization-tools      管理离线虚拟机镜像的工具，主要有libguestfs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;根据需求选择软件包，一般都安装前三个，也可以只安装个别主要的包。&lt;/p&gt;
+
+&lt;p&gt;可以直接用yum安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum groupinstall &amp;quot;Virtualization&amp;quot; &amp;quot;Virtualization Client&amp;quot; &amp;quot;Virtualzation Platform&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这边用的是groupinstall安装所有相关的软件，其实必须安装的是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install qemu-kvm libvirt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中qemu-kvm是提供了虚拟化的环境，是他对设备进行了虚拟化，libvirt是一套免费、开源的支持Linux下主流虚拟化工具的C函数库,其旨在为包括Xen、kvm在内的各种虚拟化工具提供一套方便、可靠的编程接口，支持与C,C++,Ruby,Python,Java等多种主流开发语言的绑定。当前主流Linux平台上默认的虚拟化管理工具virt-manager(图形化),virt-install（命令行模式）等均基于libvirt开发而成。&lt;/p&gt;
+
+&lt;p&gt;virt-manager是基于libvirt实现创建kvm的图形化管理工具GUI&lt;/p&gt;
+
+&lt;p&gt;virt-install是基于libvirt实现创建kvm的命令行工具&lt;/p&gt;
+
+&lt;p&gt;virsh是基于libvirt的管理kvm的命令行工具&lt;/p&gt;
+
+&lt;p&gt;virt-v2v基于libvirt的虚机格式迁移工具&lt;/p&gt;
+
+&lt;p&gt;Virt-viewer基于libvirt的连接到虚机屏幕的工具&lt;/p&gt;
+
+&lt;p&gt;Virt-clone基于libvirt的虚机克隆工具&lt;/p&gt;
+
+&lt;p&gt;所以这些工具都是基于libvirt的，所以要安装libvirt，启动它的守护进程libvirtd，就可以安装这些工具然后创建和操作kvm虚拟机&lt;/p&gt;
+
+&lt;h3 id=&#34;创建kvm&#34;&gt;创建kvm&lt;/h3&gt;
+
+&lt;p&gt;根据上面的了解有两中方式，一种是使用图像界面virt-manager，一种是使用命令行virt-install&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;图像界面virt-manager&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我们可以使用vnc连接到物理机上，然后在applications-&amp;gt;system tools-&amp;gt;virtual machine manager然后按着对应的步骤进行操作就可以创建kvm虚拟机&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;命令行virt-install&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;首先需要对相对进程配置&lt;/p&gt;
+
+&lt;p&gt;/etc/libvirt/libvirtd.conf 这里主要是tcp连接的设置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;末尾添加如下：
+listen_tls = 0
+listen_tcp = 1
+tcp_port = &amp;quot;16509&amp;quot;
+listen_addr = &amp;quot;172.16.57.24&amp;quot;
+unix_sock_ro_perms = &amp;quot;0777&amp;quot;
+unix_sock_rw_perms = &amp;quot;0770&amp;quot;
+auth_tcp = &amp;quot;none&amp;quot;
+max_clients = 1024
+min_workers = 100
+max_workers = 200
+max_requests = 20
+max_client_requests = 50
+vim qemu.conf 这里主要是对vnc的设置，一会儿通过vnc-viewer连接来进行安装
+末尾添加
+vnc_listen = 0.0.0.0
+vnc_password = &amp;quot;bigdata&amp;quot;  #vnc连接密码
+remote_display_port_min = 5900 #vnc最小端口
+remote_display_port_max = 65535 #vnc最大端口
+3、确认一下是否 kvm 安装成功：
+/etc/init.d/libvirtd restart
+4、查看是否启动：
+ps -ef | grep libvirtd
+5、查看kvm模块是否正常加载：
+lsmod |grep kvm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;/etc/sysconfig/network-scripts/ifcfg-br0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DEVICE=br0
+TYPE=Bridge
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=172.16.57.24
+NETMASK=255.255.255.0
+GATEWAY=172.16.57.1
+DNS1=202.96.209.133
+vim /etc/sysconfig/network-scripts/ifcfg-em1
+DEVICE=em1
+TYPE=Ethernet
+ONBOOT=yes
+BRIDGE=br0
+NM_CONTROLLED=yes
+2、重启网络
+/etc/init.d/network restart
+3、查看网络连接
+brctl show
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后创建虚拟机&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;virt-install  --name=tomcat_01 --ram 8192 --vcpus=2 /
+--disk path=/var/lib/libvirt/images/tomcat_01.img,size=20,format=raw,bus=virtio /
+--cdrom /var/iso/CentOS-6.7-x86_64-minimal.iso --network bridge=br0,model=virtio /
+--vnc --accelerate --force  --autostart
+这里解释一下主要的几个参数含义：
+--name    给虚拟机起个名字
+--ram     分配给虚拟机的内存，单位MB
+--vcpus   分配给虚拟机的cpu个数
+--cdrom   指定安装文件的全路径
+--disk    指定虚拟机img文件路径，如果虚拟机使用lvm分区，这里就指向到lvm的分区就行
+  size    虚拟机文件大小，单位GB
+  bus     虚拟机磁盘使用的总线类型，为了使虚拟机达到好的性能，这里使用virtio
+  cache   虚拟机磁盘的cache类型
+--network bridge    指定桥接网卡
+  model  网卡模式，这里也是使用性能更好的virtio
+--graphics图形参数
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样就可以创建虚拟机了&lt;/p&gt;
+
+&lt;h3 id=&#34;virsh&#34;&gt;virsh&lt;/h3&gt;
+
+&lt;p&gt;virsh这个工具设计到对kvm虚拟机的操作管理，所以有必要这边说一下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;help  帮助
+create 创建一个虚拟机
+start  开启一个虚拟机
+shutdown 关闭一个虚拟机
+destory  删除一个虚拟机（域）
+list    列出所有的域
+reboot  重启一个域
+restore 重一个文件恢复一个域
+save    把一个域保存为文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其他不知道可以通过virsh help来查看&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -14,16 +14,16 @@ body {
 }
 
 p {
-  margin: 1;
+  margin: 0;
 }
 
 ul,ol {
-  margin: 1;
-  padding: 1;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 1;
+  margin: 0;
 }
 
 h1 { font-size: 1.8rem; line-height: 2rem; margin: 1.5rem 0; }
@@ -140,7 +140,7 @@ section.bordered {
 }
 
 article .title {
-  margin: 5;
+  margin: 0;
   margin-bottom: .5rem;
 }
 
@@ -172,14 +172,14 @@ article.single .thumb {
 article.li .thumb {
   float: right;
   width: 12rem;
-  height: 9.5rem;
+  height: 7.5rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
 
 article.li.sm>header {
   border-bottom: none;
-  margin-bottom: 5;
+  margin-bottom: 0;
 }
 
 .article-body h2 {

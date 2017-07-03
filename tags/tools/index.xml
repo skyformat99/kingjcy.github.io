@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/tools/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>makefile</title>
+      <link>http://kingjcy.github.io/blog/2015/05/17/makefile/</link>
+      <pubDate>Sun, 17 May 2015 16:23:56 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2015/05/17/makefile/</guid>
+      <description>&lt;p&gt;makefile是一个自动化编译的工具，是一个大型工程必备的工具，它告诉make命令需要怎么样的去编译和链接程序。 &lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;基本规则&lt;/p&gt;
+
+&lt;p&gt;target &amp;hellip; : prerequisites &amp;hellip; 
+command 
+&amp;hellip; 
+&amp;hellip; &lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）&lt;/p&gt;
+
+&lt;p&gt;prerequisites就是，要生成那个target所需要的文件或是目标。 &lt;/p&gt;
+
+&lt;p&gt;command也就是make需要执行的命令。（任意的Shell命令）&lt;/p&gt;
+
+&lt;p&gt;举例&lt;/p&gt;
+
+&lt;p&gt;如果一个工程有3个头文件，和8个C文件,我们的Makefile应该是下面的这个样子的。  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;edit : main.o kbd.o command.o display.o insert.o search.o files.o utils.o 
+cc -o edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o  
+main.o : main.c defs.h 
+cc -c main.c 
+kbd.o : kbd.c defs.h command.h 
+cc -c kbd.c 
+command.o : command.c defs.h command.h 
+cc -c command.c 
+display.o : display.c defs.h buffer.h 
+cc -c display.c 
+insert.o : insert.c defs.h buffer.h 
+cc -c insert.c 
+search.o : search.c defs.h buffer.h 
+cc -c search.c 
+files.o : files.c defs.h buffer.h command.h 
+cc -c files.c 
+utils.o : utils.c defs.h 
+cc -c utils.c 
+clean : 
+rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;command必须以tab键开头。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;make的工作原理&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;make会在当前目录下找名字叫“Makefile”或“makefile”的文件。 当然可以用参数-f来指定makefile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果找到，它会找文件中的第一个目标文件（target），在上面的例子中，他会找到“edit”这个文件，并把这个文件作为最终的目标文件。 &lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果edit文件不存在，或是edit所依赖的后面的 .o 文件的文件修改时间要比edit这个文件新，那么，他就会执行后面所定义的命令来生成edit这个文件。 &lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果edit所依赖的.o文件也不存在，那么make会在当前文件中找目标为.o文件的依赖性，如果找到则再根据那一个规则生成.o文件。（这有点像一个堆栈的过程） &lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;当然，你的C文件和H文件是存在的啦，于是make会生成 .o 文件，然后再用 .o 文件生命make的终极任务，也就是执行文件edit了。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;makefile变量&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;变量名随便定义，在后面就可以用$(变量名)来使用了，这个和基本编程中变量的作用差不多可以简化长变量的不断复写。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;make的自动推导&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;makefile的clean&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;.PHONY意思表示clean是一个“伪目标”。我们并不生成“clean”这个文件。“伪目标”并不是一个文件，只是一个标签，由于“伪目标”不是文件，所以make无法生成它的依赖关系和决定它是否要执行。我们只有通过显示地指明这个“目标”才能让其生效。当然，“伪目标”的取名不能和文件名重名，不然其就失去了“伪目标”的意义了。  当然，为了避免和文件重名的这种情况，我们可以使用一个特殊的标记“.PHONY”来显示地指明一个目标是“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。&lt;/p&gt;
+
+&lt;p&gt;而在rm命令前面加了一个小减号的意思就是，也许某些文件出现问题，但不要管，继续做后面的事。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;makefile可以包含其他的makefile&lt;/p&gt;
+
+&lt;p&gt;include &lt;fielname&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;include前面不能有tab，一般在前面加上—这个和上面的那个减号一个意思，用不用看项目情况。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;通配符&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;make支持三各通配符：“*”，“?”和“[&amp;hellip;]”。这是和Unix的B-Shell是相同的。 也支持～表示home目录&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;$@，表示规则中的目标。
+$&amp;lt;，表示规则中的第一个条件。
+$?，表示规则中所有比目标新的条件，组成一个列表，以空格分隔。
+$^，表示规则中的所有条件，组成一个列表，以空格分隔。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;函数&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;参数&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;宏定义&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

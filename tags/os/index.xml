@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/os/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>centos6升级centos7</title>
+      <link>http://kingjcy.github.io/blog/2016/12/07/centos6%E5%8D%87%E7%BA%A7centos7/</link>
+      <pubDate>Wed, 07 Dec 2016 09:48:07 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2016/12/07/centos6%E5%8D%87%E7%BA%A7centos7/</guid>
+      <description>&lt;p&gt;随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;升级&#34;&gt;升级&lt;/h1&gt;
+
+&lt;p&gt;可以直接下载安装centos7进行安装，不过这边讲述的是centos6.4到centos7的升级。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先查看现有的系统版本：&lt;/p&gt;
+
+&lt;p&gt;unmae -a&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;或者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lsb_release -a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改yum源，增加仓库&lt;/p&gt;
+
+&lt;p&gt;vi /etc/yum.repos.d/upgradtool.repo&lt;/p&gt;
+
+&lt;p&gt;[upg]
+name=CentOS-$releasever - Upgrade Tool
+baseurl=&lt;a href=&#34;http://dev.centos.org/centos/6/upg/x86_64/&#34;&gt;http://dev.centos.org/centos/6/upg/x86_64/&lt;/a&gt;
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装升级工具&lt;/p&gt;
+
+&lt;p&gt;yum install -y redhat-upgrade-tool preupgrade-assistant-contents&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用preupg工具进行升级检查&lt;/p&gt;
+
+&lt;p&gt;preupg -s CentOS6_7&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装升级用的centos7 rpm key&lt;/p&gt;
+
+&lt;p&gt;rpm &amp;ndash;import &lt;a href=&#34;http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7&#34;&gt;http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;运行升级工具&lt;/p&gt;
+
+&lt;p&gt;centos-upgrade-tool-cli &amp;ndash;network 7 &amp;ndash;instrepo=&lt;a href=&#34;http://mirror.centos.org/centos/7/os/x86_64/&#34;&gt;http://mirror.centos.org/centos/7/os/x86_64/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;补充&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;大版本的升级还是比较容易出问题的，所以可以下载centos7的iso文件，直接安装比较靠谱。&lt;/p&gt;
+
+&lt;p&gt;一般装完系统后需要修改/etc/sysconfig/ifcfg-eth0的onboot来设置网卡的开始启动。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

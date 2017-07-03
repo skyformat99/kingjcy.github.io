@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/signal/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/signal/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>signal</title>
+      <link>http://kingjcy.github.io/blog/2015/03/20/signal/</link>
+      <pubDate>Fri, 20 Mar 2015 11:18:15 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2015/03/20/signal/</guid>
+      <description>&lt;p&gt;关于信号的使用还是很广泛的，这边对signal进行整理，便于查找&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;(Signal ()函数详细介绍 Linux函数)&lt;/p&gt;
+
+&lt;p&gt;在&lt;signal.h&gt; 这个头文件中。&lt;/p&gt;
+
+&lt;p&gt;signal（参数1，参数2）；&lt;/p&gt;
+
+&lt;p&gt;参数1：我们要进行处理的信号。系统的信号我们可以再终端键入 kill -l查看(共64个)。其实这些信号时系统定义的宏。&lt;/p&gt;
+
+&lt;p&gt;参数2：我们处理的方式（是系统默认还是忽略还是捕获）。&lt;/p&gt;
+
+&lt;p&gt;eg:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;signal(SIGINT ,SIG_ING );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SIG_ING 代表忽略SIGINT信号，SIGINT信号代表由InterruptKey产生，通常是CTRL +C 或者是DELETE 。发送给所有ForeGround Group的进程。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;signal(SIGTERM,cGiSigHandler)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;/&lt;em&gt;信号捕捉函数singal，当产生SIGTERM信号时触发函数cGiSigHandler&lt;/em&gt;/&lt;/p&gt;
+
+&lt;p&gt;下面对这个函数对原型和原理进行讲解&lt;/p&gt;
+
+&lt;p&gt;void ( &lt;em&gt;signal( int sig, void (&lt;/em&gt; handler)( int )))( int );&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int (*p)();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这是一个函数指针, p所指向的函数是一个不带任何参数, 并且返回值为int的一个函数.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    int (*fun())();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个式子与上面式子的区别在于用fun()代替了p,而fun()是一个函数,所以说就可以看成是fun()这个函数执行之后,它的返回值是一个函数指针,这个函数指针(其实就是上面的p)所指向的函数是一个不带任何参数,并且返回值为int的一个函数.&lt;/p&gt;
+
+&lt;p&gt;void (*signal(int signo, void (*handler)(int)))(int);就可以看成是signal()函数(它自己是带两个参数,一个为整型,一个为函数指针的函数),而这个signal()函数的返回值也为一个函数指针,这个函数指针指向一个带一个整型参数,并且返回值为void的一个函数.&lt;/p&gt;
+
+&lt;p&gt;在写信号处理函数时对于信号处理的函数也是void sig_fun(int signo);这种类型,恰好与上面signal()函数所返回的函数指针所指向的函数是一样的.void ( *signal() )( int );&lt;/p&gt;
+
+&lt;p&gt;signal是一个函数, 它返回一个函数指针, 后者所指向的函数接受一个整型参数 且没有返回值, 仔细看, 是不是siganal( int signo, void (*handler)(int) )的第2个参数了,对了,其实他所返回的就&amp;gt;是 signal的第2个信号处理函数,指向信号处理函数,就可以执行函数了( signal内部时, signal把信号做为参数传递给handler信号处理函数,接着 signal函数返回指针, 并且又指向信号处理函数, 就开始执行它)&lt;/p&gt;
+
+&lt;p&gt;那么，signal函数的参数又是如何呢？signal函数接受两个参数：一个整型的信号编号，以及一个指向用户定义的信号处理函数的指针。我们此前已经定义了指向用户定义的信号处理函数的指针sfp：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    void (*sfp)(int);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;sfp 的类型可以通过将上面的声明中的sfp去掉而得到，即void (*)(int)。此外，signal函数的返回值是一个指向调用前的用户定义信号处理函数的指针，这个指针的类型与sfp指针类型一致。因此，我
+        们可以如下声明signal函数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    void (*signal(int, void(*)(int)))(int);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同样地，使用typedef可以简化上面的函数声明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    typedef void (*HANDLER)(int);
+    HANDLER signal(int, HANDLER);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Signal    Description&lt;/p&gt;
+
+&lt;p&gt;SIGABRT    由调用abort函数产生，进程非正常退出&lt;/p&gt;
+
+&lt;p&gt;SIGALRM    用alarm函数设置的timer超时或setitimer函数设置的interval timer超时&lt;/p&gt;
+
+&lt;p&gt;SIGBUS    某种特定的硬件异常，通常由内存访问引起&lt;/p&gt;
+
+&lt;p&gt;SIGCANCEL    由Solaris Thread Library内部使用，通常不会使用&lt;/p&gt;
+
+&lt;p&gt;SIGCHLD    进程Terminate或Stop的时候，SIGCHLD会发送给它的父进程。缺省情况下该Signal会被忽略&lt;/p&gt;
+
+&lt;p&gt;SIGCONT    当被stop的进程恢复运行的时候，自动发送&lt;/p&gt;
+
+&lt;p&gt;SIGEMT    和实现相关的硬件异常&lt;/p&gt;
+
+&lt;p&gt;SIGFPE    数学相关的异常，如被0除，浮点溢出，等等&lt;/p&gt;
+
+&lt;p&gt;SIGFREEZE    Solaris专用，Hiberate或者Suspended时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGHUP    发送给具有Terminal的Controlling Process，当terminal被disconnect时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGILL    非法指令异常&lt;/p&gt;
+
+&lt;p&gt;SIGINFO    BSD signal。由Status Key产生，通常是CTRL+T。发送给所有Foreground Group的进程&lt;/p&gt;
+
+&lt;p&gt;SIGINT    由Interrupt Key产生，通常是CTRL+C或者DELETE。发送给所有ForeGround Group的进程&lt;/p&gt;
+
+&lt;p&gt;SIGIO    异步IO事件&lt;/p&gt;
+
+&lt;p&gt;SIGIOT    实现相关的硬件异常，一般对应SIGABRT&lt;/p&gt;
+
+&lt;p&gt;SIGKILL    无法处理和忽略。中止某个进程&lt;/p&gt;
+
+&lt;p&gt;SIGLWP    由Solaris Thread Libray内部使用&lt;/p&gt;
+
+&lt;p&gt;SIGPIPE    在reader中止之后写Pipe的时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGPOLL    当某个事件发送给Pollable Device的时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGPROF    Setitimer指定的Profiling Interval Timer所产生&lt;/p&gt;
+
+&lt;p&gt;SIGPWR    和系统相关。和UPS相关。&lt;/p&gt;
+
+&lt;p&gt;SIGQUIT    输入Quit Key的时候（CTRL+\）发送给所有Foreground Group的进程&lt;/p&gt;
+
+&lt;p&gt;SIGSEGV    非法内存访问&lt;/p&gt;
+
+&lt;p&gt;SIGSTKFLT    Linux专用，数学协处理器的栈异常&lt;/p&gt;
+
+&lt;p&gt;SIGSTOP    中止进程。无法处理和忽略。&lt;/p&gt;
+
+&lt;p&gt;SIGSYS    非法系统调用&lt;/p&gt;
+
+&lt;p&gt;SIGTERM    请求中止进程，kill命令缺省发送&lt;/p&gt;
+
+&lt;p&gt;SIGTHAW    Solaris专用，从Suspend恢复时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGTRAP    实现相关的硬件异常。一般是调试异常&lt;/p&gt;
+
+&lt;p&gt;SIGTSTP    Suspend Key，一般是Ctrl+Z。发送给所有Foreground Group的进程&lt;/p&gt;
+
+&lt;p&gt;SIGTTIN    当Background Group的进程尝试读取Terminal的时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGTTOU    当Background Group的进程尝试写Terminal的时候发送&lt;/p&gt;
+
+&lt;p&gt;SIGURG    当out-of-band data接收的时候可能发送&lt;/p&gt;
+
+&lt;p&gt;SIGUSR1    用户自定义signal 1&lt;/p&gt;
+
+&lt;p&gt;SIGUSR2    用户自定义signal 2&lt;/p&gt;
+
+&lt;p&gt;SIGVTALRM    setitimer函数设置的Virtual Interval Timer超时的时候&lt;/p&gt;
+
+&lt;p&gt;SIGWAITING    Solaris Thread Library内部实现专用&lt;/p&gt;
+
+&lt;p&gt;SIGWINCH    当Terminal的窗口大小改变的时候，发送给Foreground Group的所有进程&lt;/p&gt;
+
+&lt;p&gt;SIGXCPU    当CPU时间限制超时的时候&lt;/p&gt;
+
+&lt;p&gt;SIGXFSZ    进程超过文件大小限制&lt;/p&gt;
+
+&lt;p&gt;SIGXRES    Solaris专用，进程超过资源限制的时候发送)&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

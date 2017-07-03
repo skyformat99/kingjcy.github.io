@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/calamari/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/calamari/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ceph管理平台calamari的安装</title>
+      <link>http://kingjcy.github.io/blog/2016/12/21/ceph%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0calamari%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Wed, 21 Dec 2016 16:17:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2016/12/21/ceph%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0calamari%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;p&gt;环境准备&lt;/p&gt;
+
+&lt;p&gt;pdapp17     172.32.148.127  ceph-deploy/mon/osd&lt;/p&gt;
+
+&lt;p&gt;pdapp18     172.32.148.128  mds&lt;/p&gt;
+
+&lt;p&gt;pdapp19     172.32.148.129  osd&lt;/p&gt;
+
+&lt;p&gt;pdapp20     172.32.148.130  osd&lt;/p&gt;
+
+&lt;p&gt;获取安装包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@pdapp17 calamari]# l
+总用量 21436
+-rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm
+-rw-r--r--. 1 root root     3661 12月 21 15:15 ceph-deploy-ceph.log
+-rw-r--r--. 1 root root   558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm
+-rw-r--r--. 1 root root  1099116 12月 21 15:15 romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在pdapp17上安装calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install -y calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;初始化calamari服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;calamari-ctl initialize
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在所有的机器上安装diamond-3.4.67-0.noarch.rpm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install -y diamond-3.4.67-0.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改所有机器的diamond的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/diamond/
+mv diamond.conf.example diamond.conf
+vi diamond.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;主要将host主机修改为安装calamari服务安装的主机名&lt;/p&gt;
+
+&lt;p&gt;重启diamond服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl start diamond
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重启之前需要加载systemd的配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在所有的主机主机上安装salt-minion&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install -y salt-minion
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后修改配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/salt/minion
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将master全部修改为calamari安装的主机名&lt;/p&gt;
+
+&lt;p&gt;然后重启diamond服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl restart diamond
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后启懂salt-minion服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl start salt-minion
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在安装过程中全部使用root，并且关闭所有机器的防火墙。&lt;/p&gt;
+
+&lt;p&gt;修改python脚本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /opt/calamari/salt/salt/_modules/ceph.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改下面三行，在571行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mon_epoch = status.get(&#39;monmap&#39;, {}).get(&#39;epoch&#39;)
+osd_epoch = status.get(&#39;osdmap&#39;, {}).get(&#39;osdmap&#39;, {}).get(&#39;epoch&#39;)
+mds_epoch = status.get(&#39;fsmap&#39;, status.get(&#39;mdsmap&#39;, {})).get(&#39;epoch&#39;)&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后使用salt命令来查看机器的情况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@pdapp17 salt]# salt-key -L
+Accepted Keys:
+Denied Keys:
+Unaccepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Rejected Keys:
+[root@pdapp17 salt]# salt-key -A
+The following keys are going to be accepted:
+Unaccepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Proceed? [n/Y] y
+Key for minion pdapp17 accepted.
+Key for minion pdapp18 accepted.
+Key for minion pdapp19 accepted.
+Key for minion pdapp20 accepted.
+[root@pdapp17 salt]# salt-key -L
+Accepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;分别使用下面的命令来检验各台机器的情况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;salt &amp;quot;*&amp;quot; test.ping
+salt &amp;quot;*&amp;quot; ceph.get_heartbeats
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在calamari主机上安装romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install -y romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改日志的权限&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 777 /var/log/calamari/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在这台机器上重启&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl restart supervisord.service
+systemctl restart httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就可以直接通过这台主机的ip来访问了。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

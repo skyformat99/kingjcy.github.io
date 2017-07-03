@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2016/01/28/sourcecode_study/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>sourcecode_study - kingjcy Blog</title>
+    
+<meta name="description" content="面对一项新技术的时候，我们怎样去学习才能循序渐进，最终理解得深刻？让我们先把可供自学的资料列出来，分析一下：先要知道这门技术是干嘛的，最直接的一种想法。Tutorial（入门教程）。由该项技术的官网提供。通常是英文的。这份资料是给初次接触该项技术的人看的，一般是一步一步地教你完成某些例子。当我们说某项技术对于新手不太友好的时候，一般也是因为这项技术的Tutorial部分做得不够好。这个通常是第一步，在这个过程中还包括了基本开发环境的搭建与使用。在这之后就可以通过查阅API文档进行正常的开发了，可以产出成果了，到了应用层了。一般的应用这里就基本可以了，但是作为一个程序员最好到spec才合格。Specification，简称Spec（规范和思想）。这是集中体现该项技术的设计思想的东西，是高度抽象的描述。这个一般也是一份完备的、系统的描述，包含该项技术涉及到的方方面面。这部分资料在不同的地方叫法不同，在相对简单的技术项目中，也可能没有；在另一些情况下，这部分资料混杂在其它文档资料之中；它还可能以论文（paper）的形式出现。这个一般就是涉及到这个项目的架构思想和一些技巧能力，能掌握这部分基本上的应用是没有问题的。虽然比较艰难，但是坚持都要到这个阶段，提高自己的能力。API Reference。大而全的API索引和文档，针对不同的语言接口可能提供多份。当我们使用这项技术进行编程的时候，API Reference自然是个离不开的、总是要不停去查询的一份资料。这个是不过入门还是开发中都是要大量查阅的，可以先浏览一边，最好是通读这个项目中比较重要的API。别人写的技术博客。质量良莠不齐，到底有没有价值，我们要学会去分辨。 技术书籍。跟技术博客类似，质量有好有坏。稍后我们和技术博客放在一起来分析。这两项就是一种参考资料不管是在项目前后都要进行查阅，要有分辨的能力。Source Code。如果我们要学习的技术是开源的，那么很幸运，我们能得到源代码。这是一份终极资料。有需要尤其的是优秀的自学项目，这个是一定的。对于那些最核心的技术，我们应该做到：通读Spec。读完就不再困惑。 重要部分的API Reference要通读。里面包含了很多跟实现有关的信息。 如果工作需要，还可能需要读到Source Code。特别是对于平常一直在使用的SDK，不一定从头到尾把源码读通，这样工作量太大且效率不高，但一定要把你的开发环境设置成一点击某个调用的方法就能跳转进源码实现。只有这样，你才能把平常开发的时间利用起来，随时随刻都点过去看源码。 对于剩下的知识里80%的部分，应该至少理解到Spec层次。只有这样，我们才能游刃有余地去使用它。通读重要的Spec，在很多情况下，其实还是很有难度的。这需要毅力，和一点点英语基础。">
+
+<meta property="og:title" content="sourcecode_study - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2016/01/28/sourcecode_study/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="面对一项新技术的时候，我们怎样去学习才能循序渐进，最终理解得深刻？让我们先把可供自学的资料列出来，分析一下：先要知道这门技术是干嘛的，最直接的一种想法。Tutorial（入门教程）。由该项技术的官网提供。通常是英文的。这份资料是给初次接触该项技术的人看的，一般是一步一步地教你完成某些例子。当我们说某项技术对于新手不太友好的时候，一般也是因为这项技术的Tutorial部分做得不够好。这个通常是第一步，在这个过程中还包括了基本开发环境的搭建与使用。在这之后就可以通过查阅API文档进行正常的开发了，可以产出成果了，到了应用层了。一般的应用这里就基本可以了，但是作为一个程序员最好到spec才合格。Specification，简称Spec（规范和思想）。这是集中体现该项技术的设计思想的东西，是高度抽象的描述。这个一般也是一份完备的、系统的描述，包含该项技术涉及到的方方面面。这部分资料在不同的地方叫法不同，在相对简单的技术项目中，也可能没有；在另一些情况下，这部分资料混杂在其它文档资料之中；它还可能以论文（paper）的形式出现。这个一般就是涉及到这个项目的架构思想和一些技巧能力，能掌握这部分基本上的应用是没有问题的。虽然比较艰难，但是坚持都要到这个阶段，提高自己的能力。API Reference。大而全的API索引和文档，针对不同的语言接口可能提供多份。当我们使用这项技术进行编程的时候，API Reference自然是个离不开的、总是要不停去查询的一份资料。这个是不过入门还是开发中都是要大量查阅的，可以先浏览一边，最好是通读这个项目中比较重要的API。别人写的技术博客。质量良莠不齐，到底有没有价值，我们要学会去分辨。 技术书籍。跟技术博客类似，质量有好有坏。稍后我们和技术博客放在一起来分析。这两项就是一种参考资料不管是在项目前后都要进行查阅，要有分辨的能力。Source Code。如果我们要学习的技术是开源的，那么很幸运，我们能得到源代码。这是一份终极资料。有需要尤其的是优秀的自学项目，这个是一定的。对于那些最核心的技术，我们应该做到：通读Spec。读完就不再困惑。 重要部分的API Reference要通读。里面包含了很多跟实现有关的信息。 如果工作需要，还可能需要读到Source Code。特别是对于平常一直在使用的SDK，不一定从头到尾把源码读通，这样工作量太大且效率不高，但一定要把你的开发环境设置成一点击某个调用的方法就能跳转进源码实现。只有这样，你才能把平常开发的时间利用起来，随时随刻都点过去看源码。 对于剩下的知识里80%的部分，应该至少理解到Spec层次。只有这样，我们才能游刃有余地去使用它。通读重要的Spec，在很多情况下，其实还是很有难度的。这需要毅力，和一点点英语基础。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2016/01/28/sourcecode_study/">
+<meta name="twitter:title" content="sourcecode_study - kingjcy Blog">
+<meta name="twitter:description" content="面对一项新技术的时候，我们怎样去学习才能循序渐进，最终理解得深刻？让我们先把可供自学的资料列出来，分析一下：先要知道这门技术是干嘛的，最直接的一种想法。Tutorial（入门教程）。由该项技术的官网提供。通常是英文的。这份资料是给初次接触该项技术的人看的，一般是一步一步地教你完成某些例子。当我们说某项技术对于新手不太友好的时候，一般也是因为这项技术的Tutorial部分做得不够好。这个通常是第一步，在这个过程中还包括了基本开发环境的搭建与使用。在这之后就可以通过查阅API文档进行正常的开发了，可以产出成果了，到了应用层了。一般的应用这里就基本可以了，但是作为一个程序员最好到spec才合格。Specification，简称Spec（规范和思想）。这是集中体现该项技术的设计思想的东西，是高度抽象的描述。这个一般也是一份完备的、系统的描述，包含该项技术涉及到的方方面面。这部分资料在不同的地方叫法不同，在相对简单的技术项目中，也可能没有；在另一些情况下，这部分资料混杂在其它文档资料之中；它还可能以论文（paper）的形式出现。这个一般就是涉及到这个项目的架构思想和一些技巧能力，能掌握这部分基本上的应用是没有问题的。虽然比较艰难，但是坚持都要到这个阶段，提高自己的能力。API Reference。大而全的API索引和文档，针对不同的语言接口可能提供多份。当我们使用这项技术进行编程的时候，API Reference自然是个离不开的、总是要不停去查询的一份资料。这个是不过入门还是开发中都是要大量查阅的，可以先浏览一边，最好是通读这个项目中比较重要的API。别人写的技术博客。质量良莠不齐，到底有没有价值，我们要学会去分辨。 技术书籍。跟技术博客类似，质量有好有坏。稍后我们和技术博客放在一起来分析。这两项就是一种参考资料不管是在项目前后都要进行查阅，要有分辨的能力。Source Code。如果我们要学习的技术是开源的，那么很幸运，我们能得到源代码。这是一份终极资料。有需要尤其的是优秀的自学项目，这个是一定的。对于那些最核心的技术，我们应该做到：通读Spec。读完就不再困惑。 重要部分的API Reference要通读。里面包含了很多跟实现有关的信息。 如果工作需要，还可能需要读到Source Code。特别是对于平常一直在使用的SDK，不一定从头到尾把源码读通，这样工作量太大且效率不高，但一定要把你的开发环境设置成一点击某个调用的方法就能跳转进源码实现。只有这样，你才能把平常开发的时间利用起来，随时随刻都点过去看源码。 对于剩下的知识里80%的部分，应该至少理解到Spec层次。只有这样，我们才能游刃有余地去使用它。通读重要的Spec，在很多情况下，其实还是很有难度的。这需要毅力，和一点点英语基础。">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "sourcecode_study - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-01-28T15:19:36JST",
+    "dateModified": "2016-01-28T15:19:36JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "面对一项新技术的时候，我们怎样去学习才能循序渐进，最终理解得深刻？\n让我们先把可供自学的资料列出来，分析一下：\n先要知道这门技术是干嘛的，最直接的一种想法。\nTutorial（入门教程）。由该项技术的官网提供。通常是英文的。这份资料是给初次接触该项技术的人看的，一般是一步一步地教你完成某些例子。当我们说某项技术对于新手不太友好的时候，一般也是因为这项技术的Tutorial部分做得不够好。这个通常是第一步，在这个过程中还包括了基本开发环境的搭建与使用。在这之后就可以通过查阅API文档进行正常的开发了，可以产出成果了，到了应用层了。一般的应用这里就基本可以了，但是作为一个程序员最好到spec才合格。\nSpecification，简称Spec（规范和思想）。这是集中体现该项技术的设计思想的东西，是高度抽象的描述。这个一般也是一份完备的、系统的描述，包含该项技术涉及到的方方面面。这部分资料在不同的地方叫法不同，在相对简单的技术项目中，也可能没有；在另一些情况下，这部分资料混杂在其它文档资料之中；它还可能以论文（paper）的形式出现。这个一般就是涉及到这个项目的架构思想和一些技巧能力，能掌握这部分基本上的应用是没有问题的。虽然比较艰难，但是坚持都要到这个阶段，提高自己的能力。\nAPI Reference。大而全的API索引和文档，针对不同的语言接口可能提供多份。当我们使用这项技术进行编程的时候，API Reference自然是个离不开的、总是要不停去查询的一份资料。这个是不过入门还是开发中都是要大量查阅的，可以先浏览一边，最好是通读这个项目中比较重要的API。\n别人写的技术博客。质量良莠不齐，到底有没有价值，我们要学会去分辨。 技术书籍。跟技术博客类似，质量有好有坏。稍后我们和技术博客放在一起来分析。这两项就是一种参考资料不管是在项目前后都要进行查阅，要有分辨的能力。\nSource Code。如果我们要学习的技术是开源的，那么很幸运，我们能得到源代码。这是一份终极资料。有需要尤其的是优秀的自学项目，这个是一定的。\n对于那些最核心的技术，我们应该做到：\n通读Spec。读完就不再困惑。 重要部分的API Reference要通读。里面包含了很多跟实现有关的信息。 如果工作需要，还可能需要读到Source Code。特别是对于平常一直在使用的SDK，不一定从头到尾把源码读通，这样工作量太大且效率不高，但一定要把你的开发环境设置成一点击某个调用的方法就能跳转进源码实现。只有这样，你才能把平常开发的时间利用起来，随时随刻都点过去看源码。 对于剩下的知识里80%的部分，应该至少理解到Spec层次。只有这样，我们才能游刃有余地去使用它。\n通读重要的Spec，在很多情况下，其实还是很有难度的。这需要毅力，和一点点英语基础。"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">sourcecode_study</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-01-28T15:19:36JST">Jan 28, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">sourcecode_study</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>面对一项新技术的时候，我们怎样去学习才能循序渐进，最终理解得深刻？</p>
+
+<p>让我们先把可供自学的资料列出来，分析一下：</p>
+
+<p>先要知道这门技术是干嘛的，最直接的一种想法。</p>
+
+<p>Tutorial（入门教程）。由该项技术的官网提供。通常是英文的。这份资料是给初次接触该项技术的人看的，一般是一步一步地教你完成某些例子。当我们说某项技术对于新手不太友好的时候，一般也是因为这项技术的Tutorial部分做得不够好。这个通常是第一步，在这个过程中还包括了基本开发环境的搭建与使用。在这之后就可以通过查阅API文档进行正常的开发了，可以产出成果了，到了应用层了。一般的应用这里就基本可以了，但是作为一个程序员最好到spec才合格。</p>
+
+<p>Specification，简称Spec（规范和思想）。这是集中体现该项技术的设计思想的东西，是高度抽象的描述。这个一般也是一份完备的、系统的描述，包含该项技术涉及到的方方面面。这部分资料在不同的地方叫法不同，在相对简单的技术项目中，也可能没有；在另一些情况下，这部分资料混杂在其它文档资料之中；它还可能以论文（paper）的形式出现。这个一般就是涉及到这个项目的架构思想和一些技巧能力，能掌握这部分基本上的应用是没有问题的。虽然比较艰难，但是坚持都要到这个阶段，提高自己的能力。</p>
+
+<p>API Reference。大而全的API索引和文档，针对不同的语言接口可能提供多份。当我们使用这项技术进行编程的时候，API Reference自然是个离不开的、总是要不停去查询的一份资料。这个是不过入门还是开发中都是要大量查阅的，可以先浏览一边，最好是通读这个项目中比较重要的API。</p>
+
+<p>别人写的技术博客。质量良莠不齐，到底有没有价值，我们要学会去分辨。
+技术书籍。跟技术博客类似，质量有好有坏。稍后我们和技术博客放在一起来分析。这两项就是一种参考资料不管是在项目前后都要进行查阅，要有分辨的能力。</p>
+
+<p>Source Code。如果我们要学习的技术是开源的，那么很幸运，我们能得到源代码。这是一份终极资料。有需要尤其的是优秀的自学项目，这个是一定的。</p>
+
+<p>对于那些最核心的技术，我们应该做到：</p>
+
+<p>通读Spec。读完就不再困惑。
+重要部分的API Reference要通读。里面包含了很多跟实现有关的信息。
+如果工作需要，还可能需要读到Source Code。特别是对于平常一直在使用的SDK，不一定从头到尾把源码读通，这样工作量太大且效率不高，但一定要把你的开发环境设置成一点击某个调用的方法就能跳转进源码实现。只有这样，你才能把平常开发的时间利用起来，随时随刻都点过去看源码。
+对于剩下的知识里80%的部分，应该至少理解到Spec层次。只有这样，我们才能游刃有余地去使用它。</p>
+
+<p>通读重要的Spec，在很多情况下，其实还是很有难度的。这需要毅力，和一点点英语基础。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

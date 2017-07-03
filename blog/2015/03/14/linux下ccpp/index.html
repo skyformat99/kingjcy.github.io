@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2015/03/14/linux%E4%B8%8Bccpp/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>linux下ccpp - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;这里主要是一些平时linux c/c&#43;&#43;下编程时遇到的一些注意点，记录下来便于学习和备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="linux下ccpp - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2015/03/14/linux%E4%B8%8Bccpp/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;这里主要是一些平时linux c/c&#43;&#43;下编程时遇到的一些注意点，记录下来便于学习和备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2015/03/14/linux%E4%B8%8Bccpp/">
+<meta name="twitter:title" content="linux下ccpp - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;这里主要是一些平时linux c/c&#43;&#43;下编程时遇到的一些注意点，记录下来便于学习和备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "linux下ccpp - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-03-14T15:14:28JST",
+    "dateModified": "2015-03-14T15:14:28JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3e这里主要是一些平时linux c\/c\x2b\x2b下编程时遇到的一些注意点，记录下来便于学习和备忘。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">linux下ccpp</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-03-14T15:14:28JST">Mar 14, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">linux下ccpp</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>这里主要是一些平时linux c/c++下编程时遇到的一些注意点，记录下来便于学习和备忘。</p>
+
+<p></p>
+
+<h2 id="c-c-库">c/c++库</h2>
+
+<p>在我们编程过程中经常需要用到别人封装好的库（库是一种用于快速开发，迅速上手，不必重复造轮子，任何一个产品都需要一个库文件提供api，让我们接入使用），在调用的时候，分为静态库和动态库。</p>
+
+<p>linux下静态库和共享库：库文件名必须以lib开头</p>
+
+<p>静态库是.a文件，编译时会包含在可执行文件中，可执行文件运行时是不需要该静态库的，这样会使可执行文件变大，占用内存和磁盘空间，ar rcs 库名 。o文件名</p>
+
+<p>动态库是.so .sa文件，这个是在可执行文件中保存一个地址列表，程序运行时用到才会去调用，不然加载到内存中共享，节省资源，现在比较实用的方法   gcc -shared -fPIC.o文件名 库名.so</p>
+
+<p>编译搜索路径：</p>
+
+<ol>
+<li>-L,-I指定的路劲下</li>
+<li>环境变量下指定路劲，libarypath ,LD_LIBRARY_PATH</li>
+<li>系统指定的路劲，usr/include,usr/lib,usr/local/inlude,usr/local/lib</li>
+</ol>
+
+<p>动态库的优先级高于静态库</p>
+
+<p>在一个程序运行时是不需要静态库的，但是需要链接动态库，所以一个可执行文件运行环境改变时，需要将其对应的动态库一并复制到新环境中，这些动态库是可以共享的</p>
+
+<p>我们可以使用ldd 可执行文件名，来查看对应的动态库是否找到了</p>
+
+<p>如果没有找到，则需要增加对应的动态库：</p>
+
+<ol>
+<li><p>往/lib和/usr/lib里面加东西，是不用修改/etc/ld.so.conf文件的，但是添加完后需要调用下ldconfig，不然添加的library会找不到。</p></li>
+
+<li><p>如果添加的library不在/lib和/usr/lib里面的话，就一定要修改/etc/ld.so.conf文件，往该文件追加library所在的路径，然后也需要重新调用下ldconfig命令。比如在安装MySQL的时候，其库文件/usr/local/mysql/lib，就需要追加到/etc/ld.so.conf文件中。命令如下：</p>
+
+<p>$echo &ldquo;/usr/local/mysql/lib&rdquo; &gt;&gt; /etc/ld.so.conf
+$ldconfig</p></li>
+
+<li><p>如果添加的library不在/lib或/usr/lib下，但是却没有权限操作写/etc/ld.so.conf文件的话，这时就需要往export里写一个全局变量LD_LIBRARY_PATH，就可以了。</p></li>
+</ol>
+
+<h3 id="ace">ACE</h3>
+
+<p>ACE可以说是在网络编程中比较著名的了，自适配通信环境（ADAPTIVE Communication Environment）是一个比较重量级的家伙，有大约二十万行代码，一堆的设计模式，很多架构，支持跨平台。ACE提供了一组丰富的可复用C++ Wrapper Facade（包装外观）和框架组件，可跨越多种平台完成通用的通信软件任务，其中包括：事件多路分离和事件处理器分派、信号处理、服务初始化、进程间通信、共享内存管理、消息路由、分布式服务动态（重）配置、并发执行和同步，等等。ACE的目标用户是高性能和实时通信服务和应用的开发者。它简化了使用进程间通信、事件多路分离、显式动态链接和并发的OO网络应用和服务的开发。此外，通过服务在运行时与应用的动态链接，ACE还使系统的配置和重配置得以自动化</p>
+
+<ol>
+<li><em>ACE_DLL</em></li>
+</ol>
+
+<p>ACE_DLL封装了操作系统对dll(动态链接库Dynamic Link Library)的操作，因为Windows和*nix对dll操作的接口不一致，如Windows使用LoadLibrary/GetProcAddress/FreeLibrary这三个函数来显示地加载dll，从dll中找到函数地址以及关闭dll，而Linux则使用dlopen/dlsym/dlclose做同样的事情，ACE要使得程序具有良好的跨平台特性就需要屏蔽这些平台的差异性，而向上呈现出统一的接口。</p>
+
+<p>下面这个例子展示了如何使用ACE_DLL类来操作dll。</p>
+
+<p>dll_impl.h</p>
+
+<pre><code>`
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+//向外暴露这个接口，使用&quot; extern &quot;C&quot; &quot;来声明之，否则待会儿调用symbol来获取本函数的地址时就必须填全名
+extern &quot;C&quot; person create_person(const string&amp; name, unsigned int age);
+
+class person
+{
+
+public:
+    person(const string&amp; name, unsigned int age);
+
+    ~person();
+
+    string get_person_name() const;
+
+    private:
+        string m_name;
+        unsigned int m_age;
+};
+`
+</code></pre>
+
+<p>dll_impl.cpp</p>
+
+<pre><code>`
+#include &quot;dll_impl.h&quot;
+
+person::person(const string&amp; name, unsigned int age) : m_name(name), m_age(age)
+{
+    cout &lt;&lt; m_name &lt;&lt; &quot; say hello!&quot; &lt;&lt; endl;
+}
+
+person::~person() 
+{
+    cout &lt;&lt; m_name &lt;&lt; &quot; say byebye!&quot; &lt;&lt; endl;
+}
+
+string person::get_person_name() const {
+    return m_name;
+}
+
+person create_person(const string&amp; name, unsigned int age){
+    return person(name, age);
+}
+`
+</code></pre>
+
+<p>dll_test.cpp</p>
+
+<pre><code>`
+#include &quot;ace/Log_Msg.h&quot;
+#include &quot;ace/DLL.h&quot; 
+#include &quot;ace/ACE.h&quot;
+
+#include &quot;dll_impl.h&quot;
+
+int main()
+{
+    ACE_DLL dll;
+
+    int retval = dll.open(&quot;libperson.so&quot;, ACE_DEFAULT_SHLIB_MODE, 1);  
+
+    if (retval != 0) {
+        return -1;
+    }else{
+        ACE_DEBUG((LM_DEBUG, &quot;open the dll successfully!!!\n&quot;));
+    }
+
+    //声明一个函数指针类型
+    typedef person (*person_factory)(const string&amp; name, unsigned int age);
+
+    person_factory fac=(person_factory)dll.symbol(&quot;create_person&quot;);
+
+    if(fac == NULL)
+    {
+        cout &lt;&lt; &quot;get symbol failed!&quot; &lt;&lt; endl;
+        return -1;
+    }
+
+    person per = fac(&quot;ecy&quot;, 24);
+
+    cout &lt;&lt; per.get_person_name() &lt;&lt; endl;
+
+    dll.close();
+
+    return 0;
+ }
+`
+</code></pre>
+
+<p>编译过程如下：</p>
+
+<p>1、首先生成动态链接库</p>
+
+<pre><code>g++ -shared -o libperson.so dll_impl.cpp
+</code></pre>
+
+<p>2、生成测试程序</p>
+
+<pre><code>g++ -g -o dll_test dll_test.cpp -L. -lperson -lACE
+</code></pre>
+
+<p>3、设置LD_LIBRARY_PATH</p>
+
+<p>测试程序运行结果如下：</p>
+
+<pre><code>ecy@ecy-geek:~/ACE/ace_dll$ ./dll_test 
+open the dll successfully!!!
+ecy say hello!
+ecy
+ecy say byebye!
+</code></pre>
+
+<h2 id="对象编程和结构编程">对象编程和结构编程</h2>
+
+<p>面向结构（c）就好比一个游戏中的怪物，我把这个怪物的各个方面分解成许多小的代码实现相应的动作最后共同实现，至此只这一个怪物，如果想要生成多个怪物，只需要重复编写相同的代码.</p>
+
+<p>面向对象（c++）就好比我把这个怪物封装为一个模型，然后生成多个对象，只对此对象进行在操作，这样每个对象的状态都可以是不一样的</p>
+
+<p>我觉得这个是对对象编程和结构编程一种比较好对描述。所以在很多过程中把c/c++结合起来实用比较好。</p>
+
+<h3 id="c">c++</h3>
+
+<ol>
+<li><p>private类成员不能在类以外直接访问，可以通过类的public方法来访问，当然类本身也可以访问</p></li>
+
+<li><p>类对象 是 在内存栈中使用构造函数开辟的一块内存空间&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-复制则将内存中的数据复制过去，但是本身对象地址不会改变</p>
+
+<p>类指针 是 在内存堆中使用new开辟出来的一个内存地址（nwe都是在内存堆上）,但是指针本身存储在栈上&mdash;&mdash;&ndash;复制则将改变了指针的地址，那么就都不一样了</p></li>
+
+<li><p>定义指针时，包括上面的类指针，一定要new（malloc（size））出一片内存空间来给这个指针赋值，这个时候才能调用构造函数来初始化这个类，才使得类的内存空间初始化完成，后才能调用内部的成员变量和成员函数，但是定义对象时会自动调用构造函数，完成类的空间分配。</p></li>
+
+<li><p>容器</p>
+
+<pre><code>顺序容器vector   类模板 (list, deque)
+声明：vector&lt;int&gt; ivec;
+初始化：vector&lt;T&gt; v1/v2(v1)/v1(n,i)/v1(n)值初始化
+操作：empty(),size()--&gt;size_type,push_back(),begin(),end()，c[n]=c.at(n),push_front(),front(),back()，push_insert()，删除erase(),clear() pop_back()，pop_front() ，swap()交换,assign()重置，capacity()容量，reserve（）剩余存储空间                        
+下标：从0开始
+迭代器iterator：--&gt;const_iterator 只读不写,迭代器循环一直到最后一个位置的下一位
+      for(vector&lt;int&gt;::iterator iter=iter.begin()，iter!=iter.end(),++iter) 
+      *iter=0;
+类型：size_type,iterator,const_iterator....
+string： 
+操作：substr()---&gt;s.substr(pos,n)   返回s中从下标pos开始的n个字符,replace()，append()追加,find(),compare(),getline().
+容器适配器：
+    stack:empty(),top(),pop(),size(),push()---&gt;FILO
+    queue:empty(),front(),back(),push(),size(),pop()
+    priority_queue:push(),top()
+
+
+
+
+关联容器
+类型：
+pair:声明            初始化                                   成员
+操作:pair&lt;t1,t2&gt;p1,pair&lt;t1,t2&gt;p1(v1,v2)--&gt;make_pair(v1,v2) p.first,p.second
+map :
+map&lt;k,v&gt;m;     m.instert(make_pair(v1,v2)),m.insert(map(string,int)::value_type(v1,v2))----&gt;value_type与pair&lt;const k,v&gt;是一样的
+
+map[key] = value的两种插入存储代码：
+        1、mapReconFtpCfg[key] = v_RecondCfgList[i];
+
+
+        2、mapProductCumulateCfg.insert( make_pair( g_ProductCumulateCfg[i].m_nPRODUCT_CODE, g_ProductCumulateCfg[i] ) );
+
+count(),find(),erase()       
+set 
+multimap的find，equal_range查找，find返回的是一直指向第一个key（value）的指针，equal_range返回是一对指针（pair），first指向的是第一个key（value），second指向的是最后一个key（value）的下一个位置，如果要用其中的数据，就可以遍历，用迭代器，前面的指针就是迭代器，只要++（被重载过，就相当于指针指向下一个）就可以一个个数据遍历然后就可以用了还可以用count()
+</code></pre></li>
+
+<li><p>string的find</p>
+
+<p>////find函数返回类型 size_type<br />
+ string s(&ldquo;1a2b3c4d5e6f7g8h9i1a2b3c4d5e6f7g8ha9i&rdquo;);<br />
+ string flag;<br />
+ string::size_type position;</p>
+
+<p>//find 函数 返回jk 在s 中的下标位置<br />
+ position = s.find(&ldquo;jk&rdquo;);<br />
+ if (position != s.npos)  //如果没找到，返回一个特别的标志c++中用npos表示，我这里npos取值是4294967295,它表示string结束的地方，相当于char*中的\0
+     {<br />
+       cout &lt;&lt; &ldquo;position is : &ldquo; &lt;&lt; position &lt;&lt; endl;<br />
+     }</p></li>
+
+<li><p>数据转换</p></li>
+</ol>
+
+<p>(long)-1  直接转化-1为long</p>
+
+<p>nvl(pool_id，0) 如果pool_id值不存在就为0，这个是在sql中实用</p>
+
+<p>lexical_cast</p>
+
+<p>XXXX_cast&lt;类型&gt;（数据）&mdash;&mdash;&mdash;-数据本身类型不变，产生一个临时数据</p>
+
+<ol>
+<li>fork</li>
+</ol>
+
+<p>fork,创建子进程，重fork向下是父进程和子进程同时执行，调用的一个奇妙之处就是它仅仅被调用一次，却能够返回两次，它可能有三种不同的返回值：</p>
+
+<pre><code>1）在父进程中，fork返回新创建子进程的进程ID；也就是说大于0的是父进程
+
+2）在子进程中，fork返回0；等于0的是子进程
+
+3）如果出现错误，fork返回一个负值；小于0出错
+</code></pre>
+
+<p>8.extern</p>
+
+<p>在源文件A里定义的函数，在其它源文件里是看不见的（即不能访问）。为了在源文件B里能调用这个函数，应该在B的头部加上一个外部声明：</p>
+
+<pre><code> extern   函数原型；   
+</code></pre>
+
+<p>这样，在源文件B里也可以调用那个函数了。</p>
+
+<ol>
+<li>启动参数</li>
+</ol>
+
+<p>argc表示启动参数的个数，argv代表启动参数的值 ，argv[0] 进程名，argv[1]第一个参数</p>
+
+<ol>
+<li><p>makefile基础</p>
+
+<p>MakeFile:
+tt:tt.o
+    g++ -o tt tt.o</p>
+
+<p>tt.o:tt.cpp
+    g++ -c -o tt.o tt.cpp</p></li>
+
+<li><p>typedef int nnn 别名，用nnn代表int</p></li>
+
+<li><p>include</p></li>
+</ol>
+
+<p>include 只是一个占位符，是把对应的文件都替代过来，到最后的一个大文件里是没有include的；</p>
+
+<ol>
+<li>传参</li>
+</ol>
+
+<p>string 是一个类：一般使用引用，减少资源利用</p>
+
+<pre><code>const string &amp;cValueStr 这个对同一块内存空间进行了const修饰，所以这块内存空间是不会变化的
+
+string &amp;cValueStr  既是传入的一般还要有相应的返回，引用和原来变量是公用的同一块内存，当cValueStr  变化了，原来的变量也就变化了
+
+string cValueStr  直接把变量赋给了cValueStr  ，开辟了两块空间内存，如果变量较大改用引用就不浪费资源了
+</code></pre>
+
+<p>long是基本类型：</p>
+
+<pre><code>一般不要使用引用。但是需要改变值就要引用
+
+对于返回参数来说，必须要引用，不然是值传递，不能起到传递的作用，要用long &amp;n  就是想第二种说的string &amp;cValueStr  既是传入的一般还要有相应的返回，改变的是变量的指针，即指向的地址
+
+
+
+#include 
+using namespace std;
+void swap(int &amp;a,int &amp;b)   //引用传递
+{
+int temp;
+temp =a;
+a = b;
+b = temp;
+}
+void swap(int *a,int *b)  //地址传递      指针变量存放地址---指针
+{
+int temp;
+temp = *a;
+*a = *b;
+*b =temp;
+}
+void swap1(int p,int q) //值传递 
+{
+int temp = p;
+p = q;
+q = temp;
+}
+int main()
+{
+int x =20;
+int y =24;
+int m =10;
+int n =11;
+swap(&amp;x,&amp;y);   /*地址传递*/
+swap(m,n);     /*引用传递*/
+int i =20;
+int j =24;
+swap1(i,j);    /*只改变栈中的值，主程序中的值并未改变*/
+}
+</code></pre>
+
+<p>大家发现没有，值传递和引用传递函数内部几乎都是一样的，引用传递相对值传递和地址传递的好处在于在不需要另外开辟一块内存空间，而地址传递和值传递都需要另外开辟空间，从效率上来讲，引用传递的效率比另外两个都要高，对于值传递，它只改变栈内的值，主程序中的值其实并未改变，大家使用的的时候要多加小心。</p>
+
+<p>&amp;a 取地址</p>
+
+<p>*a 取内容</p>
+
+<pre><code>int i = 2,*p=&amp;i;
+</code></pre>
+
+<p>这中定义的方式很经典的概括了*和&amp;，这边是定义指针p为int*，并且初始化为i的地址。</p>
+
+<pre><code>char *p  ======char p[]--------------------这个就是动态数组，需要在堆上开辟内存
+char p[10]--------------这个是固定大小的数组，也不等价于*p
+</code></pre>
+
+<ol>
+<li>重载</li>
+</ol>
+
+<p>运算符重载：实际上就相当于一个运算符就是一个函数，根据参数来识别，未重载之前是基本符号，相当于一个汇编指令</p>
+
+<p>重载就是为了重复使用相同函数名的函数，符号也一样。是类和运算结合的产物。</p>
+
+<ol>
+<li>模版</li>
+</ol>
+
+<p>函数模板：&mdash;-第一个参数推演出类型template <class T>  函数类型  函数名{}</p>
+
+<p>类模板：&mdash;&ndash;需要对象声明类型&mdash;temolate <class T> class A {}；   A<int> a;&mdash;&mdash;&mdash;&ndash;演化成什么类型就是什么类型，后面直接替代就好，都是在全局声明。</p>
+
+<p>模板类是不能单独写成cpp文件的，那样编译器无法识别模板是什么类型，就便不过去，如果不是模板类则可以的</p>
+
+<ol>
+<li><p>c_str()函数是指转为c风格的字符串c-string，在编程中减少for循环的实用可以提高性能</p>
+
+<p>m_nCityId = atol(s_cityId.c_str());
+c_str()是c_string就是转化为C语言的string类型也就是char *，string是在c++中被封装成类的。</p>
+
+<p>m_NowDate.getSysDate();
+LOG_DEBUG(g_logger, &ldquo;m_NowDate:&rdquo; &lt;&lt; m_NowDate.str());
+.str（）是指把对象m_NowDate中的成员变量显示出来string</p></li>
+
+<li><p>类对象实例化成员和容器中的成员：</p>
+
+<p>CNGReconBankCtrlDT dt;
+dt.m_nCITY_ID = v_RecondCfgList[i].m_nCITY_ID;
+这个是成员变量，可以直接赋值</p>
+
+<p>vector<CNGReconBankCtrlDT> dtlist;
+dtlist[0].m_nCITY_ID 这个可以当常量使用，但是不可以赋值改变</p></li>
+
+<li><p>纯虚函数 virtual void 函数名（） = 0;</p></li>
+</ol>
+
+<p>含纯虚函数 的是抽象类，抽象类只有用指针或者引用，不允许有对象</p>
+
+<ol>
+<li><p>标准库抛出的异常，都可以用exception类，里面有一个what（）函数，可以显示异常信息</p></li>
+
+<li><p>一般传入参数是数组字符的没有说明元素个数的，都会以null结尾的</p></li>
+</ol>
+
+<p>1、返回指针函数，正常返回一个非空指针，出错返回NULL；</p>
+
+<p>2、返回整数函数，正常返回非负整数，一般是0，出错返回一个负数，一般为-1</p>
+
+<p>3、xxx_t   整数</p>
+
+<ol>
+<li><p>时间系统：
+内核&mdash;&mdash;-time（NULL）&mdash;&mdash;&ndash;&gt;time_t t&mdash;&mdash;&ndash;localtime（&amp;t）&mdash;&ndash;&gt;tm *P&mdash;&mdash;&mdash;&mdash;strftime（地址。。。）&mdash;&mdash;-char buf[]</p></li>
+
+<li><p>exec系列函数，用新函数覆盖子进程函数&mdash;&mdash;&mdash;-execvp（进程名，argv）execlp（进程名，数组）</p></li>
+
+<li><p>精灵进程（守护进程，后台进程）：daemon   1、fork父进程结束  2、函数setsid（）3、函数umask（）4、close（fd）</p></li>
+
+<li><p>文件描述符</p>
+
+<p>0  标准输入stdin
+1  标准输出stdout
+2  标准出错输出stderr
+这些都是文件</p></li>
+
+<li><p>signal</p></li>
+</ol>
+
+<p>信号捕捉函数singal，当产生SIGTERM信号时触发函数cGiSigHandler</p>
+
+<p>信号捕获：函数signal（）    信号传递kill -信号名  pid</p>
+
+<p>signal()函数理解</p>
+
+<p>在<signal.h> 这个头文件中。</p>
+
+<p>signal（参数1，参数2）；</p>
+
+<p>参数1：我们要进行处理的信号。系统的信号我们可以再终端键入 kill -l查看(共64个)。其实这些信号时系统定义的宏。</p>
+
+<p>参数2：我们处理的方式（是系统默认还是忽略还是捕获）。</p>
+
+<p>一般有3中方式进行操作。</p>
+
+<p>(1)eg: signal(SIGINT ,SIG_ING );</p>
+
+<p>SIG_ING 代表忽略SIGINT信号，SIGINT信号代表由InterruptKey产生，通常是CTRL +C 或者是DELETE 。发送给所有ForeGround Group的进程。</p>
+
+<p>(2)eg: signal(SIGINT ,SIG_DFL );</p>
+
+<p>SIG_DFL代表执行系统默认操作，其实对于大多数信号的系统默认动作时终止该进程。这与不写此处理函数是一样的。</p>
+
+<p>(3)void ( <em>signal( int sig, void (</em> handler)( int )))( int );</p>
+
+<pre><code>int (*p)();
+</code></pre>
+
+<p>这是一个函数指针, p所指向的函数是一个不带任何参数, 并且返回值为int的一个函数.</p>
+
+<pre><code>int (*fun())();
+</code></pre>
+
+<p>这个式子与上面式子的区别在于用fun()代替了p,而fun()是一个函数,所以说就可以看成是fun()这个函数执行之后,它的返回值是一个函数指针,这个函数指针(其实就是上面的p)所指向的函数是一个不带任何参数,并且返回值为int的一个函数.</p>
+
+<p>void (*signal(int signo, void (*handler)(int)))(int);就可以看成是signal()函数(它自己是带两个参数,一个为整型,一个为函数指针的函数),而这个signal()函数的返回值也为一个函数指针,这个函数指针指向一个带一个整型参数,并且返回值为void的一个函数.</p>
+
+<p>在写信号处理函数时对于信号处理的函数也是void sig_fun(int signo);这种类型,恰好与上面signal()函数所返回的函数指针所指向的函数是一样的.void ( *signal() )( int );</p>
+
+<p>signal是一个函数, 它返回一个函数指针, 后者所指向的函数接受一个整型参数 且没有返回值, 仔细看, 是不是siganal( int signo, void (*handler)(int) )的第2个参数了,对了,其实他所返回的就是 signal的第2个信号处理函数,指向信号处理函数,就可以执行函数了( signal内部时, signal把信号做为参数传递给handler信号处理函数,接着 signal函数返回指针, 并且又指向信号处理函数, 就开始执行它)</p>
+
+<p>那么，signal函数的参数又是如何呢？signal函数接受两个参数：一个整型的信号编号，以及一个指向用户定义的信号处理函数的指针。我们此前已经定义了指向用户定义的信号处理函数的指针sfp：</p>
+
+<p>void (*sfp)(int);</p>
+
+<p>sfp 的类型可以通过将上面的声明中的sfp去掉而得到，即void (*)(int)。此外，signal函数的返回值是一个指向调用前的用户定义信号处理函数的指针，这个指针的类型与sfp指针类型一致。因此，我们可以如下声明signal函数：</p>
+
+<p>void (<em>signal(int, void(</em>)(int)))(int);</p>
+
+<p>同样地，使用typedef可以简化上面的函数声明：</p>
+
+<p>typedef void (*HANDLER)(int);
+HANDLER signal(int, HANDLER);</p>
+
+<ol>
+<li>include</li>
+</ol>
+
+<p>自定义下的头文件只能用双引号去include</p>
+
+<ol>
+<li>26</li>
+</ol></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/linux/">linux</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

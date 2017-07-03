@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2014/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>工具系列(一)：git和github的使用总结 - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="工具系列(一)：git和github的使用总结 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2014/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2014/11/02/%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97%E4%B8%80git%E5%92%8Cgithub%E7%9A%84%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+<meta name="twitter:title" content="工具系列(一)：git和github的使用总结 - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "工具系列(一)：git和github的使用总结 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-11-02T16:50:34JST",
+    "dateModified": "2014-11-02T16:50:34JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3e一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">工具系列(一)：git和github的使用总结</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-11-02T16:50:34JST">Nov 2, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">工具系列(一)：git和github的使用总结</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。</p>
+
+<p></p>
+
+<blockquote>
+<h1 id="git"><em>git</em></h1>
+</blockquote>
+
+<p>git是一个分布式版本控制系统，它没有中央服务器，本地便是一个版本库。不需要联网就能开发，它是通过推送自己修改的内容给对方来实现版本控制的。</p>
+
+<p>svn则与之相反，svn是一种集中式的版本控制系统，它拥有中央服务器，需要先从中央服务器中下载最新的版本，然后进行修改，最后在将修改的推送到中央服务器上，所以必须能连接上服务器，不然不利于开发。</p>
+
+<p>相对而言，git适用于随时随地的本地开发。</p>
+
+<h3 id="安装">安装</h3>
+
+<p>linux下安装（centos）</p>
+
+<p>1.yum基础软件包管理工具</p>
+
+<p><code>yum install git</code></p>
+
+<p>目前的yum源安装最高版本应该是1.7.1</p>
+
+<p>2.编译安装</p>
+
+<p>首先到github[<a href="https://github.com/git/git/releases">https://github.com/git/git/releases</a>] 上下载最新的release版本。安装之前需要先安装git的依赖包：：curl、zlib、openssl、expat，还有libiconv。</p>
+
+<p><code>$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</code></p>
+
+<pre><code>$ tar -zxf git-2.0.0.tar.gz
+$ cd git-2.0.0
+$ make configure
+$ ./configure --prefix=/usr
+$ make all doc info
+$ sudo make install install-doc install-html install-info
+</code></pre>
+
+<p>然后就可以检查版本安装是否成功了<code>git --version</code></p>
+
+<h3 id="操作使用">操作使用</h3>
+
+<p>git是一个本地管理的软件，首先要掌握本地的使用命令：</p>
+
+<ol>
+<li><p>git init  在当前目录建立仓库，也就是初始化本地目录环境，可以看见有一个隐藏文件.git 要输出这个仓库，直接删除这个目录（暴力方法）。</p></li>
+
+<li><p>新建文件 touch t</p></li>
+
+<li><p>加版本  git add t</p></li>
+
+<li><p>提交版本  git commit t -m &ldquo;版本说明日志&rdquo;</p>
+
+<pre><code>     git commit -a -m &quot;&quot;  提交所有文件
+</code></pre></li>
+
+<li><p>版本比较 git diff t</p></li>
+
+<li><p>显示版本日志  git log</p></li>
+
+<li><p>恢复上一个版本 git reset &ndash;hard 版本号，可以在git log中显示</p></li>
+
+<li><p>查看状态  git status</p></li>
+
+<li><p>分支</p>
+
+<p>创建分支:执行git branch <branchname>命令创建新分支</p>
+
+<p>切换分支:执行git checkout <branchname>命令切换到新分支&mdash;合一步  git checkout -b XXXX、</p>
+
+<p>git branch -a   查看远程分支</p>
+
+<p>git branch 查看本地分支</p>
+
+<p>删除本地分支   git branch -d xxxxx</p></li>
+</ol>
+
+<p>包括增删减改后的文件都可以用如上的操作，我这边主要对新增文件的操作，最重要是之后的提交。</p>
+
+<blockquote>
+<h1 id="github"><em>github</em></h1>
+</blockquote>
+
+<p>github是一个git版本的远程服务器仓库，很多开源的项目都会将代码保存在这个托管平台上，是一个类似于dockerhub的存储功能的公共仓库。</p>
+
+<p>这边主要记录一些github和本地的git仓库的交互：</p>
+
+<p>首先创建ssh key</p>
+
+<pre><code>ssh-keygen -t rsa -C &quot;574209987@qq.com&quot;----生成家目录下的.ssh/XXX 秘钥文件
+</code></pre>
+
+<p>然后到github的settings中设置ssh key把公共密码贴进去&rdquo;&rdquo;</p>
+
+<pre><code>git config --global 注册用户信息
+git config --global user.name &quot;jcy&quot;
+git config --global user.email &quot;574209987@qq.com&quot;
+git config --global core.editor vim-----commit后用vim编辑
+</code></pre>
+
+<p>远程到本地</p>
+
+<pre><code>git clone https://github.com/kingjcy/t2.git---远程克隆到本地
+git fetch https://github.com/kingjcy/t2.git---远程覆盖本地
+git pull https://github.com/kingjcy/t2.git----远程和本地合并，用于开发前同步版本
+</code></pre>
+
+<p>本地到远程</p>
+
+<pre><code>git remote -v 来查看当前项目中都添加了哪些远程仓库-----其中Origin一般是自己在服务器上的远程仓库，其他的为他人的远程仓库。
+git remote add 别名 https://github.com/kingjcy/Test.git-----添加远程库
+git push  别名 master（分支名）----推送到远程
+</code></pre>
+
+<blockquote>
+<h1 id="问题记录">问题记录</h1>
+</blockquote>
+
+<p>问题1：error: The requested URL returned error: 403 Forbidden while accessing <a href="https://github.com/kingjcy/kingjcy.github.io.git/info/refs">https://github.com/kingjcy/kingjcy.github.io.git/info/refs</a></p>
+
+<pre><code>修改vim .git/config
+url = https://@github.com/kingjcy/kingjcy.github.io.git改为url = https://kingjcy@github.com/kingjcy/kingjcy.github.io.git
+</code></pre>
+
+<p>问题2：(gnome-ssh-askpass:23502): Gtk-WARNING **: cannot open display:</p>
+
+<pre><code>执行unset SSH_ASKPASS，不用输用户名，直接输入密码。
+</code></pre></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/tool/">tool</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/git/">git</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/github/">github</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

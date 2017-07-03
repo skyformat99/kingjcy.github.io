@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.17" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>go积累 - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="go积累 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/">
+<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/">
+<meta name="twitter:title" content="go积累 - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/kingjcy.github.io\/"
+    },
+    "headline": "go积累 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2017-05-23T14:54:09JST",
+    "dateModified": "2017-05-23T14:54:09JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\x3cp\x3e学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">go积累</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-05-23T14:54:09JST">May 23, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">go积累</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。</p>
+
+<p></p>
+
+<p>每个 Go 程序都是由包组成的。</p>
+
+<p>程序运行的入口是包 <code>main</code>。</p>
+
+<p>go自己的设计哲学：
+1、不得包含源代码文件中没有用到的包
+2、函数的左括号{位置
+3、函数名大小写规则
+4、不一定要用分号结束语句
+package的名称必须和目录名保持一致</p>
+
+<p>Go语言的工作空间结构：
+Go语言的工作空间其实就是一个文件目录，目录中必须包含src、pkg、bin三个目录。</p>
+
+<p>其中src目录用于存放Go源代码，pkg目录用于package对象，bin目录用于存放可执行对象
+&ndash;对应的环境变量的搭建&ndash;
+go命名行用到了GOPATH环境变量，在这个目录下收索
+export GOPATH=你的工作空间路径
+export PATH=$PATH:$GOPATH/bin&mdash;-安装用这个路劲</p>
+
+<p>编译：build</p>
+
+<p>安装：
+1、只要进入对应的应用包目录，然后执行go install，就可以安装了</p>
+
+<p>2、在任意的目录执行如下代码go install mymath</p>
+
+<p>go命令行工具
+run:</p>
+
+<p>build:
+1.如果是普通包，就像我们在1.2节中编写的mymath包那样，当你执行go build之后，它不会产生任何文件。如果你需要在$GOPATH/pkg下生成相应的文件，那就得执行go install了。</p>
+
+<p>2.如果是main包，当你执行go build之后，它就会在当前目录下生成一个可执行文件。如果你需要在$GOPATH/bin下生成相应的文件，需要执行go install，或者使用go build -o 路径/a.exe。</p>
+
+<p>3.如果某个项目文件夹下有多个文件，而你只想编译某个文件，就可在go build之后加上文件名，例如go build a.go；go build命令默认会编译当前目录下的所有go文件。</p>
+
+<p>clean:
+清除编译文件</p>
+
+<p>fmt：
+格式化文件</p>
+
+<p>get：
+动态获取远程代码包</p>
+
+<p>install：
+这个命令在内部实际上分成了两步操作：第一步是生成结果文件(可执行文件或者.a包)，第二步会把编译好的结果移到$GOPATH/pkg或者$GOPATH/bin</p>
+
+<p>test：
+自动读取源码目录下面名为*_test.go的文件，生成并运行测试用的可执行文件</p>
+
+<p>go fix 用来修复以前老版本的代码到新版本，例如go1之前老版本的代码转化到go1
+ go version 查看go当前的版本
+go env 查看当前go的环境变量
+go list 列出当前全部安装的package
+ go run 编译并运行Go程序</p>
+
+<p>标准库：
+bufio   带缓冲的io</p>
+
+<p>io</p>
+
+<p>fmt   基本输出输入</p>
+
+<p>Net/http.    http包提供了HTTP客户端和服务端的实现。</p>
+
+<p>strconv 类型转换 Itoa  Atoi</p>
+
+<p>time</p>
+
+<pre><code>//返回现在时间  
+tNow := time.Now()  
+//时间转化为string，layout必须为 &quot;2006-01-02 15:04:05&quot;  
+timeNow := tNow.Format(&quot;2006-01-02 15:04:05&quot;)  
+fmt.Println(&quot;tNow(time format):&quot;, tNow)  
+fmt.Println(&quot;tNow(string format):&quot;, timeNow)  
+</code></pre>
+
+<p>make（）
+make用于内建类型（map、slice 和channel）的内存分配。new用于各种类型的内存分配。
+//创建一个初始元素个数为5的数组切片，元素初始值为0
+ a := make([]int, 5)  // len(a)=5</p>
+
+<p>1、变量
+用关键字var来声明</p>
+
+<p>可以直接用:=这个服务声明初始化，但必须不是声明过的。
+a := 10类似于var i int
+        i = 10；
+<code>:=</code> 结构不能使用在函数外。</p>
+
+<p>支持多重赋值
+i，j = j，i这样就完成了交换。</p>
+
+<p>支持匿名变量
+func getname（）（firstname,lastname,nickname）{
+}
+&mdash;&gt;<em>,</em>,nickname := getname();可以这样玩</p>
+
+<p>2、常量：
+iota 一个特殊的常量，出现一次自动加一，当出现const的时候会自动置零
+常量不能使用 := 语法定义</p>
+
+<p>枚举类型不需要enum
+正常定义
+const（
+    Sunday = iota
+    monday
+)
+其中的大写字母开头的在包外可用，小写字母开头的包内私有</p>
+
+<p>3、数组
+1、主要是值类型，每次传参都是一个副本，要传址，需要用数组切片
+2、遍历数组元素，除了用下标，也可以用关键字range，有两个返回值，一个是下标，一个是value,在对strings进行遍历的时候一个是下表，一个是ASII</p>
+
+<p>var a [10]int</p>
+
+<p>var a = [10]int{0,1,2,3,4,5,6,7,8,9}<br />
+var a = [&hellip;]int{0,1,2,3,4,5,6,7,8,9}</p>
+
+<p>var a = [2][2]int{[2]int{1,1}, [2]int{2,2}}<br />
+var a = [2][2]int{{1,1}, {2,2}}</p>
+
+<p>数组切片
+创建：1、在一个数组的基础上用[:]来创建
+    2、直接用make函数创建
+创建一个初始元素个数为5的数组切片，元素初始值为0：
+mySlice1 := make([] int, 5)
+创建一个初始元素个数为5的数组切片，元素初始值为0，并预留10个元素的存储空间：
+mySlice2 := make([] int, 5, 10)
+直接创建并初始化包含5个元素的数组切片：
+mySlice3 := [] int{1, 2, 3, 4, 5}</p>
+
+<p>cap():分配的空间
+len()：所占的元素
+copy()：复制，以小的为准</p>
+
+<p>优点：可以动态增减元素，原始数组增减数据是要重新分配内存，然后将数据搬过去，这样比较消耗性能，但是数据切片则可以用cap（）知道分配的空间，然后充分利用，而后在内存不够会自动扩大内存。</p>
+
+<p>map[key] = value
+定义 var a map[string]value</p>
+
+<p>4、控制语句：
+顺序if条件中初始化的变量可以在else中使用，选择，循环(支持for，不支持while和do_while)，goto语句&mdash;》跳到标志位</p>
+
+<p>5、函数：
+关键字func、函数名、参数列表、返回值、函数体和返回语句。
+func Add(a int, b int) (ret int, err error) {
+}</p>
+
+<p>函数调用：
+因此需要先牢记这样的规则：小写字母开头的函数只在本包内可见，大写字母开头的函数才能被其他包使用。
+n, err := Foo(0)
+if err != nil {
+ // 错误处理
+} else {
+ // 使用返回值n
+}</p>
+
+<p>不定参数：传入参数的数量不变
+语法糖：&hellip;type
+func myfunc(args &hellip; int) {
+}
+如果是不同的类型则用interface{}
+func myfunc(args &hellip; interface{}) {
+}</p>
+
+<p>如果你的 slice 已经有了多个值，想把它们作为变参使用，你要这样调用 func(slice&hellip;)。
+nums := []int{1, 2, 3, 4}
+myfunc(noms…)</p>
+
+<p>多返回值
+支持匿名函数&mdash;闭包？？？</p>
+
+<p>6、错误处理
+error接口
+关键字defer
+defer 语句会延迟函数的执行直到上层函数返回。
+两个函数panic，recover</p>
+
+<p>面向对象：&mdash;很直接，没有隐藏this指针
+func (a Integer) Less(b Integer) bool { // 面向对象
+return a &lt; b
+}
+func Integer_Less(a Integer, b Integer) bool { // 面向过程
+return a &lt; b
+}
+a.Less(2) // 面向对象的用法
+Integer_Less(a, 2) // 面向过程的用法</p>
+
+<p>STRUCT基本和c差不多，也有继承采取了组合的文法&ndash;通过结构体继承，没有private，public关键字来保护，而是通过字母大小写来，
+初始化常用方法：
+rect1 := new(Rect)
+rect2 := &amp;Rect{}
+rect3 := &amp;Rect{0, 0, 100, 200}
+rect4 := &amp;Rect{width: 100, height: 200}</p>
+
+<p>未显式初始化的都是对应的零值
+构造函数用一个全局函数NEWXXXX来表示
+func NewRect(x, y, width, height float64) *Rect {
+ return &amp;Rect{x, y, width, height}
+}</p>
+
+<p>最重要的就是接口interface（是any类型）的改造-非侵入式的.&mdash;可以完成包与包之间的调用，或者同一个包内部的调用
+interface是一组method的组合，我们通过interface来定义对象的一组行为。实现interface中的所有方法的类就是实现了这个接口，可以调用这个接口以及这个接口中的方法。interface中的方法不能重载。
+空的interface可以存储任意类型的值。</p>
+
+<p>并发：不要通过共享内存来通信，而应该通过通信来共享内存。
+多进程&mdash;&mdash;-开销太大，都是基于内核的调用
+多线程&mdash;&mdash;-相对开销小，但是远远达不到需求，最多并发1万这样
+基于回调的非阻塞/异步io&mdash;-共享内存式的同步异步，导致编程相当复杂
+协程&mdash;-轻量级线程，轻松达到100w的并发</p>
+
+<p>所以在协程的基础上，go支持在语言上实现协程并发goroutine，goroutine类似于进程，各个协程之间互不干涉，通过channel通信控制，这样减少了很多的复杂问题，所以goroutine重点：
+关键字go&mdash;&ndash;只要在执行体前加上关键字go就能实现协程并发
+消息通信channel&mdash;&ndash;不同的协程之间，通过消息channel通信</p>
+
+<p>channel：关键字chan
+声明var ch chan int
+var m map[ string] chan bool
+ch := make( chan int)
+c := make( chan int, 1024)&ndash;带缓冲的channel，后面的参数是缓冲大小
+c := make( []chan int, 1024)&ndash;这个是是数组</p>
+
+<p>写 ch &lt;- 1     向channel写入数据通常会导致程序阻塞，直到有其他goroutine从这个channel中读取数据
+读 value := &lt;-ch    如果channel之前没有写入数据，那么从channel中读取数据也会导致程序阻塞，直到channel中被写入数据为止——这两点可以用于数据同步。</p>
+
+<p>select {
+ case &lt;-chan1:
+ // 如果chan1成功读到数据，则进行该case处理语句
+ case chan2 &lt;- 1:
+ // 如果成功向chan2写入数据，则进行该case处理语句
+default:
+ // 如果上面都没有成功，则进入default处理流程
+}&mdash;-超时机制也是用select来实现的</p>
+
+<p>单向channel：
+var ch1 chan int // ch1是一个正常的 channel，不是单向的
+var ch2 chan&lt;- float64// ch2是单向channel，只用于写float64数据
+var ch3 &lt;-chan int // ch3 是单向channel，只用于读取int数据</p>
+
+<p>ch4 := make( chan int)
+ch5 := &lt;-chan int(ch4) // ch5就是一个单向的读取channel
+ch6 := chan&lt;- int(ch4) // ch6 是一个单向的写入channel</p>
+
+<p>关闭close（）&mdash;-x, ok := &lt;-ch，可以通过ok来判断channel是否关闭，一个非空的通道也是可以关闭的，但是通道中剩下的值仍然可以被接收到。</p>
+
+<p>go并发也提供锁机制Mutex和RWMutex
+var l sync.Mutex
+func foo() {
+ l.Lock()
+ defer l.Unlock()
+ //&hellip;
+}</p>
+
+<p>全局唯一性操作
+var once sync.Once</p>
+
+<p>time</p>
+
+<p>time.Duration（时长，耗时）
+time.Time（时间点）
+time.C（放时间点的管道）[ Time.C:=make(chan time.Time) ]</p>
+
+<p>方法
+定时器time—sleep，after（time.Duration）多长时间后执行，一个阻塞一个非阻塞
+打点器tick（time.Duration）每隔多长时间执行一次
+time.Now()当前时间
+可以哟过sub，add加减
+定时器和打点器可以实现速率控制</p>
+
+<p>排序：sort包
+常用方法：
+排序字符串sort.Strings()
+排序int。sort.Ints()
+是否排序好。sort.IntsAreSorted(ints）
+可以自定义排序实现sort.Interface中的方法，然后可以用sort方法自定义排序。</p>
+
+<p>Panic处理意外的错误。</p>
+
+<p>golang中包的理解
+定义：
+关键字 package XXXX</p>
+
+<p>我们知道一个非main包在编译后会生成一个.a文件（在临时目录下生成，除非使用go install安装到$GOROOT或$GOPATH下，否则你看不到.a），用于后续可执行程序链接使用。</p>
+
+<p>Go标准库中的包对应的源码部分路径在：$GOROOT/src，而标准库中包编译后的.a文件路径在$GOROOT/pkg/darwin_amd64下。</p>
+
+<p>执行go install libproj1/foo，Go编译器编译foo包，并将foo.a安装到$GOPATH/pkg/darwin_amd64/libproj1下&mdash;不用先go build然后在go install</p>
+
+<p>因此我们要依赖第三方包，就必须搞到第三方包的源码，这也是Golang包管理的一个特点</p>
+
+<p>编译main包时，编译器到底用的是.a还是源码？&mdash;-在使用第三方包的时候，当源码和.a均已安装的情况下，编译器链接的是源码。
+最根本的是链接的是链接了以该最新源码编译的临时目录下的.a文件，而不是pkg下面的.a文件。&mdash;如果想依赖pkg下面的.a文件，那只能分布编译了，把6l链接时的-L $WORK 去掉，才会找到pkg下面（具体参考-X -V参数的编译原理）</p>
+
+<p>标志库也是依赖源码编译产生的临时目录下的.a文件，但是当标准库的源码发生变化时，编译器不会尝试重新编译&ndash;但是第三方库发生变化时，会重新编译生成临时文件，然后连接</p>
+
+<p>临时文件不是一直存在的，只是在编译的时候产生</p>
+
+<p>import后面的是路劲名还是包名？&mdash;&ndash;import后面的最后一个元素应该是路径，就是目录，并非包名。&ndash;而调用的函数的那个是包名&mdash;所以源码路劲一定要存在，不然就can not find</p>
+
+<p>引用包
+import 文件所在的目录路劲（除去$GOPATH/src）
+同一个目录下不能定义不同的package</p>
+
+<p>import m &ldquo;lib/math&rdquo;import语句用m替代lib/math  m指代的是lib/math路径下唯一的那个包&ndash;一定是唯一，不然报错</p>
+
+<p>第三方语言包管理插件godep安装：
+我这边找了一个现成的exe文件放到对应的目录下：<a href="https://github.com/kr/heroku-buildpack-go/raw/master/linux-amd64/bin/godep">https://github.com/kr/heroku-buildpack-go/raw/master/linux-amd64/bin/godep</a></p>
+
+<p>go环境变量：
+GOROOT ：go的安装目录</p>
+
+<p>GOPATH ：你自己开发go语言代码的目录，目录结构为bin,pkg,src，如果你有多个目录，那么使用分号分隔。</p>
+
+<p>网络编程：
+    func Dial(net, addr string) (Conn, error)</p>
+
+<p>其中net参数是网络协议的名字， addr参数是IP地址或域名，而端口号以“:”的形式跟随在地址
+或域名的后面，端口号可选。如果连接成功，返回连接对象，否则返回error。</p>
+
+<p>Dial() 函数支持如下几种网络协议： &ldquo;tcp&rdquo; 、 &ldquo;tcp4&rdquo; （仅限IPv4）、 &ldquo;tcp6&rdquo; （仅限
+IPv6）、 &ldquo;udp&rdquo; 、 &ldquo;udp4&rdquo;（仅限IPv4）、 &ldquo;udp6&rdquo;（仅限IPv6）、 &ldquo;ip&rdquo; 、 &ldquo;ip4&rdquo;（仅限IPv4）和&rdquo;ip6&rdquo;
+（仅限IPv6）。</p>
+
+<p>func DialTCP(net string, laddr, raddr *TCPAddr) (c *TCPConn, err error)
+func DialUDP(net string, laddr, raddr *UDPAddr) (c *UDPConn, err error)
+func DialIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error)
+func DialUnix(net string, laddr, raddr *UnixAddr) (c *UnixConn, err error)</p>
+
+<p>与之前使用Dail() 的例子相比，这里有两个不同:
+net.ResolveTCPAddr() ，用于解析地址和端口号；
+net.DialTCP() ，用于建立链接。
+这两个函数在Dial() 中都得到了封装。/Applications/QQ.app</p>
+
+<p>我们给 fmt.Println 一个短名字的别名
+var p = fmt.Println</p>
+
+<p>随机数rand</p>
+
+<p>Rand. Intn(n)。int代表整数，后面的n代表范围，其他类型类似</p>
+
+<p>((rand.Float64() * 5) + 5)这个技巧可以用来生成其他范围的随机浮点数，例如5.0 &lt;= f &lt;= 10.0</p>
+
+<p>种子
+s1 := rand.NewSource(time.Now().UnixNano())
+    r1 := rand.New(s1)</p>
+
+<p>相同的种子产生的随机数是一样的。</p>
+
+<p>数字解析包strconv
+Url解析包url
+SHA1散列就是通过一个算法计算散列值，使用Go 在多个 crypto/* 包中实现了一系列散列函数。
+Base64编码—加密解密</p>
+
+<p>命令行参数
+os.Args 提供原始命令行参数访问功能。注意，切片中的第一个参数是该程序的路径，并且 os.Args[1:]保存所有程序的的参数。</p>
+
+<p>命令行标志解析flag包
+环境变量设置在os包</p>
+
+<ol>
+<li>安装</li>
+</ol>
+
+<p>go提供了安装包，直接下载解压设置/etc/profile环境变量就可以使用go了，简单便捷</p>
+
+<pre><code>export GOROOT=/home/test/Go/go—-源码安装路径
+
+export PATH=$GOROOT/bin:$PATH——声明应用
+
+export GOPATH=/home/test/Go/go-project—你的项目路劲
+</code></pre>
+
+<ol>
+<li>import</li>
+</ol>
+
+<p>import &ldquo;fmt&rdquo;最常用的一种形式</p>
+
+<p>import &ldquo;./test&rdquo;导入同一目录下test包中的内容</p>
+
+<p>import f &ldquo;fmt&rdquo;导入fmt，并给他启别名ｆ</p>
+
+<p>import . &ldquo;fmt&rdquo;，将fmt启用别名&rdquo;.&ldquo;，这样就可以直接使用其内容，而不用再添加ｆｍｔ，如fmt.Println可以直接写成Println</p>
+
+<p>import  _ &ldquo;fmt&rdquo; 表示不使用该包，而是只是使用该包的init函数，并不显示的使用该包的其他内容。注意：这种形式的import，当import时就执行了fmt包中的init函数，而不能够使用该包的其他函数。</p>
+
+<ol>
+<li>struct</li>
+</ol>
+
+<p>定义：</p>
+
+<pre><code>type person struct {
+    name string
+    age int
+}   
+</code></pre>
+
+<p>初始化：</p>
+
+<ol>
+<li><pre><code>    var P person  // P现在就是person类型的变量了
+    P.name = &quot;Astaxie&quot;  // 赋值&quot;Astaxie&quot;给P的name属性.
+    P.age = 25  // 赋值&quot;25&quot;给变量P的age属性type person struct {
+</code></pre></li>
+
+<li><p>按照顺序提供初始化值</p>
+
+<p>P := person{&ldquo;Tom&rdquo;, 25}</p></li>
+
+<li><p>通过field:value的方式初始化，这样可以任意顺序</p>
+
+<p>P := person{age:24, name:&ldquo;Tom&rdquo;}</p></li>
+</ol>
+
+<p>4。 interface</p>
+
+<p>Go语言引入了一种新类型—Interface，它在效果上实现了类似于C++的“多态”概念。</p>
+
+<p>从语法上看，Interface定义了一个或一组method(s)，这些method只有函数签名，没有具体的实现代码（有没有联想起C++中的虚函数？）。若某个数据类型实现了Interface中定义的那些被称为&rdquo;methods&rdquo;的函数，则称这些数据类型实现（implement）了interface。</p>
+
+<p>Interface类型的更通用定义可归纳如下：
+type Namer interface {
+    Method1(param_list) return_type
+    Method2(param_list) return_type
+    &hellip;
+}</p>
+
+<p>以fmt包的Printf()函数为例，其函数签名格式如下：</p>
+
+<pre><code>func Printf(format string, a ...interface{}) (n int, err error)
+</code></pre>
+
+<p>该函数在实现底层的打印行为时，要求传入的可变长参数实现了fmt包中定义的Stringer接口，这个接口类型定义及描述如下：</p>
+
+<pre><code>type Stringer interface {
+    String() string
+}
+</code></pre>
+
+<p>下面是一段简单的打印代码：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type IPAddr [4]byte
+
+func main() {
+    addrs := map[string]IPAddr{
+        &quot;loopback&quot;:  {127, 0, 0, 1},
+        &quot;googleDNS&quot;: {8, 8, 8, 8},
+    }
+    for n, a := range addrs {
+        fmt.Printf(&quot;%v: %v\n&quot;, n, a)
+    }
+}
+
+loopback: [127 0 0 1]
+googleDNS: [8 8 8 8]
+</code></pre>
+
+<p>现在要求按规定的格式打印：IPAddr{1, 2, 3, 4}应该输出为&rdquo;1.2.3.4&rdquo;的格式，所以IPAddr这个自定义类型需要实现Stringer接口，实现代码如下：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type IPAddr [4]byte
+
+// TODO: Add a &quot;String() string&quot; method to IPAddr.
+func (ip IPAddr) String() string {    
+    return fmt.Sprintf(&quot;%v.%v.%v.%v&quot;, ip[0], ip[1], ip[2], ip[3])
+}
+
+func main() {
+    addrs := map[string]IPAddr{
+        &quot;loopback&quot;:  {127, 0, 0, 1},
+        &quot;googleDNS&quot;: {8, 8, 8, 8},
+    }
+    for n, a := range addrs {
+        fmt.Printf(&quot;%v: %v\n&quot;, n, a)
+    }
+}
+
+googleDNS: 8.8.8.8
+loopback: 127.0.0.1
+</code></pre>
+
+<ol>
+<li>go tool</li>
+</ol>
+
+<p>go build</p>
+
+<p>go build 命令主要是用于测试编译。在包的编译过程中，若有必要，会同时编译与之相关联的包。</p>
+
+<p>如果是普通包，当你执行go build命令后，不会产生任何文件。</p>
+
+<p>如果是main包，当只执行go build命令后，会在当前目录下生成一个可执行文件。如果需要在$GOPATH/bin木下生成相应的exe文件，需要执行go install 或者使用 go build -o 路径/a.exe。</p>
+
+<p>如果某个文件夹下有多个文件，而你只想编译其中某一个文件，可以在 go build 之后加上文件名，例如 go build a.go；go build 命令默认会编译当前目录下的所有go文件。</p>
+
+<p>你也可以指定编译输出的文件名。比如，我们可以指定go build -o myapp.exe，默认情况是你的package名(非main包)，或者是第一个源文件的文件名(main包)。</p>
+
+<p>go build 会忽略目录下以”_”或者”.”开头的go文件。</p>
+
+<p>go build的时候会选择性地编译以系统名结尾的文件（Linux、Darwin、Windows、Freebsd）。例如linux系统下面编译只会选择array_linux.go文件，其它系统命名后缀文件全部忽略。</p>
+
+<p>go clean</p>
+
+<p>go clean 命令是用来移除当前源码包里面编译生成的文件，这些文件包括</p>
+
+<p>_obj/ 旧的object目录，由Makefiles遗留
+_test/ 旧的test目录，由Makefiles遗留
+_testmain.go 旧的gotest文件，由Makefiles遗留
+test.out 旧的test记录，由Makefiles遗留
+build.out 旧的test记录，由Makefiles遗留
+*.[568ao] object文件，由Makefiles遗留
+DIR(.exe) 由 go build 产生
+DIR.test(.exe) 由 go test -c 产生
+MAINFILE(.exe) 由 go build MAINFILE.go产生</p>
+
+<p>go fmt</p>
+
+<p>go fmt 命令主要是用来帮你格式化所写好的代码文件。</p>
+
+<p>比如我们写了一个格式很糟糕的test.go文件，我们只需要使用fmt命令，就可以让go帮我们格式化我们的代码文件。但是我们一般很少使用这个命令，因为我们的开发工具一般都带有保存时自动格式化功能，这个功能底层其实就是调用了 go fmt 命令而已。</p>
+
+<p>使用go fmt命令，更多时候是用gofmt，而且需要参数-w，否则格式化结果不会写入文件。gofmt -w src，可以格式化整个项目。</p>
+
+<p>go get</p>
+
+<p>go get 命令主要是用来动态获取远程代码包的，目前支持的有BitBucket、GitHub、Google Code和Launchpad。这个命令在内部实际上分成了两步操作：第一步是下载源码包，第二步是执行go install。下载源码包的go工具会自动根据不同的域名调用不同的源码工具.</p>
+
+<p>所以为了go get 能正常工作，你必须确保安装了合适的源码管理工具，并同时把这些命令加入你的PATH中。其实go get支持自定义域名的功能，具体参见go help remote。</p>
+
+<p>go get 命令本质上可以理解为：首先通过源码工具clone代码到src目录，然后执行go install。</p>
+
+<p>如果需要更新所有的依赖库，增加 -u 参数</p>
+
+<p>go install</p>
+
+<p>go install 命令在内部实际上分成了两步操作：第一步是生成结果文件(可执行文件或者.a包)，第二步会把编译好的结果移到 $GOPATH/pkg 或者 $GOPATH/bin。</p>
+
+<p>.exe文件： 一般是 go install 带main函数的go文件产生的，有函数入口，所有可以直接运行。</p>
+
+<p>.a应用包： 一般是 go install 不包含main函数的go文件产生的，没有函数入口，只能被调用。</p>
+
+<p>go test</p>
+
+<p>go test 命令，会自动读取源码目录下面名为*_test.go的文件，生成并运行测试用的可执行文件。输出的信息类似</p>
+
+<p>ok   archive/tar   0.011s
+FAIL archive/zip   0.022s
+ok   compress/gzip 0.033s
+&hellip;
+默认的情况下，不需要任何的参数，它会自动把你源码包下面所有test文件测试完毕，当然你也可以带上参数，详情请参考go help testflag</p>
+
+<p>go doc</p>
+
+<p>go doc 命令其实就是一个很强大的文档工具。</p>
+
+<p>如何查看相应package的文档呢？ 例如builtin包，那么执行go doc builtin；如果是http包，那么执行go doc net/http；查看某一个包里面的函数，那么执行godoc fmt Printf；也可以查看相应的代码，执行godoc -src fmt Printf；</p>
+
+<p>通过命令在命令行执行 godoc -http=:端口号 比如godoc -http=:8080。然后在浏览器中打开127.0.0.1:8080，你将会看到一个golang.org的本地copy版本，通过它你可以查询pkg文档等其它内容。如果你设置了GOPATH，在pkg分类下，不但会列出标准包的文档，还会列出你本地GOPATH中所有项目的相关文档，这对于经常被限制访问的用户来说是一个不错的选择。</p>
+
+<p>其他命令</p>
+
+<p>Go语言还提供了其它有用的工具，例如下面的这些工具</p>
+
+<p>go fix 用来修复以前老版本的代码到新版本，例如go1之前老版本的代码转化到go1</p>
+
+<p>go version 查看go当前的版本</p>
+
+<p>go env 查看当前go的环境变量</p>
+
+<p>go list 列出当前全部安装的package</p>
+
+<p>go run 编译并运行Go程序</p>
+
+<h2 id="开发工具">开发工具</h2>
+
+<p>尝试了liteide和sublime text，感觉还是sublime text比较好，它支持源码的查看的跳转，编译执行，而liteide在跳转上有点问题，不能跳转到自定义的函数，不知道是不是我配置的问题（基本上就是在查看选项设定了go环境变量），所以自己开发的时候决定用sublime</p>
+
+<p>sublime text go环境搭建</p>
+
+<ol>
+<li><p>在mac上安装go并设置好环境变量</p></li>
+
+<li><p>安装一个Package Control，这个应该是一个插件管理工具，用于安装很多其他插件的，只要用ctrl+ ` 打开命令行输入执行命令</p>
+
+<p>import urllib.request,os,hashlib; h = &lsquo;7183a2d3e96f11eeadd761d777e62404&rsquo; + &lsquo;e330c659d4bb41d3bdf022e94cab3cd0&rsquo;; pf = &lsquo;Package Control.sublime-package&rsquo;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &lsquo;<a href="http://sublime.wbond.Net/'">http://sublime.wbond.Net/'</a> + pf.replace(&rsquo; &lsquo;, &lsquo;%20&rsquo;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&lsquo;Error validating download (got %s instead of %s), please try manual install&rsquo; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &lsquo;wb&rsquo; ).write(by)</p></li>
+</ol>
+
+<p>安装好后可以在preferences中找到这个插件。</p>
+
+<ol>
+<li>安装go插件gosublime</li>
+</ol>
+
+<p>我们点击Package Control插件或者用shift+ctrl+p来打开，输入pcip（Package Control:Install Package的缩写）也就是安装插件的意思。然后输入gosublime就会自动安装了，安装好了依旧可以在preferences下找到这个gosublime插件。</p>
+
+<p>4.然后就可以在gopath下建src，src下建对应的项目，使用sublime进行编码，查看，按command+b进入到shell模式进行编译执行。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.io/tags/go/">go</a></li>
+          
+          <li><a href="http://kingjcy.github.io/tags/language/">language</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2016. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

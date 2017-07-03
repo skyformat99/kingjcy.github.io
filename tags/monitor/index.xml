@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/monitor/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/monitor/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>netdata tutorials</title>
+      <link>http://kingjcy.github.io/blog/2017/03/01/netdata-tutorials/</link>
+      <pubDate>Wed, 01 Mar 2017 09:34:05 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2017/03/01/netdata-tutorials/</guid>
+      <description>&lt;p&gt;netdata技术文章&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

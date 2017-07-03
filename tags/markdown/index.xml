@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/markdown/index.xml</link>
+    <description>Recent content on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <atom:link href="http://kingjcy.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>markdown的基本使用</title>
+      <link>http://kingjcy.github.io/blog/2014/11/24/markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 24 Nov 2014 16:50:39 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/blog/2014/11/24/markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h2 id=&#34;markdown&#34;&gt;Markdown&lt;/h2&gt;
+
+&lt;p&gt;markdown是一种可以用文本编辑器就编写带有特定格式的标记语言，语法简单，容易上手，使得编写文档到web界面展示更加简便快捷，也使我们的精力更加注重到文档内容的本身。这边只是对于markdown的语法做一个简单的学习与备忘，没有深入研究。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;基本使用&#34;&gt;基本使用&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;1-标题&#34;&gt;1. 标题&lt;/h3&gt;
+
+&lt;p&gt;在Markdown当中设置标题，有两种方式：&lt;/p&gt;
+
+&lt;p&gt;第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标题。&lt;/p&gt;
+
+&lt;p&gt;第二种：在文字开头加上 “#”，通过“#”数量表示几级标题。（一共只有1~6级标题，1级标题字体最大）&lt;/p&gt;
+
+&lt;p&gt;标题&lt;/p&gt;
+
+&lt;p&gt;#一级标题&lt;/p&gt;
+
+&lt;p&gt;##二级标题&lt;/p&gt;
+
+&lt;p&gt;###三级标题&lt;/p&gt;
+
+&lt;h3 id=&#34;2-块注释&#34;&gt;2. 块注释&lt;/h3&gt;
+
+&lt;p&gt;通过在文字开头添加“&amp;gt;”表示块注释。（当&amp;gt;和文字之间添加五个blank时，块注释的文字会有变化。）也就是平时使用的引用。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-粗体与斜体&#34;&gt;3. 粗体与斜体&lt;/h3&gt;
+
+&lt;p&gt;Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就是粗体的语法，用一个 * 包含一段文本就是斜体的语法。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;
+将需要设置为斜体的文字两端使用1个“*”或者“_”夹起来&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;粗体&lt;/strong&gt;
+将需要设置为斜体的文字两端使用2个“*”或者“_”夹起来&lt;/p&gt;
+
+&lt;h3 id=&#34;4-无序列表&#34;&gt;4. 无序列表&lt;/h3&gt;
+
+&lt;p&gt;在文字开头添加(&lt;em&gt;, +, and -)实现无序列表。但是要注意在(&lt;/em&gt;, +, and -)和文字之间需要添加空格。（建议：一个文档中只是用一种无序列表的表示方式）&lt;/p&gt;
+
+&lt;h3 id=&#34;5-有序列表&#34;&gt;5. 有序列表&lt;/h3&gt;
+
+&lt;p&gt;使用数字后面跟上句号。（还要有空格）&lt;/p&gt;
+
+&lt;h3 id=&#34;6-链接-links&#34;&gt;6. 链接（Links）&lt;/h3&gt;
+
+&lt;p&gt;Markdown中有两种方式，实现链接，分别为内联方式和引用方式。&lt;/p&gt;
+
+&lt;p&gt;内联方式：This is an &lt;a href=&#34;http://example.com/&#34;&gt;example link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;This is an [example link](http://example.com/).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;引用方式：
+I get 10 times more traffic from &lt;a href=&#34;http://google.com/&#34; title=&#34;Google&#34;&gt;Google&lt;/a&gt; than from &lt;a href=&#34;http://search.yahoo.com/&#34; title=&#34;Yahoo Search&#34;&gt;Yahoo&lt;/a&gt; or &lt;a href=&#34;http://search.msn.com/&#34; title=&#34;MSN Search&#34;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3].
+
+
+[1]: http://google.com/        &amp;quot;Google&amp;quot; 
+[2]: http://search.yahoo.com/  &amp;quot;Yahoo Search&amp;quot; 
+[3]: http://search.msn.com/    &amp;quot;MSN Search&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-图片-images&#34;&gt;7. 图片（Images）&lt;/h3&gt;
+
+&lt;p&gt;图片的处理方式和链接的处理方式，非常的类似。&lt;/p&gt;
+
+&lt;p&gt;内联方式：
+&lt;code&gt;![alt text](/path/to/img.jpg &amp;quot;Title&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;引用方式：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;![alt text][id]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;[id]: /path/to/img.jpg &amp;quot;Title&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;9-代码-html中所谓的code&#34;&gt;9. 代码（HTML中所谓的Code）&lt;/h3&gt;
+
+&lt;p&gt;实现方式有两种：&lt;/p&gt;
+
+&lt;p&gt;第一种：简单文字出现一个代码框。使用&lt;code&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;。（&lt;code&gt;不是单引号而是左上角的ESC下面~中的&lt;/code&gt;）&lt;/p&gt;
+
+&lt;p&gt;第二种：大片文字需要实现代码框。使用Tab和四个空格。&lt;/p&gt;
+
+&lt;h3 id=&#34;10-脚注-footnote&#34;&gt;10. 脚注（footnote）&lt;/h3&gt;
+
+&lt;p&gt;实现方式如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hello[^hello]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;[^hello]: hi&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;11-分割线&#34;&gt;11. 分割线&lt;/h3&gt;
+
+&lt;p&gt;分割线的语法只需要另起一行，连续输入三个星号 ***或者&amp;mdash; 即可。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;12-表格&#34;&gt;12. 表格&lt;/h3&gt;
+
+&lt;p&gt;使用很简单&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Year&lt;/th&gt;
+&lt;th&gt;Temperature (low)&lt;/th&gt;
+&lt;th&gt;Temperature (high)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1900&lt;/td&gt;
+&lt;td&gt;-10&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1910&lt;/td&gt;
+&lt;td&gt;-15&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1920&lt;/td&gt;
+&lt;td&gt;-10&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code&gt;Year | Temperature (low) | Temperature (high)
+-----|----|----
+1900 | -10 | 25
+1910 | -15 | 30
+1920 | -10 | 32
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到这边差不多就够我平时写文档时用的了，如果有需要特殊情况的可以进行网上搜索，查询使用.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
