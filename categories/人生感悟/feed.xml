@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>人生感悟 on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/</link>
+    <description>Recent content in 人生感悟 on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 10 May 2016 15:03:35 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>人生课堂---交通事故</title>
+      <link>http://kingjcy.github.io/post/life_experience/</link>
+      <pubDate>Tue, 10 May 2016 15:03:35 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/life_experience/</guid>
+      <description>&lt;p&gt;这次的交通事故教会我不少。。。社会也需要我不断的学习&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My Future Direction</title>
+      <link>http://kingjcy.github.io/post/myfuturedirection/</link>
+      <pubDate>Fri, 06 May 2016 17:24:35 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/myfuturedirection/</guid>
+      <description>&lt;p&gt;今天写下这个也许有点早了，就像我之前想的Linux c/c++ 服务端就是并发编程的一样，并不是你看到那样，只是你还没有深入，没有达到要求，但是也写下来吧！对我以后的发展方向与结果也有一个印证。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>觉得很有想法，也许对以后的道路会有影响。</title>
+      <link>http://kingjcy.github.io/post/technology-manage/</link>
+      <pubDate>Fri, 29 Apr 2016 16:25:18 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/technology-manage/</guid>
+      <description>&lt;p&gt;觉得很有想法，也许对以后的道路会有影响。虽然在国内也许不适用，但是总是有个梦。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

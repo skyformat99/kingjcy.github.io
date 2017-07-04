@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis Cluster on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/redis-cluster/</link>
+    <description>Recent content in Redis Cluster on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 21 Jul 2016 17:12:36 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/redis-cluster/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>redis cluster</title>
+      <link>http://kingjcy.github.io/post/redis-cluster/</link>
+      <pubDate>Thu, 21 Jul 2016 17:12:36 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-cluster/</guid>
+      <description>&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。
+首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，
+可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

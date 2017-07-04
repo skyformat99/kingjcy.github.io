@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/linux-partition-mount/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>linux分区与挂载 - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="linux分区与挂载 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/linux-partition-mount/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/linux-partition-mount/">
+<meta name="twitter:title" content="linux分区与挂载 - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "linux分区与挂载 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-12-20T15:47:26JST",
+    "dateModified": "2015-12-20T15:47:26JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "<p>Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。</p>
+
+<p></p>"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">linux分区与挂载</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-12-20T15:47:26JST">Dec 20, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">linux分区与挂载</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。</p>
+
+<p></p>
+
+<h2 id="分区">分区</h2>
+
+<p>其实是对磁盘进行划分以便于存储管理。主要是使用fdisk命令来实现：</p>
+
+<pre><code>[root@pdapp17 /]# fdisk -l
+
+磁盘 /dev/sda：214.7 GB, 214748364800 字节，419430400 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x0006fd47
+
+设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     1026047      512000   83  Linux
+/dev/sda2         1026048   419430399   209202176   8e  Linux LVM
+</code></pre>
+
+<p>可以看出这台机器上有一块大小为214G的磁盘，这块磁盘有两个分区，sda1和sda2,假如是一块新磁盘，就可以直接使用fdisk /dev/sda来进行sda[1-N]，具体操作很简单这边就不赘述了。</p>
+
+<p>这边有一个概念，就是不同接口对应的磁盘名也是不一样的，IDE接口的则是hd[a-z][1-N],SCSI和SATA接口的则是sd[a-z][1-N],还有其他。</p>
+
+<h2 id="lvm">LVM</h2>
+
+<p>上面分区分好后我们可以使用LVM来进行管理，由此可见，LVM是对磁盘分区后的一种管理机制。</p>
+
+<p>LVM中有四大命令</p>
+
+<ul>
+<li><p>首先是将分区转化为物理卷，然后就可以在物理卷上进行逻辑卷的操作了</p>
+
+<p>pvcreate /dev/sda2</p></li>
+
+<li><p>创建卷组,并将这个物理卷加入到卷组中</p>
+
+<p>vgcreate vgdata /dev/sda2</p></li>
+
+<li><p>从物理卷中分割内存创建逻辑卷</p>
+
+<p>lvcreate -L size -n name vgdata</p></li>
+</ul>
+
+<p>有些卷组已经创建好的，我们就可以直接来创建逻辑卷了，可以用vgdisplay来查看有哪些卷组。同样查看有哪些逻辑卷用lvdisplay.</p>
+
+<ul>
+<li><p>删除逻辑卷</p>
+
+<p>lvremove name</p></li>
+</ul>
+
+<h2 id="格式化逻辑卷">格式化逻辑卷</h2>
+
+<pre><code>mkfs [-V] [-t fstype] [fs-options] filesys [blocks] [-L Lable]
+-t  就是指定格式化文件的格式
+</code></pre>
+
+<p>可以直接使用</p>
+
+<pre><code>mkfs.xfs(文件格式)
+</code></pre>
+
+<p>上面的命令也还是调用的mkfs.xfs这个命令。</p>
+
+<h2 id="挂载">挂载</h2>
+
+<pre><code>mount [-t vfstype] [-o options] device dir
+-t vfstype 指定文件系统的类型，通常不必指定。mount 会自动选择正确的类型。
+-o options 主要用来描述设备或档案的挂接方式。ro：采用只读方式挂接设 rw：采用读写方式挂接设备 iocharset：指定访问文件系统所用字符集
+device 要挂接(mount)的设备。也就是逻辑卷。
+dir设备在系统上的挂接点(mount point)。也就是挂载目录。
+</code></pre>
+
+<h2 id="查看">查看</h2>
+
+<pre><code>[root@pdapp17 /]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+/dev/mapper/centos-root   50G  6.4G   44G   13% /
+devtmpfs                 4.9G     0  4.9G    0% /dev
+tmpfs                    4.9G   84K  4.9G    1% /dev/shm
+tmpfs                    4.9G   17M  4.9G    1% /run
+tmpfs                    4.9G     0  4.9G    0% /sys/fs/cgroup
+/dev/mapper/centos-home   50G   33M   50G    1% /home
+/dev/sda1                497M  141M  356M   29% /boot
+tmpfs                   1001M   16K 1001M    1% /run/user/42
+tmpfs                   1001M     0 1001M    0% /run/user/0
+/dev/mapper/centos-ceph   50G  5.1G   45G   11% /ceph
+</code></pre>
+
+<p>df加-h可以更加清晰的查看系统文件，看看逻辑卷挂载点在哪，也可以直接看挂载</p>
+
+<pre><code>[root@pdapp17 /]# mount | grep centos
+/dev/mapper/centos-root on / type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+/dev/mapper/centos-home on /home type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+/dev/mapper/centos-ceph on /ceph type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+</code></pre>
+
+<h2 id="卸载挂载的文件系统">卸载挂载的文件系统</h2>
+
+<pre><code>umount device
+</code></pre></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/linux/">linux</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/mount/">mount</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

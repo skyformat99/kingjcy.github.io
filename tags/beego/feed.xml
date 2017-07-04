@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beego on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/beego/</link>
+    <description>Recent content in Beego on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 12 Jun 2017 10:34:15 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/beego/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从harbor入手beego框架</title>
+      <link>http://kingjcy.github.io/post/beego/</link>
+      <pubDate>Mon, 12 Jun 2017 10:34:15 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/beego/</guid>
+      <description>&lt;p&gt;beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

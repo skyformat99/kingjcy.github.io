@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/web/</link>
+    <description>Recent content in Web on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 01 Jun 2017 11:26:04 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/web/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>web</title>
+      <link>http://kingjcy.github.io/post/web/</link>
+      <pubDate>Thu, 01 Jun 2017 11:26:04 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/web/</guid>
+      <description>JavaScript web 开发人员必须学习的 3 门语言中的一门： HTML 定义了网页的内容 CSS 描述了网页的布局 JavaScript 网页的行为 前端归根到底是生成一个html文件来给浏览器渲染展示</description>
+    </item>
+    
+  </channel>
+</rss>

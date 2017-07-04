@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/go/</link>
+    <description>Recent content in Go on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 12 Jun 2017 10:34:15 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/go/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从harbor入手beego框架</title>
+      <link>http://kingjcy.github.io/post/beego/</link>
+      <pubDate>Mon, 12 Jun 2017 10:34:15 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/beego/</guid>
+      <description>&lt;p&gt;beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go积累</title>
+      <link>http://kingjcy.github.io/post/go/</link>
+      <pubDate>Tue, 23 May 2017 14:54:09 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/go/</guid>
+      <description>&lt;p&gt;学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go项目--frp</title>
+      <link>http://kingjcy.github.io/post/frp/</link>
+      <pubDate>Fri, 17 Jun 2016 09:54:42 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/frp/</guid>
+      <description>&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

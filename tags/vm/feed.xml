@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vm on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/vm/</link>
+    <description>Recent content in Vm on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 23 May 2015 17:44:38 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/vm/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>虚拟机以及虚拟化技术</title>
+      <link>http://kingjcy.github.io/post/virtualMechine/</link>
+      <pubDate>Sat, 23 May 2015 17:44:38 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/virtualMechine/</guid>
+      <description>&lt;p&gt;虚拟网络连接的几种模式&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

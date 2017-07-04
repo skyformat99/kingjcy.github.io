@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.17" />
+<meta name="generator" content="Hugo 0.24.1" />
 
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kingjcy.github.io/tags/fastdfs/index.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kingjcy.github.io/tags/fastdfs/feed.xml">
 
 <link rel="canonical" href="http://kingjcy.github.io/tags/fastdfs/">
 
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Fastdfs - kingjcy Blog</title>
     
-    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
   </head>
 
   <body>
@@ -34,9 +34,25 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
           </div>
 
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
           
 
         </div>
@@ -61,36 +77,17 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-01-16T10:46:35JST">Jan 16, 2016</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2016/01/16/fastdfs-tutorial/">fastdfs tutorial</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/fastdfs-tutorial/">fastdfs tutorial</a></h2>
   </header>
 
   
-  <div class="summary">fastdfs是一个分布式存储系统
-安装（v5.08） 环境准备
-172.32.148.127 client
-172.32.148.128 storage
-172.32.148.129 tracker storage
-172.32.148.130 storage
-依赖libfastcommon安装
-v5版本已经不需要单独安装libevent，但是需要安装项目中的libfastcommon，所有机器都要安装，下载地址
-git clone https://github.com/happyfish100/libfastcommon.git
-然后用自带的脚本make.sh编译安装
-./make.sh ./make.sh install  fastdfs安装
-依赖安装好就开始安装fastdfs，下载压缩包fastdfs-5.08.tar.gz，所有机器进行安装
-./make.sh ./make.sh install  配置文件与进程
-fastdfs安装好后在/etc/fdfs/下面会有对应的配置文件，这个项目的配置文件注释还是比较全面的，对它进行修改
- tracker.conf  监控进程使用的配置文件，主要是配置端口，日志数据存储路径，端口一般使用配置文件默认的22122，在172.32.148.129上操作
-the tracker server port port=22122
-the base path to store data and log files base_path=/home/jcy/fastdfs/fastdfs_tracker
-然后启动监控进程，到对应的路径下看日志
-fdfs_trackerd /etc/fdfs/tracker.conf start  可以ps看一下进程启动状况，也可以到日志看启动状况，也可以通过netstat来看
-netstat -tupln|grep tracker #可以看到如下： tcp 0 0 0.0.0.0:22122 0.0.0.0:* LISTEN 18559/fdfs_trackerd   storage.conf  存储进程使用的配置文件，主要是指定tracker服务的地址和端口，因为存储进程要定时给监控进程发送数据信息，同group内的storage进程会相互connect，来同步文件。这些进程在172.</div>
+  <div class="summary">fastdfs是一个分布式存储系统 安装（v5.08） 环境准备 172.32.148.127 client 172.32.148.128 storage 172.32.148.129 tracker storage 172.32.148.130 storage 依赖libfastcommon安装 v5版本已经不需要单独安装l</div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2016/01/16/fastdfs-tutorial/" title="fastdfs tutorial">Read More…</a>
+    <a href="http://kingjcy.github.io/post/fastdfs-tutorial/" title="fastdfs tutorial">Read More…</a>
   </footer>
 </article>
 </li>
@@ -111,25 +108,25 @@ netstat -tupln|grep tracker #可以看到如下： tcp 0 0 0.0.0.0:22122 0.0.0.0
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
       
     </div>
   </section>
@@ -141,9 +138,9 @@ netstat -tupln|grep tracker #可以看到如下： tcp 0 0 0.0.0.0:22122 0.0.0.0
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
       
-      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
       
     </div>
   </section>
@@ -154,25 +151,25 @@ netstat -tupln|grep tracker #可以看到如下： tcp 0 0 0.0.0.0:22122 0.0.0.0
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
       
-      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
       
-      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
       
-      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
       
-      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
       
-      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
       
-      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
       
-      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
       
-      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
       
-      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
       
     </div>
   </section>
@@ -189,7 +186,7 @@ netstat -tupln|grep tracker #可以看到如下： tcp 0 0 0.0.0.0:22122 0.0.0.0
 
     <footer class="l-footer">
       <div class="container">
-        <p>Copyright (c) 2016. All rights reserved.</p>
+        <p>Copyright (c) 2017. All rights reserved.</p>
         <aside>
           <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
           <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>

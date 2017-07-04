@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>源码解析 on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+    <description>Recent content in 源码解析 on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 28 Jul 2016 15:39:45 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>redis源码解析</title>
+      <link>http://kingjcy.github.io/post/redis-source-parse-1/</link>
+      <pubDate>Thu, 28 Jul 2016 15:39:45 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-source-parse-1/</guid>
+      <description>&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

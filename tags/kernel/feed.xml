@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kernel on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/kernel/</link>
+    <description>Recent content in Kernel on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 25 Nov 2016 11:20:34 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/kernel/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>centos内核升级</title>
+      <link>http://kingjcy.github.io/post/centos-kernel-update/</link>
+      <pubDate>Fri, 25 Nov 2016 11:20:34 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/centos-kernel-update/</guid>
+      <description>&lt;p&gt;最近在研究docker，在安装的时候遇到了升级内核的需求，docker需要内核在3.10.X，所以这边进行内核升级的研究。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

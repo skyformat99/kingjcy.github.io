@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/restful/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>restful架构 - kingjcy Blog</title>
+    
+<meta name="description" content="REST &amp;ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描">
+
+<meta property="og:title" content="restful架构 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/restful/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="REST &amp;ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/restful/">
+<meta name="twitter:title" content="restful架构 - kingjcy Blog">
+<meta name="twitter:description" content="REST &amp;ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "restful架构 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2017-06-23T17:30:47JST",
+    "dateModified": "2017-06-23T17:30:47JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "REST &ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">restful架构</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-23T17:30:47JST">Jun 23, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">restful架构</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>REST &ndash; REpresentational State Transfer 直接翻译：表现层状态转移。</p>
+
+<p>经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。</p>
+
+<ol>
+<li><p>REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计 RESTful API（REST风格的网络接口）；</p></li>
+
+<li><p>Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词。“资源”是REST架构或者说整个网络处理的核心。</p></li>
+
+<li><p>用HTTP协议里的动词来实现资源的添加，修改，删除等操作。即通过HTTP动词来实现资源的状态扭转：GET    用来获取资源，POST  用来新建资源（也可以用于更新资源），PUT    用来更新资源，DELETE  用来删除资源。</p></li>
+
+<li><p>Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等。当然还可以压缩HTTP传输时的数据（on-wire data compression）。</p></li>
+
+<li><p>用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。</p></li>
+</ol>
+
+<p>要理解rest，需要先理解api，api就是接口，提供给外部进行互相交互的。那么现在了解rest，rest是一种架构风格，我们先来理解rest架构风格，这边需要web，web三个关键点：识别，表示，交互，对应的是URL识别资源，representation（html，xml）表示资源，通过协议（http）和资源进行交互，整合一下就是通过http协议和URL利用client／server models对资源进行CURD操作。</p>
+
+<p>我们提供restful类型的api有什么好处呢？因为rest有限制，可以是一个统一的规范。就具有通用性。</p>
+
+<ol>
+<li>使用客户/服务器模型。客户和服务器之间通过一个统一的接口来互相通讯。</li>
+<li>层次化的系统。在一个REST系统中，客户端并不会固定地与一个服务器打交道。</li>
+<li>无状态。在一个REST系统中，服务端并不会保存有关客户的任何状态。也就是说，客户端自身负责用户状态的维持，并在每次发送请求时都需要提供足够的信息。</li>
+<li>可缓存。REST系统需要能够恰当地缓存请求，以尽量减少服务端和客户端之间的信息传输，以提高性能。</li>
+<li>统一的接口。一个REST系统需要使用一个统一的接口来完成子系统之间以及服务与用户之间的交互。这使得REST系统中的各个子系统可以独自完成演化。</li>
+</ol>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/restful/">restful</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/api/">api</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

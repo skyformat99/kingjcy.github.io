@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术文章 on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+    <description>Recent content in 技术文章 on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 23 Jun 2017 17:30:47 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>restful架构</title>
+      <link>http://kingjcy.github.io/post/restful/</link>
+      <pubDate>Fri, 23 Jun 2017 17:30:47 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/restful/</guid>
+      <description>REST &amp;ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描</description>
+    </item>
+    
+    <item>
+      <title>从harbor入手beego框架</title>
+      <link>http://kingjcy.github.io/post/beego/</link>
+      <pubDate>Mon, 12 Jun 2017 10:34:15 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/beego/</guid>
+      <description>&lt;p&gt;beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>chrome的开发者工具</title>
+      <link>http://kingjcy.github.io/post/chrome-dev-tool/</link>
+      <pubDate>Wed, 07 Jun 2017 15:56:36 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/chrome-dev-tool/</guid>
+      <description>&lt;p&gt;chrome的开发者工具在开发过程中是十分常用的，这边整理一些。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gulp</title>
+      <link>http://kingjcy.github.io/post/gulp/</link>
+      <pubDate>Tue, 06 Jun 2017 10:56:22 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/gulp/</guid>
+      <description>&lt;p&gt;编译工具gulp&lt;/p&gt;
+
+&lt;p&gt;Gulp 是一个构建工具，一个 streaming 构建工具，一个 nodejs 写的构建工具，类似于make的工具，gulpfile.js类似于makefile由一个个task组成.可以用于很多类型工程的编译。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>typescript</title>
+      <link>http://kingjcy.github.io/post/typescript/</link>
+      <pubDate>Mon, 05 Jun 2017 15:11:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/typescript/</guid>
+      <description>&lt;p&gt;ts是js的一个超集。将ts编译成js，让js更加容易书写和表达。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>http://kingjcy.github.io/post/web/</link>
+      <pubDate>Thu, 01 Jun 2017 11:26:04 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/web/</guid>
+      <description>JavaScript web 开发人员必须学习的 3 门语言中的一门： HTML 定义了网页的内容 CSS 描述了网页的布局 JavaScript 网页的行为 前端归根到底是生成一个html文件来给浏览器渲染展示</description>
+    </item>
+    
+    <item>
+      <title>mac os</title>
+      <link>http://kingjcy.github.io/post/mac/</link>
+      <pubDate>Wed, 24 May 2017 16:21:43 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/mac/</guid>
+      <description>&lt;p&gt;这边主要是记录在使用mac os中的一些常用的东西。mac os和linux有这个很多相同的东西，可以互相学习&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go积累</title>
+      <link>http://kingjcy.github.io/post/go/</link>
+      <pubDate>Tue, 23 May 2017 14:54:09 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/go/</guid>
+      <description>&lt;p&gt;学习使用go语言已经有一段时间了，积累了很多的经验，这边进行整理并持续积累，也便于后期的备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>插件系统</title>
+      <link>http://kingjcy.github.io/post/pluginsystem/</link>
+      <pubDate>Wed, 29 Mar 2017 17:40:08 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/pluginsystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python以及爬虫学习</title>
+      <link>http://kingjcy.github.io/post/Reptile/</link>
+      <pubDate>Tue, 07 Feb 2017 15:57:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/Reptile/</guid>
+      <description>&lt;p&gt;最近对爬虫技术很感兴趣，于是就来学习一下，在学习对过程中突然发现爬虫技术真的很强大，同时让我收益匪浅，把学习过程中的一些重要的东西记录下来，便于分享与备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ceph管理平台calamari的安装</title>
+      <link>http://kingjcy.github.io/post/calamari-install/</link>
+      <pubDate>Wed, 21 Dec 2016 16:17:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/calamari-install/</guid>
+      <description>环境准备 pdapp17 172.32.148.127 ceph-deploy/mon/osd pdapp18 172.32.148.128 mds pdapp19 172.32.148.129 osd pdapp20 172.32.148.130 osd 获取安装包 [root@pdapp17 calamari]# l 总用量 21436 -rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm -rw-r--r--. 1 root root 3661 12月 21 15:15 ceph-deploy-ceph.log -rw-r--r--. 1 root root 558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm -rw-r--r--. 1 root root 1099116 12月 21</description>
+    </item>
+    
+    <item>
+      <title>centos6升级centos7</title>
+      <link>http://kingjcy.github.io/post/centos6-7/</link>
+      <pubDate>Wed, 07 Dec 2016 09:48:07 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/centos6-7/</guid>
+      <description>&lt;p&gt;随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>iptables tutorial</title>
+      <link>http://kingjcy.github.io/post/iptables-tutorial/</link>
+      <pubDate>Fri, 02 Dec 2016 17:13:49 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/iptables-tutorial/</guid>
+      <description>&lt;p&gt;防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ceph tutorial</title>
+      <link>http://kingjcy.github.io/post/ceph-tutorial/</link>
+      <pubDate>Thu, 01 Dec 2016 14:26:20 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/ceph-tutorial/</guid>
+      <description>&lt;p&gt;ceph是一个linux PB级分布式文件存储系统，它是一个大容量并且简单扩容，高性能，高可靠等特性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>centos内核升级</title>
+      <link>http://kingjcy.github.io/post/centos-kernel-update/</link>
+      <pubDate>Fri, 25 Nov 2016 11:20:34 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/centos-kernel-update/</guid>
+      <description>&lt;p&gt;最近在研究docker，在安装的时候遇到了升级内核的需求，docker需要内核在3.10.X，所以这边进行内核升级的研究。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker入门与实践</title>
+      <link>http://kingjcy.github.io/post/docker/</link>
+      <pubDate>Fri, 25 Nov 2016 10:57:16 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/docker/</guid>
+      <description>&lt;p&gt;docker是一种应用容器化的技术，就是一个容器，类似于logo中的集装箱运行在操作系统这只大鲸鱼上。&lt;/p&gt;
+
+&lt;p&gt;docker容器化，类似于虚拟机，但是相对于虚拟机：运行速度快，占用资源少，通过git获取方便，通过dockerfile配置灵活，也不一定不安全,而且docker可以快速交付部署，减少环境问题，轻松迁移扩展，简单管理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes入门</title>
+      <link>http://kingjcy.github.io/post/kubernetes/</link>
+      <pubDate>Thu, 24 Nov 2016 09:41:30 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/kubernetes/</guid>
+      <description>&lt;p&gt;kubernetes是一种以容器为核心的，自动化部署应用程序的分布式的容器管理平台。它具有部署面广，可扩展，各种自动化的特性，容器是操作系统虚拟化，而不是硬件虚拟化，能够很好的隔离，互不干扰，并且很容易构建等特性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis源码解析</title>
+      <link>http://kingjcy.github.io/post/redis-source-parse-1/</link>
+      <pubDate>Thu, 28 Jul 2016 15:39:45 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-source-parse-1/</guid>
+      <description>&lt;p&gt;redis项目的源码一直是备受赞扬的，其规模小而功能强大以及一些巧妙的技巧，都注定了它是一个值得学习的项目，今天起，我开始阅读redis源码，redis是用c写成的，对于我来说还是比较适合的。但是对于一百多个文件，怎么下手比较好，上网参考了别人的源码解析，最终决定按以下模块顺序阅读：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis cluster</title>
+      <link>http://kingjcy.github.io/post/redis-cluster/</link>
+      <pubDate>Thu, 21 Jul 2016 17:12:36 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-cluster/</guid>
+      <description>&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。
+首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，
+可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installation_of_some_applications</title>
+      <link>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/</guid>
+      <description>&lt;p&gt;一直以来安装了好多应用，这边也做了一个整合和思考：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;我的安装规则&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1.一般用yum,rpm安装的都是在root权限下&lt;/p&gt;
+
+&lt;p&gt;2.源码安装，可以全局使用命令的，放在root下，还有需要root权限的放在root下&lt;/p&gt;
+
+&lt;p&gt;3.其他的只要给用户自己安排就好，root用于管理和维护，最好不要开发。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go项目--frp</title>
+      <link>http://kingjcy.github.io/post/frp/</link>
+      <pubDate>Fri, 17 Jun 2016 09:54:42 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/frp/</guid>
+      <description>&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis tutorial</title>
+      <link>http://kingjcy.github.io/post/redis-tutorial/</link>
+      <pubDate>Sat, 28 May 2016 09:56:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/redis-tutorial/</guid>
+      <description>&lt;p&gt;redis是一款高性能的key-value型数据库，目前受到了强烈的欢迎和广泛的使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式和集群</title>
+      <link>http://kingjcy.github.io/post/distrobuteandcluster/</link>
+      <pubDate>Fri, 27 May 2016 14:17:05 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/distrobuteandcluster/</guid>
+      <description>&lt;p&gt;一直以来在高分布式和集群相关的东西，今天对这些新技术进行一些整理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux进程后台运行方式</title>
+      <link>http://kingjcy.github.io/post/linux-deamon/</link>
+      <pubDate>Tue, 29 Dec 2015 09:20:23 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/linux-deamon/</guid>
+      <description>&lt;p&gt;让linux进程后台运行是我们开发过程中很有必要的事情，不但可以不影响shell的操作，而且可以解决ssh断开后进程继续运行的问题，在一些比较耗时间的进程上，可以放在后台慢慢跑，不影响当前操作，可以说很有用途，下面我们来了解一下几种linux进程后台运行的方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux分区与挂载</title>
+      <link>http://kingjcy.github.io/post/linux-partition-mount/</link>
+      <pubDate>Sun, 20 Dec 2015 15:47:26 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/linux-partition-mount/</guid>
+      <description>&lt;p&gt;Linux中一切皆文件，理解linux系统下的分区和挂载能够很大程度的来帮助我们理解linux文件系统。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>包管理工具--yum和rpm</title>
+      <link>http://kingjcy.github.io/post/yum/</link>
+      <pubDate>Sat, 05 Dec 2015 17:01:13 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/yum/</guid>
+      <description>&lt;p&gt;软件包的管理使我们安装软件更加简单高效，经常在linux上使用的rpm和yum。这边做一个简单的备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vim编辑利器</title>
+      <link>http://kingjcy.github.io/post/vim/</link>
+      <pubDate>Sun, 22 Nov 2015 14:25:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/vim/</guid>
+      <description>&lt;p&gt;vim编辑器的简洁清晰明了的风格，强大的编辑能力，以及高效的coding，就是一款为程序员而生的编辑器，作为一个程序员，也应该学会使用vim。但是想用好vim也不是一件简单的事情，当你用好vim后带来的好处也是很多的，当然，&amp;rdquo;工欲善其事，必先利其器&amp;rdquo;，学习vim肯定是不错的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>虚拟机以及虚拟化技术</title>
+      <link>http://kingjcy.github.io/post/virtualMechine/</link>
+      <pubDate>Sat, 23 May 2015 17:44:38 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/virtualMechine/</guid>
+      <description>&lt;p&gt;虚拟网络连接的几种模式&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>makefile</title>
+      <link>http://kingjcy.github.io/post/makefile/</link>
+      <pubDate>Sun, 17 May 2015 16:23:56 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/makefile/</guid>
+      <description>&lt;p&gt;makefile是一个自动化编译的工具，是一个大型工程必备的工具，它告诉make命令需要怎么样的去编译和链接程序。 &lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>多线程的锁机制</title>
+      <link>http://kingjcy.github.io/post/thread-lock/</link>
+      <pubDate>Sun, 03 May 2015 14:46:29 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/thread-lock/</guid>
+      <description>&lt;p&gt;多线程中经常用的三大锁机制：互斥锁，读写锁，条件变量。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>进程间通信</title>
+      <link>http://kingjcy.github.io/post/process-communication/</link>
+      <pubDate>Sat, 25 Apr 2015 09:57:54 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/process-communication/</guid>
+      <description>&lt;p&gt;system v的进程间通信的三大方式：消息队列，共享内存，信号量。&lt;/p&gt;
+
+&lt;p&gt;posix标志的进程间通信：消息队列，共享内存，信号量，互斥锁，条件变量，基于文件的读写锁&lt;/p&gt;
+
+&lt;p&gt;system v的ipc是老版本，实现相对复杂，POSIX是新版本，实现容易。posix是现在大部分linux的标准接口，目前也比较兼容system v的api，而system v是sun公司主要推行的版本。所以现在大部分以posix为准。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>signal</title>
+      <link>http://kingjcy.github.io/post/signal/</link>
+      <pubDate>Fri, 20 Mar 2015 11:18:15 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/signal/</guid>
+      <description>&lt;p&gt;关于信号的使用还是很广泛的，这边对signal进行整理，便于查找&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>工具系列(二):gdb的使用总结</title>
+      <link>http://kingjcy.github.io/post/gdb/</link>
+      <pubDate>Sat, 14 Mar 2015 15:48:41 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/gdb/</guid>
+      <description>&lt;p&gt;gdb在debug过程中起着巨大的作用，用好gdb调试工具可以很快的定位问题，解决问题，这边记录一点gdb的使用注意点，便于查看和备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux下ccpp</title>
+      <link>http://kingjcy.github.io/post/linuxc/</link>
+      <pubDate>Sat, 14 Mar 2015 15:14:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/linuxc/</guid>
+      <description>&lt;p&gt;这里主要是一些平时linux c/c++下编程时遇到的一些注意点，记录下来便于学习和备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux操作命令</title>
+      <link>http://kingjcy.github.io/post/linux_opt/</link>
+      <pubDate>Mon, 23 Feb 2015 11:20:38 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/linux_opt/</guid>
+      <description>&lt;p&gt;一些linux常用的的操作命令，记录备忘也便于使用时查看。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>markdown的基本使用</title>
+      <link>http://kingjcy.github.io/post/markdown/</link>
+      <pubDate>Mon, 24 Nov 2014 16:50:39 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/markdown/</guid>
+      <description>&lt;h2 id=&#34;markdown&#34;&gt;Markdown&lt;/h2&gt;
+
+&lt;p&gt;markdown是一种可以用文本编辑器就编写带有特定格式的标记语言，语法简单，容易上手，使得编写文档到web界面展示更加简便快捷，也使我们的精力更加注重到文档内容的本身。这边只是对于markdown的语法做一个简单的学习与备忘，没有深入研究。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>工具系列(一)：git和github的使用总结</title>
+      <link>http://kingjcy.github.io/post/gitandgithub/</link>
+      <pubDate>Sun, 02 Nov 2014 16:50:34 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/gitandgithub/</guid>
+      <description>&lt;p&gt;一直想整理一下平时使用的工具，都没有时间，但是还是要带着整理的，备忘也便于查看。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用hugo&#43;github构建自己的blog</title>
+      <link>http://kingjcy.github.io/post/hugo-github-blog/</link>
+      <pubDate>Sat, 02 Aug 2014 17:26:28 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/hugo-github-blog/</guid>
+      <description>&lt;p&gt;这个是我用hugo+github搭建起个人blog写的第一篇文章，有点小兴奋。。。首先把搭建测过程写起来和大家分享一下吧。&lt;/p&gt;
+
+&lt;p&gt;首先，作为一个程序员，不拥有自己搭建的blog，而去用别人搭建好的去注册一下，我是无法接受的！！搭建个人blog需要两个东西：&lt;/p&gt;
+
+&lt;p&gt;1、静态网页生成器，有jekyll，hexo，hugo等，由于最近在玩go语言，所以就选择了hugo，其他的也没有深入了解，后面搭建起来，发现hugo还是比较简单。&lt;/p&gt;
+
+&lt;p&gt;2、github pages 这个是github提供的一个托管工作，相当好用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

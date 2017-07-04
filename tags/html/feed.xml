@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Html on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/html/</link>
+    <description>Recent content in Html on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 07 Feb 2017 15:57:46 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/html/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python以及爬虫学习</title>
+      <link>http://kingjcy.github.io/post/Reptile/</link>
+      <pubDate>Tue, 07 Feb 2017 15:57:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/Reptile/</guid>
+      <description>&lt;p&gt;最近对爬虫技术很感兴趣，于是就来学习一下，在学习对过程中突然发现爬虫技术真的很强大，同时让我收益匪浅，把学习过程中的一些重要的东西记录下来，便于分享与备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

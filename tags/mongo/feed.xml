@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mongo on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/mongo/</link>
+    <description>Recent content in Mongo on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 15 Dec 2016 14:23:58 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/mongo/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mongodb tutorial</title>
+      <link>http://kingjcy.github.io/post/mongodb-tutorial/</link>
+      <pubDate>Thu, 15 Dec 2016 14:23:58 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/mongodb-tutorial/</guid>
+      <description>&lt;p&gt;mongodb是一种document类型的数据库，document我觉得事实上不要翻译的好，可以说是以一种包含key-value键值对的数据结构体，类似于json的格式bson。是一种面向集合的存储模式。我觉得集合和document在mangodb中很重要。mongo本身具有高性能，易部署等特性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

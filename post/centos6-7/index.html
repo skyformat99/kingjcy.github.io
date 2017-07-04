@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/centos6-7/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>centos6升级centos7 - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="centos6升级centos7 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/centos6-7/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/centos6-7/">
+<meta name="twitter:title" content="centos6升级centos7 - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "centos6升级centos7 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-12-07T09:48:07JST",
+    "dateModified": "2016-12-07T09:48:07JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "<p>随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.</p>
+
+<p></p>"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">centos6升级centos7</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-12-07T09:48:07JST">Dec 7, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">centos6升级centos7</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>随着centos 7的使用越来越多，技术越来越成熟，并且很多技术对内核和centos的版本上都有来新的要求，原来的centos6已经不能满足需要，所以将centos由6升级到7.</p>
+
+<p></p>
+
+<h1 id="升级">升级</h1>
+
+<p>可以直接下载安装centos7进行安装，不过这边讲述的是centos6.4到centos7的升级。</p>
+
+<ol>
+<li><p>首先查看现有的系统版本：</p>
+
+<p>unmae -a</p></li>
+</ol>
+
+<p>或者</p>
+
+<pre><code>lsb_release -a
+</code></pre>
+
+<ol>
+<li><p>修改yum源，增加仓库</p>
+
+<p>vi /etc/yum.repos.d/upgradtool.repo</p>
+
+<p>[upg]
+name=CentOS-$releasever - Upgrade Tool
+baseurl=<a href="http://dev.centos.org/centos/6/upg/x86_64/">http://dev.centos.org/centos/6/upg/x86_64/</a>
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6</p></li>
+
+<li><p>安装升级工具</p>
+
+<p>yum install -y redhat-upgrade-tool preupgrade-assistant-contents</p></li>
+
+<li><p>使用preupg工具进行升级检查</p>
+
+<p>preupg -s CentOS6_7</p></li>
+
+<li><p>安装升级用的centos7 rpm key</p>
+
+<p>rpm &ndash;import <a href="http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7">http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7</a></p></li>
+
+<li><p>运行升级工具</p>
+
+<p>centos-upgrade-tool-cli &ndash;network 7 &ndash;instrepo=<a href="http://mirror.centos.org/centos/7/os/x86_64/">http://mirror.centos.org/centos/7/os/x86_64/</a></p></li>
+</ol>
+
+<blockquote>
+<p>补充</p>
+</blockquote>
+
+<p>大版本的升级还是比较容易出问题的，所以可以下载centos7的iso文件，直接安装比较靠谱。</p>
+
+<p>一般装完系统后需要修改/etc/sysconfig/ifcfg-eth0的onboot来设置网卡的开始启动。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/centos/">centos</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/os/">os</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/virtual/">virtual</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

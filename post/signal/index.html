@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/signal/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>signal - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;关于信号的使用还是很广泛的，这边对signal进行整理，便于查找&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="signal - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/signal/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;关于信号的使用还是很广泛的，这边对signal进行整理，便于查找&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/signal/">
+<meta name="twitter:title" content="signal - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;关于信号的使用还是很广泛的，这边对signal进行整理，便于查找&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "signal - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-03-20T11:18:15JST",
+    "dateModified": "2015-03-20T11:18:15JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "<p>关于信号的使用还是很广泛的，这边对signal进行整理，便于查找</p>
+
+<p></p>"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">signal</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-03-20T11:18:15JST">Mar 20, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">signal</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>关于信号的使用还是很广泛的，这边对signal进行整理，便于查找</p>
+
+<p></p>
+
+<p>(Signal ()函数详细介绍 Linux函数)</p>
+
+<p>在<signal.h> 这个头文件中。</p>
+
+<p>signal（参数1，参数2）；</p>
+
+<p>参数1：我们要进行处理的信号。系统的信号我们可以再终端键入 kill -l查看(共64个)。其实这些信号时系统定义的宏。</p>
+
+<p>参数2：我们处理的方式（是系统默认还是忽略还是捕获）。</p>
+
+<p>eg:</p>
+
+<pre><code>signal(SIGINT ,SIG_ING );
+</code></pre>
+
+<p>SIG_ING 代表忽略SIGINT信号，SIGINT信号代表由InterruptKey产生，通常是CTRL +C 或者是DELETE 。发送给所有ForeGround Group的进程。</p>
+
+<pre><code>signal(SIGTERM,cGiSigHandler)
+</code></pre>
+
+<p>/<em>信号捕捉函数singal，当产生SIGTERM信号时触发函数cGiSigHandler</em>/</p>
+
+<p>下面对这个函数对原型和原理进行讲解</p>
+
+<p>void ( <em>signal( int sig, void (</em> handler)( int )))( int );</p>
+
+<pre><code>int (*p)();
+</code></pre>
+
+<p>这是一个函数指针, p所指向的函数是一个不带任何参数, 并且返回值为int的一个函数.</p>
+
+<pre><code>    int (*fun())();
+</code></pre>
+
+<p>这个式子与上面式子的区别在于用fun()代替了p,而fun()是一个函数,所以说就可以看成是fun()这个函数执行之后,它的返回值是一个函数指针,这个函数指针(其实就是上面的p)所指向的函数是一个不带任何参数,并且返回值为int的一个函数.</p>
+
+<p>void (*signal(int signo, void (*handler)(int)))(int);就可以看成是signal()函数(它自己是带两个参数,一个为整型,一个为函数指针的函数),而这个signal()函数的返回值也为一个函数指针,这个函数指针指向一个带一个整型参数,并且返回值为void的一个函数.</p>
+
+<p>在写信号处理函数时对于信号处理的函数也是void sig_fun(int signo);这种类型,恰好与上面signal()函数所返回的函数指针所指向的函数是一样的.void ( *signal() )( int );</p>
+
+<p>signal是一个函数, 它返回一个函数指针, 后者所指向的函数接受一个整型参数 且没有返回值, 仔细看, 是不是siganal( int signo, void (*handler)(int) )的第2个参数了,对了,其实他所返回的就&gt;是 signal的第2个信号处理函数,指向信号处理函数,就可以执行函数了( signal内部时, signal把信号做为参数传递给handler信号处理函数,接着 signal函数返回指针, 并且又指向信号处理函数, 就开始执行它)</p>
+
+<p>那么，signal函数的参数又是如何呢？signal函数接受两个参数：一个整型的信号编号，以及一个指向用户定义的信号处理函数的指针。我们此前已经定义了指向用户定义的信号处理函数的指针sfp：</p>
+
+<pre><code>    void (*sfp)(int);
+</code></pre>
+
+<p>sfp 的类型可以通过将上面的声明中的sfp去掉而得到，即void (*)(int)。此外，signal函数的返回值是一个指向调用前的用户定义信号处理函数的指针，这个指针的类型与sfp指针类型一致。因此，我
+        们可以如下声明signal函数：</p>
+
+<pre><code>    void (*signal(int, void(*)(int)))(int);
+</code></pre>
+
+<p>同样地，使用typedef可以简化上面的函数声明：</p>
+
+<pre><code>    typedef void (*HANDLER)(int);
+    HANDLER signal(int, HANDLER);
+</code></pre>
+
+<p>Signal    Description</p>
+
+<p>SIGABRT    由调用abort函数产生，进程非正常退出</p>
+
+<p>SIGALRM    用alarm函数设置的timer超时或setitimer函数设置的interval timer超时</p>
+
+<p>SIGBUS    某种特定的硬件异常，通常由内存访问引起</p>
+
+<p>SIGCANCEL    由Solaris Thread Library内部使用，通常不会使用</p>
+
+<p>SIGCHLD    进程Terminate或Stop的时候，SIGCHLD会发送给它的父进程。缺省情况下该Signal会被忽略</p>
+
+<p>SIGCONT    当被stop的进程恢复运行的时候，自动发送</p>
+
+<p>SIGEMT    和实现相关的硬件异常</p>
+
+<p>SIGFPE    数学相关的异常，如被0除，浮点溢出，等等</p>
+
+<p>SIGFREEZE    Solaris专用，Hiberate或者Suspended时候发送</p>
+
+<p>SIGHUP    发送给具有Terminal的Controlling Process，当terminal被disconnect时候发送</p>
+
+<p>SIGILL    非法指令异常</p>
+
+<p>SIGINFO    BSD signal。由Status Key产生，通常是CTRL+T。发送给所有Foreground Group的进程</p>
+
+<p>SIGINT    由Interrupt Key产生，通常是CTRL+C或者DELETE。发送给所有ForeGround Group的进程</p>
+
+<p>SIGIO    异步IO事件</p>
+
+<p>SIGIOT    实现相关的硬件异常，一般对应SIGABRT</p>
+
+<p>SIGKILL    无法处理和忽略。中止某个进程</p>
+
+<p>SIGLWP    由Solaris Thread Libray内部使用</p>
+
+<p>SIGPIPE    在reader中止之后写Pipe的时候发送</p>
+
+<p>SIGPOLL    当某个事件发送给Pollable Device的时候发送</p>
+
+<p>SIGPROF    Setitimer指定的Profiling Interval Timer所产生</p>
+
+<p>SIGPWR    和系统相关。和UPS相关。</p>
+
+<p>SIGQUIT    输入Quit Key的时候（CTRL+\）发送给所有Foreground Group的进程</p>
+
+<p>SIGSEGV    非法内存访问</p>
+
+<p>SIGSTKFLT    Linux专用，数学协处理器的栈异常</p>
+
+<p>SIGSTOP    中止进程。无法处理和忽略。</p>
+
+<p>SIGSYS    非法系统调用</p>
+
+<p>SIGTERM    请求中止进程，kill命令缺省发送</p>
+
+<p>SIGTHAW    Solaris专用，从Suspend恢复时候发送</p>
+
+<p>SIGTRAP    实现相关的硬件异常。一般是调试异常</p>
+
+<p>SIGTSTP    Suspend Key，一般是Ctrl+Z。发送给所有Foreground Group的进程</p>
+
+<p>SIGTTIN    当Background Group的进程尝试读取Terminal的时候发送</p>
+
+<p>SIGTTOU    当Background Group的进程尝试写Terminal的时候发送</p>
+
+<p>SIGURG    当out-of-band data接收的时候可能发送</p>
+
+<p>SIGUSR1    用户自定义signal 1</p>
+
+<p>SIGUSR2    用户自定义signal 2</p>
+
+<p>SIGVTALRM    setitimer函数设置的Virtual Interval Timer超时的时候</p>
+
+<p>SIGWAITING    Solaris Thread Library内部实现专用</p>
+
+<p>SIGWINCH    当Terminal的窗口大小改变的时候，发送给Foreground Group的所有进程</p>
+
+<p>SIGXCPU    当CPU时间限制超时的时候</p>
+
+<p>SIGXFSZ    进程超过文件大小限制</p>
+
+<p>SIGXRES    Solaris专用，进程超过资源限制的时候发送)</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/signal/">signal</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

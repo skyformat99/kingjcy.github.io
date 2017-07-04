@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/makefile/</link>
+    <description>Recent content in Makefile on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Sun, 17 May 2015 16:23:56 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/makefile/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>makefile</title>
+      <link>http://kingjcy.github.io/post/makefile/</link>
+      <pubDate>Sun, 17 May 2015 16:23:56 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/makefile/</guid>
+      <description>&lt;p&gt;makefile是一个自动化编译的工具，是一个大型工程必备的工具，它告诉make命令需要怎么样的去编译和链接程序。 &lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

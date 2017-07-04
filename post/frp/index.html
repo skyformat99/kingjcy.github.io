@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/frp/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>go项目--frp - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="go项目--frp - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/frp/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/frp/">
+<meta name="twitter:title" content="go项目--frp - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "go项目--frp - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-06-17T09:54:42JST",
+    "dateModified": "2016-06-17T09:54:42JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "<p>frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。</p>
+
+<p></p>"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">go项目--frp</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-06-17T09:54:42JST">Jun 17, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">go项目--frp</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, udp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。</p>
+
+<p></p>
+
+<h2 id="安装">安装</h2>
+
+<p>首先需要安装go语言环境，然后可以直接使用go工具来下载安装</p>
+
+<pre><code>go get github.com/fatedier/frp
+make
+</code></pre>
+
+<p>就会在对应的bin文件中产生可执行文件，在对应的conf下有对应的配置文件</p>
+
+<h2 id="基本使用">基本使用</h2>
+
+<h3 id="ssh内网穿透">ssh内网穿透</h3>
+
+<ol>
+<li><p>修改 frps.ini 文件，配置一个名为 ssh 的反向代理：</p>
+
+<h1 id="frps-ini">frps.ini</h1>
+
+<p>[common]
+bind_port = 7000</p>
+
+<p>[ssh]
+listen_port = 6000
+auth_token = 123</p></li>
+
+<li><p>启动 frps：</p>
+
+<p>./frps -c ./frps.ini</p></li>
+
+<li><p>修改 frpc.ini 文件，设置 frps 所在服务器的 IP 为 x.x.x.x；</p>
+
+<p>#frpc.ini
+[common]
+server_addr = x.x.x.x
+server_port = 7000
+auth_token = 123</p>
+
+<p>[ssh]
+local_ip = 127.0.0.1
+local_port = 22</p></li>
+
+<li><p>启动 frpc：</p>
+
+<p>./frpc -c ./frpc.ini</p></li>
+
+<li><p>通过 ssh 访问内网机器，假设用户名为 test：</p>
+
+<p>ssh -oPort=6000 test@x.x.x.x</p></li>
+</ol>
+
+<p>还有很多应用参考 <a href="https://github.com/fatedier/frp/blob/master/README_zh.md">https://github.com/fatedier/frp/blob/master/README_zh.md</a></p>
+
+<h2 id="godep">godep</h2>
+
+<p>godep是go的包管理工具，便于编码中对第三方依赖包对管理。</p>
+
+<h3 id="安装-1">安装</h3>
+
+<ol>
+<li>确保已经有go语言的环境并且设置好了 GOPATH 环境变量。</li>
+<li>使用 go get -u github.com/tools/godep 下载 godep 包并自动安装。</li>
+<li>godep 可执行程序会放在 $GOPATH/bin 目录下。所以想直接用 godep 执行命令的话需要将该路径加入到全局的环境变量 PATH 中，可以将export PATH=&ldquo;$PATH:$GOPATH/bin&rdquo;加入到系统启动脚本中。</li>
+</ol>
+
+<h3 id="基本使用-1">基本使用</h3>
+
+<ol>
+<li><p>构建项目</p>
+
+<p>godep save 或者 godep save ./&hellip; 后者会递归查找所有引用的第三方包。</p></li>
+</ol>
+
+<p>这个命令做了以下几件事：</p>
+
+<pre><code>1. 查找项目中所用到的所有的第三方包
+2. 在项目目录下创建 Godeps 目录，Godeps/Godeps.json 是依赖文件，包括了go的版本，用到的第三包的引入路径，版本号等信息，json文件需要一并加入到版本控制里。
+3. 所有依赖的第三包的代码会被拷贝到 Godeps/_workspace/src 下，并且移除了 .git 这样的版本控制信息。Godeps/_workspace 里的内容如果加到版本控制里，别人下载代码后可以直接编译，不需要另外再下依赖包，但是项目大小会变大。
+</code></pre>
+
+<ol>
+<li><p>下载第三方源码</p>
+
+<p>godep restore</p></li>
+</ol>
+
+<p>这个命令是根据 Godeps/Godeps.json 文件把项目的依赖包下载到 $GOPATH 目录下，需要注意这个命令是会修改 $GOPATH 下依赖包的状态的，所以最好还是将 Godeps/_workspace 里的内容直接加到自己项目的版本控制里。</p>
+
+<ol>
+<li>其他命令</li>
+</ol>
+
+<p>其他的 go 命令基本上都可以通过 godep 执行，godep 封装的 go 命令其实就是将 Godeps/_workspace 加入到 GOPATH 中，这样编译的时候就会去 Godeps/_workspace 中寻找第三方包。</p>
+
+<h2 id="源码解析">源码解析</h2></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/go/">go</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/tool/">tool</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

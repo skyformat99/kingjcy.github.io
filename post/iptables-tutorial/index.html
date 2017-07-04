@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/iptables-tutorial/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>iptables tutorial - kingjcy Blog</title>
+    
+<meta name="description" content="&lt;p&gt;防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="iptables tutorial - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/iptables-tutorial/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="&lt;p&gt;防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/iptables-tutorial/">
+<meta name="twitter:title" content="iptables tutorial - kingjcy Blog">
+<meta name="twitter:description" content="&lt;p&gt;防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "iptables tutorial - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-12-02T17:13:49JST",
+    "dateModified": "2016-12-02T17:13:49JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "<p>防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。</p>
+
+<p></p>"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">iptables tutorial</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-12-02T17:13:49JST">Dec 2, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">iptables tutorial</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>防火墙是通过审查经过的每一个数据包，判断它是否有相匹配的过滤规则，根据规则的先后顺序进行一一比较，直到满足其中的一条规则为止，然后依据控制机制做出相应的动作。如果都不满足，则将数据包丢弃，从而保护网络的安全。目前防火墙有两种机制：一个是阻止传输流通过，一个是允许传输流通过。就是我们所说的过滤式的防火墙，还有就是代理服务器。</p>
+
+<p></p>
+
+<h2 id="iptables基本概念">iptables基本概念</h2>
+
+<p>规则（rules）：预定义条件，一般类似于“如果数据包头符合这样的条件，就这样处理这个数据包。”</p>
+
+<p>链（chains）：是数据包传播的路径，每一条链其实就是众多规则中的一个检查清单，每一条链中可以有一条或数条规则。</p>
+
+<p>表（tables）：提供特定的功能，iptables内置了4个表，即filter表、nat表、mangle表和raw表，分别用于实现包过滤，网络地址转换、包重构(修改)和数据跟踪处理。</p>
+
+<p>显而易见，数据包在链上传输，通过表中不同规则的检查，决定怎么处理这些数据包，比如放行（accept）、拒绝（reject）和丢弃（drop）等</p>
+
+<h2 id="iptables命令">iptables命令</h2>
+
+<pre><code>iptables [-t table] 命令 [chain] [rules] [-j target]
+</code></pre>
+
+<ol>
+<li>table——指定表，也就是上面指iptables内的四张表。</li>
+<li>命令——对链的操作命令</li>
+<li>-P或–policy &lt;链名&gt; 定义默认策略</li>
+<li>-L或–list &lt;链名&gt; 查看iptables规则列表</li>
+<li>-A或—append &lt;链名&gt; 在规则列表的最后增加1条规则</li>
+<li>-I或–insert &lt;链名&gt; 在指定的位置插入1条规则</li>
+<li>-D或–delete &lt;链名&gt; 从规则列表中删除1条规则</li>
+<li>-R或–replace &lt;链名&gt; 替换规则列表中的某条规则</li>
+<li>-F或–flush &lt;链名&gt; 删除表中所有规则</li>
+<li>-Z或–zero &lt;链名&gt; 将表中数据包计数器和流量计数器归零</li>
+<li>chain——链名</li>
+<li>INPUT</li>
+<li>OUTPUT</li>
+<li>FORWORD</li>
+<li>PREROUTING</li>
+
+<li><p>POSTROUTING</p></li>
+
+<li><p>rules——规则</p></li>
+
+<li><p>-i或–in-interface &lt;网络接口名&gt; 指定数据包从哪个网络接口进入，如ppp0、eth0和eth1等</p></li>
+
+<li><p>-o或–out-interface &lt;网络接口名&gt; 指定数据包从哪块网络接口输出，如ppp0、eth0和eth1等</p></li>
+</ol>
+
+<p>上面两个支持</p>
+
+<ul>
+<li>-p或—proto协议类型 &lt; 协议类型&gt; 指定数据包匹配的协议，如TCP、UDP和ICMP等
+
+<ul>
+<li>TCP</li>
+<li>UDP</li>
+<li>ICMP</li>
+<li>protocol name  from /etc/protocol</li>
+</ul></li>
+<li>-s或–source &lt;源地址或子网&gt; 指定数据包匹配的源地址</li>
+<li>–sport &lt;源端口号&gt; 指定数据包匹配的源端口号，可以使用“起始端口号:结束端口号”的格式指定一个范围的端口</li>
+<li>-d或–destination &lt;目标地址或子网&gt; 指定数据包匹配的目标地址</li>
+<li>–dport目标端口号 指定数据包匹配的目标端口号，可以使用“起始端口号:结束端口号”的格式指定一个范围的端口</li>
+<li>target——动作如何进行</li>
+<li>ACCEPT 接受数据包</li>
+<li>DROP 丢弃数据包</li>
+<li>REDIRECT 与DROP基本一样，区别在于它除了阻塞包之外， 还向发送者返回错误信息。</li>
+<li>SNAT 源地址转换，即改变数据包的源地址</li>
+<li>DNAT 目标地址转换，即改变数据包的目的地址</li>
+<li>MASQUERADE IP伪装，即是常说的NAT技术，MASQUERADE只能用于ADSL等拨号上网的IP伪装，也就是主机的IP是由ISP分配动态的；如果主机的IP地址是静态固定的，就要使用SNAT</li>
+<li>LOG 日志功能，将符合规则的数据包的相关信息记录在日志中，以便管理员的分析和排错</li>
+</ul></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/iptables/">iptables</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/proxy/">proxy</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

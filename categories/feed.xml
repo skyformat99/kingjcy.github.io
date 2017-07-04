@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/categories/</link>
+    <description>Recent content in Categories on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    
+	<atom:link href="http://kingjcy.github.io/categories/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>人生感悟</title>
+      <link>http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/</link>
+      <pubDate>Tue, 10 May 2016 15:03:35 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术文章</title>
+      <link>http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Fri, 23 Jun 2017 17:30:47 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

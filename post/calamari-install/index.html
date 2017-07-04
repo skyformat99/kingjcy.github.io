@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.24.1" />
+
+
+
+<link rel="canonical" href="http://kingjcy.github.io/post/calamari-install/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ceph管理平台calamari的安装 - kingjcy Blog</title>
+    
+<meta name="description" content="环境准备 pdapp17 172.32.148.127 ceph-deploy/mon/osd pdapp18 172.32.148.128 mds pdapp19 172.32.148.129 osd pdapp20 172.32.148.130 osd 获取安装包 [root@pdapp17 calamari]# l 总用量 21436 -rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm -rw-r--r--. 1 root root 3661 12月 21 15:15 ceph-deploy-ceph.log -rw-r--r--. 1 root root 558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm -rw-r--r--. 1 root root 1099116 12月 21">
+
+<meta property="og:title" content="ceph管理平台calamari的安装 - kingjcy Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://kingjcy.github.io/post/calamari-install/">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
+<meta property="og:description" content="环境准备 pdapp17 172.32.148.127 ceph-deploy/mon/osd pdapp18 172.32.148.128 mds pdapp19 172.32.148.129 osd pdapp20 172.32.148.130 osd 获取安装包 [root@pdapp17 calamari]# l 总用量 21436 -rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm -rw-r--r--. 1 root root 3661 12月 21 15:15 ceph-deploy-ceph.log -rw-r--r--. 1 root root 558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm -rw-r--r--. 1 root root 1099116 12月 21">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="kingjcy Blog">
+<meta name="twitter:url" content="http://kingjcy.github.io/post/calamari-install/">
+<meta name="twitter:title" content="ceph管理平台calamari的安装 - kingjcy Blog">
+<meta name="twitter:description" content="环境准备 pdapp17 172.32.148.127 ceph-deploy/mon/osd pdapp18 172.32.148.128 mds pdapp19 172.32.148.129 osd pdapp20 172.32.148.130 osd 获取安装包 [root@pdapp17 calamari]# l 总用量 21436 -rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm -rw-r--r--. 1 root root 3661 12月 21 15:15 ceph-deploy-ceph.log -rw-r--r--. 1 root root 558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm -rw-r--r--. 1 root root 1099116 12月 21">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://kingjcy.github.io"
+    },
+    "headline": "ceph管理平台calamari的安装 - kingjcy Blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://kingjcy.github.ioimages/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2016-12-21T16:17:28JST",
+    "dateModified": "2016-12-21T16:17:28JST",
+    "author": {
+      "@type": "Person",
+      "name": "kingjcy Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kingjcy Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://kingjcy.github.ioimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "环境准备 pdapp17 172.32.148.127 ceph-deploy/mon/osd pdapp18 172.32.148.128 mds pdapp19 172.32.148.129 osd pdapp20 172.32.148.130 osd 获取安装包 [root@pdapp17 calamari]# l 总用量 21436 -rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm -rw-r--r--. 1 root root 3661 12月 21 15:15 ceph-deploy-ceph.log -rw-r--r--. 1 root root 558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm -rw-r--r--. 1 root root 1099116 12月 21"
+  }
+</script>
+
+
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
+        
+        <li class="active">ceph管理平台calamari的安装</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-12-21T16:17:28JST">Dec 21, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
+      
+    </ul>
+
+    <h1 class="title">ceph管理平台calamari的安装</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>环境准备</p>
+
+<p>pdapp17     172.32.148.127  ceph-deploy/mon/osd</p>
+
+<p>pdapp18     172.32.148.128  mds</p>
+
+<p>pdapp19     172.32.148.129  osd</p>
+
+<p>pdapp20     172.32.148.130  osd</p>
+
+<p>获取安装包</p>
+
+<pre><code>[root@pdapp17 calamari]# l
+总用量 21436
+-rw-r--r--. 1 root root 20283376 12月 21 15:15 calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm
+-rw-r--r--. 1 root root     3661 12月 21 15:15 ceph-deploy-ceph.log
+-rw-r--r--. 1 root root   558644 12月 21 15:15 diamond-3.4.67-0.noarch.rpm
+-rw-r--r--. 1 root root  1099116 12月 21 15:15 romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm
+</code></pre>
+
+<p>在pdapp17上安装calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm</p>
+
+<pre><code>yum install -y calamari-server-1.3.1.1-105_g79c8df2.el7.centos.x86_64.rpm
+</code></pre>
+
+<p>初始化calamari服务</p>
+
+<pre><code>calamari-ctl initialize
+</code></pre>
+
+<p>在所有的机器上安装diamond-3.4.67-0.noarch.rpm</p>
+
+<pre><code>yum install -y diamond-3.4.67-0.noarch.rpm
+</code></pre>
+
+<p>修改所有机器的diamond的配置文件</p>
+
+<pre><code>cd /etc/diamond/
+mv diamond.conf.example diamond.conf
+vi diamond.conf
+</code></pre>
+
+<p>主要将host主机修改为安装calamari服务安装的主机名</p>
+
+<p>重启diamond服务</p>
+
+<pre><code>systemctl start diamond
+</code></pre>
+
+<p>重启之前需要加载systemd的配置</p>
+
+<pre><code>systemctl daemon-reload
+</code></pre>
+
+<p>在所有的主机主机上安装salt-minion</p>
+
+<pre><code>yum install -y salt-minion
+</code></pre>
+
+<p>然后修改配置文件</p>
+
+<pre><code>vi /etc/salt/minion
+</code></pre>
+
+<p>将master全部修改为calamari安装的主机名</p>
+
+<p>然后重启diamond服务</p>
+
+<pre><code>systemctl restart diamond
+</code></pre>
+
+<p>然后启懂salt-minion服务</p>
+
+<pre><code>systemctl start salt-minion
+</code></pre>
+
+<p>在安装过程中全部使用root，并且关闭所有机器的防火墙。</p>
+
+<p>修改python脚本</p>
+
+<pre><code>vi /opt/calamari/salt/salt/_modules/ceph.py
+</code></pre>
+
+<p>修改下面三行，在571行</p>
+
+<pre><code>mon_epoch = status.get('monmap', {}).get('epoch')
+osd_epoch = status.get('osdmap', {}).get('osdmap', {}).get('epoch')
+mds_epoch = status.get('fsmap', status.get('mdsmap', {})).get('epoch')'')
+</code></pre>
+
+<p>然后使用salt命令来查看机器的情况</p>
+
+<pre><code>[root@pdapp17 salt]# salt-key -L
+Accepted Keys:
+Denied Keys:
+Unaccepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Rejected Keys:
+[root@pdapp17 salt]# salt-key -A
+The following keys are going to be accepted:
+Unaccepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Proceed? [n/Y] y
+Key for minion pdapp17 accepted.
+Key for minion pdapp18 accepted.
+Key for minion pdapp19 accepted.
+Key for minion pdapp20 accepted.
+[root@pdapp17 salt]# salt-key -L
+Accepted Keys:
+pdapp17
+pdapp18
+pdapp19
+pdapp20
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+</code></pre>
+
+<p>分别使用下面的命令来检验各台机器的情况</p>
+
+<pre><code>salt &quot;*&quot; test.ping
+salt &quot;*&quot; ceph.get_heartbeats
+</code></pre>
+
+<p>然后在calamari主机上安装romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm</p>
+
+<pre><code>yum install -y romana-1.2.2-36_gc62bb5b.el7.centos.x86_64.rpm
+</code></pre>
+
+<p>修改日志的权限</p>
+
+<pre><code>chmod 777 /var/log/calamari/*
+</code></pre>
+
+<p>然后在这台机器上重启</p>
+
+<pre><code>systemctl restart supervisord.service
+systemctl restart httpd
+</code></pre>
+
+<p>就可以直接通过这台主机的ip来访问了。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/ceph/">ceph</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/calamari/">calamari</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
+      
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
+      
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
+      
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
+      
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
+      
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
+      
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
+      
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
+      
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
+      
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
+      
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
+      
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p>Copyright (c) 2017. All rights reserved.</p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

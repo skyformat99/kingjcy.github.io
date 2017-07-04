@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ts on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/ts/</link>
+    <description>Recent content in Ts on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 05 Jun 2017 15:11:46 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/ts/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>typescript</title>
+      <link>http://kingjcy.github.io/post/typescript/</link>
+      <pubDate>Mon, 05 Jun 2017 15:11:46 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/typescript/</guid>
+      <description>&lt;p&gt;ts是js的一个超集。将ts编译成js，让js更加容易书写和表达。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

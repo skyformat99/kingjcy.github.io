@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fastdfs on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/fastdfs/</link>
+    <description>Recent content in Fastdfs on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 16 Jan 2016 10:46:35 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/fastdfs/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>fastdfs tutorial</title>
+      <link>http://kingjcy.github.io/post/fastdfs-tutorial/</link>
+      <pubDate>Sat, 16 Jan 2016 10:46:35 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/fastdfs-tutorial/</guid>
+      <description>fastdfs是一个分布式存储系统 安装（v5.08） 环境准备 172.32.148.127 client 172.32.148.128 storage 172.32.148.129 tracker storage 172.32.148.130 storage 依赖libfastcommon安装 v5版本已经不需要单独安装l</description>
+    </item>
+    
+  </channel>
+</rss>

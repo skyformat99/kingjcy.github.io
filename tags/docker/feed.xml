@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/docker/</link>
+    <description>Recent content in Docker on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 25 Nov 2016 10:57:16 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/docker/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker入门与实践</title>
+      <link>http://kingjcy.github.io/post/docker/</link>
+      <pubDate>Fri, 25 Nov 2016 10:57:16 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/docker/</guid>
+      <description>&lt;p&gt;docker是一种应用容器化的技术，就是一个容器，类似于logo中的集装箱运行在操作系统这只大鲸鱼上。&lt;/p&gt;
+
+&lt;p&gt;docker容器化，类似于虚拟机，但是相对于虚拟机：运行速度快，占用资源少，通过git获取方便，通过dockerfile配置灵活，也不一定不安全,而且docker可以快速交付部署，减少环境问题，轻松迁移扩展，简单管理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

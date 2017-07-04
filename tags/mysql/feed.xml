@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/mysql/</link>
+    <description>Recent content in Mysql on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 08 Mar 2016 09:20:19 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/mysql/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RDBMS-oracle,mysql</title>
+      <link>http://kingjcy.github.io/post/oracle-tutorial/</link>
+      <pubDate>Tue, 08 Mar 2016 09:20:19 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/oracle-tutorial/</guid>
+      <description>关系数据库管理系统 mysql 安装 先去mysql官网，点击downloads，然后找到最后一个开源的版本，遵守GPL协议的MySQL Community Edition (GPL)，点</description>
+    </item>
+    
+  </channel>
+</rss>

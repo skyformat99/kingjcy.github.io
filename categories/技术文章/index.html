@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.17" />
+<meta name="generator" content="Hugo 0.24.1" />
 
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml">
 
 <link rel="canonical" href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">
 
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>技术文章 - kingjcy Blog</title>
     
-    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
   </head>
 
   <body>
@@ -34,9 +34,25 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy Blog</a>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
           </div>
 
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="http://kingjcy.github.io/post/">归档</a></li>
+              
+              
+              
+              <li><a href="http://kingjcy.github.io/about/">关于我</a></li>
+              
+              
+            </ul>
+            
+          </div>
           
 
         </div>
@@ -61,26 +77,17 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-23T17:30:47JST">Jun 23, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/">restful架构</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/restful/">restful架构</a></h2>
   </header>
 
   
-  <div class="summary">REST &ndash; REpresentational State Transfer 直接翻译：表现层状态转移。
-经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。
- REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计 RESTful API（REST风格的网络接口）；
- Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词。“资源”是REST架构或者说整个网络处理的核心。
- 用HTTP协议里的动词来实现资源的添加，修改，删除等操作。即通过HTTP动词来实现资源的状态扭转：GET 用来获取资源，POST 用来新建资源（也可以用于更新资源），PUT 用来更新资源，DELETE 用来删除资源。
- Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等。当然还可以压缩HTTP传输时的数据（on-wire data compression）。
- 用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。
-  要理解rest，需要先理解api，api就是接口，提供给外部进行互相交互的。那么现在了解rest，rest是一种架构风格，我们先来理解rest架构风格，这边需要web，web三个关键点：识别，表示，交互，对应的是URL识别资源，representation（html，xml）表示资源，通过协议（http）和资源进行交互，整合一下就是通过http协议和URL利用client／server models对资源进行CURD操作。
-我们提供restful类型的api有什么好处呢？因为rest有限制，可以是一个统一的规范。就具有通用性。
- 使用客户/服务器模型。客户和服务器之间通过一个统一的接口来互相通讯。 层次化的系统。在一个REST系统中，客户端并不会固定地与一个服务器打交道。 无状态。在一个REST系统中，服务端并不会保存有关客户的任何状态。也就是说，客户端自身负责用户状态的维持，并在每次发送请求时都需要提供足够的信息。 可缓存。REST系统需要能够恰当地缓存请求，以尽量减少服务端和客户端之间的信息传输，以提高性能。 统一的接口。一个REST系统需要使用一个统一的接口来完成子系统之间以及服务与用户之间的交互。这使得REST系统中的各个子系统可以独自完成演化。  </div>
+  <div class="summary">REST &ndash; REpresentational State Transfer 直接翻译：表现层状态转移。 经典定义：URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。 REST描</div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" title="restful架构">Read More…</a>
+    <a href="http://kingjcy.github.io/post/restful/" title="restful架构">Read More…</a>
   </footer>
 </article>
 </li>
@@ -89,10 +96,10 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-12T10:34:15JST">Jun 12, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/">从harbor入手beego框架</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/beego/">从harbor入手beego框架</a></h2>
   </header>
 
   
@@ -101,7 +108,7 @@
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" title="从harbor入手beego框架">Read More…</a>
+    <a href="http://kingjcy.github.io/post/beego/" title="从harbor入手beego框架">Read More…</a>
   </footer>
 </article>
 </li>
@@ -110,10 +117,10 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-07T15:56:36JST">Jun 7, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/">chrome的开发者工具</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/chrome-dev-tool/">chrome的开发者工具</a></h2>
   </header>
 
   
@@ -122,7 +129,7 @@
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" title="chrome的开发者工具">Read More…</a>
+    <a href="http://kingjcy.github.io/post/chrome-dev-tool/" title="chrome的开发者工具">Read More…</a>
   </footer>
 </article>
 </li>
@@ -131,10 +138,10 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-06T10:56:22JST">Jun 6, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/06/gulp/">gulp</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/gulp/">gulp</a></h2>
   </header>
 
   
@@ -145,7 +152,7 @@
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" title="gulp">Read More…</a>
+    <a href="http://kingjcy.github.io/post/gulp/" title="gulp">Read More…</a>
   </footer>
 </article>
 </li>
@@ -154,10 +161,10 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-05T15:11:46JST">Jun 5, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/05/typescript/">typescript</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/typescript/">typescript</a></h2>
   </header>
 
   
@@ -166,7 +173,7 @@
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" title="typescript">Read More…</a>
+    <a href="http://kingjcy.github.io/post/typescript/" title="typescript">Read More…</a>
   </footer>
 </article>
 </li>
@@ -175,37 +182,17 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-01T11:26:04JST">Jun 1, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/06/01/web/">web</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/web/">web</a></h2>
   </header>
 
   
-  <div class="summary">JavaScript web 开发人员必须学习的 3 门语言中的一门： HTML 定义了网页的内容 CSS 描述了网页的布局 JavaScript 网页的行为
-前端归根到底是生成一个html文件来给浏览器渲染展示，js只不过增加来动态交互，什么mvc框架增加了开发便捷，简单实现。
-js JavaScript代码可以直接嵌在网页的任何地方,由&hellip;包含的代码就是JavaScript代码，它将直接被浏览器执行。
-第二种方法是把JavaScript代码放到一个单独的.js文件，然后在HTML中通过引入这个文件
-当然可以在chrom的开发者工具中开发js运行来当调试查看结果。
-基本语法：
-以；结尾，不加会自动补上,最好是加上，不然你一个语句写成两行会自动分成两个语句，这样就会出问题。
- 数据类型  number
-123; // 整数123 0.456; // 浮点数0.456 1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5 -99; // 负数 NaN; // NaN表示Not a Number，当无法计算结果时用NaN表示 Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，就表示为Infinity   字符串是以单引号&rsquo;或双引号&rdquo;括起来的任意文本  由于多行字符串用\n写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 ... 表示
-要把多个字符串连接起来，可以用+号连接
-支持下标操作，支持length，toUpperCase，toLowerCase，indexOf，substring等函数。
- 布尔值和布尔代数的表示完全一致，一个布尔值只有true、false两种值
- 运算符
-  JavaScript在设计时，有两种比较运算符：
-第一种是==比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；
-第二种是===比较，它不会自动转换数据类型，如果数据类型不一致，返回false，如果一致，再比较。
-由于JavaScript这个设计缺陷，不要使用==比较，始终坚持使用===比较。
-另一个例外是NaN这个特殊的Number与所有其他值都不相等，包括它自己：
-NaN === NaN; // false
-唯一能判断NaN的方法是通过isNaN()函数：
-isNaN(NaN); // true</div>
+  <div class="summary">JavaScript web 开发人员必须学习的 3 门语言中的一门： HTML 定义了网页的内容 CSS 描述了网页的布局 JavaScript 网页的行为 前端归根到底是生成一个html文件来给浏览器渲染展示</div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/06/01/web/" title="web">Read More…</a>
+    <a href="http://kingjcy.github.io/post/web/" title="web">Read More…</a>
   </footer>
 </article>
 </li>
@@ -214,10 +201,10 @@ isNaN(NaN); // true</div>
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-05-24T16:21:43JST">May 24, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/">mac os</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/mac/">mac os</a></h2>
   </header>
 
   
@@ -226,7 +213,7 @@ isNaN(NaN); // true</div>
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" title="mac os">Read More…</a>
+    <a href="http://kingjcy.github.io/post/mac/" title="mac os">Read More…</a>
   </footer>
 </article>
 </li>
@@ -235,10 +222,10 @@ isNaN(NaN); // true</div>
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-05-23T14:54:09JST">May 23, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/">go积累</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/go/">go积累</a></h2>
   </header>
 
   
@@ -247,7 +234,7 @@ isNaN(NaN); // true</div>
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" title="go积累">Read More…</a>
+    <a href="http://kingjcy.github.io/post/go/" title="go积累">Read More…</a>
   </footer>
 </article>
 </li>
@@ -256,17 +243,17 @@ isNaN(NaN); // true</div>
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-03-29T17:40:08JST">Mar 29, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/03/29/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/">插件系统</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/pluginsystem/">插件系统</a></h2>
   </header>
 
   
   <div class="summary"></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/03/29/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="插件系统">Read More…</a>
+    <a href="http://kingjcy.github.io/post/pluginsystem/" title="插件系统">Read More…</a>
   </footer>
 </article>
 </li>
@@ -275,10 +262,10 @@ isNaN(NaN); // true</div>
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-02-07T15:57:46JST">Feb 7, 2017</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
-    <h2 class="title"><a href="http://kingjcy.github.io/blog/2017/02/07/python%E4%BB%A5%E5%8F%8A%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">python以及爬虫学习</a></h2>
+    <h2 class="title"><a href="http://kingjcy.github.io/post/Reptile/">python以及爬虫学习</a></h2>
   </header>
 
   
@@ -287,7 +274,7 @@ isNaN(NaN); // true</div>
 <p></p></div>
 
   <footer>
-    <a href="http://kingjcy.github.io/blog/2017/02/07/python%E4%BB%A5%E5%8F%8A%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/" title="python以及爬虫学习">Read More…</a>
+    <a href="http://kingjcy.github.io/post/Reptile/" title="python以及爬虫学习">Read More…</a>
   </footer>
 </article>
 </li>
@@ -303,7 +290,7 @@ isNaN(NaN); // true</div>
     
 
     
-    <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/page/2/">Next</a></li>
+    <li><a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/paginator/2/">Next</a></li>
     
 
   </ul>
@@ -322,25 +309,25 @@ isNaN(NaN); // true</div>
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/blog/2017/06/23/restful%E6%9E%B6%E6%9E%84/" class="list-group-item">restful架构</a>
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/12/rbac%E6%A1%86%E6%9E%B6/" class="list-group-item">rbac框架</a>
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/12/%E4%BB%8Eharbor%E5%85%A5%E6%89%8Bbeego%E6%A1%86%E6%9E%B6/" class="list-group-item">从harbor入手beego框架</a>
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/07/chrome%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" class="list-group-item">chrome的开发者工具</a>
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/06/gulp/" class="list-group-item">gulp</a>
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/05/typescript/" class="list-group-item">typescript</a>
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/06/01/web/" class="list-group-item">web</a>
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/05/24/mac-os/" class="list-group-item">mac os</a>
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/05/23/go%E7%A7%AF%E7%B4%AF/" class="list-group-item">go积累</a>
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
       
-      <a href="http://kingjcy.github.io/blog/2017/04/21/kickstart/" class="list-group-item">kickstart</a>
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
       
     </div>
   </section>
@@ -352,9 +339,9 @@ isNaN(NaN); // true</div>
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
       
-      <a href="http://kingjcy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
       
     </div>
   </section>
@@ -365,25 +352,25 @@ isNaN(NaN); // true</div>
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
       
-      <a href="http://kingjcy.github.io/tags/linux" class="list-group-item">linux</a>
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
       
-      <a href="http://kingjcy.github.io/tags/go" class="list-group-item">go</a>
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
       
-      <a href="http://kingjcy.github.io/tags/language" class="list-group-item">language</a>
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
       
-      <a href="http://kingjcy.github.io/tags/redis" class="list-group-item">redis</a>
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
       
-      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
       
-      <a href="http://kingjcy.github.io/tags/centos" class="list-group-item">centos</a>
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
       
-      <a href="http://kingjcy.github.io/tags/ceph" class="list-group-item">ceph</a>
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
       
-      <a href="http://kingjcy.github.io/tags/database" class="list-group-item">database</a>
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
       
-      <a href="http://kingjcy.github.io/tags/fs" class="list-group-item">fs</a>
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
       
     </div>
   </section>
@@ -400,7 +387,7 @@ isNaN(NaN); // true</div>
 
     <footer class="l-footer">
       <div class="container">
-        <p>Copyright (c) 2016. All rights reserved.</p>
+        <p>Copyright (c) 2017. All rights reserved.</p>
         <aside>
           <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
           <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>

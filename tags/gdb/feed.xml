@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gdb on kingjcy Blog</title>
+    <link>http://kingjcy.github.io/tags/gdb/</link>
+    <description>Recent content in Gdb on kingjcy Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 14 Mar 2015 15:48:41 +0800</lastBuildDate>
+    
+	<atom:link href="http://kingjcy.github.io/tags/gdb/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>工具系列(二):gdb的使用总结</title>
+      <link>http://kingjcy.github.io/post/gdb/</link>
+      <pubDate>Sat, 14 Mar 2015 15:48:41 +0800</pubDate>
+      
+      <guid>http://kingjcy.github.io/post/gdb/</guid>
+      <description>&lt;p&gt;gdb在debug过程中起着巨大的作用，用好gdb调试工具可以很快的定位问题，解决问题，这边记录一点gdb的使用注意点，便于查看和备忘。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.17" />
+<meta name="generator" content="Hugo 0.24.1" />
 
 
 
@@ -14,24 +14,24 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>redis cluster - kingjcy blog</title>
+    <title>redis cluster - kingjcy Blog</title>
     
 <meta name="description" content="&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
 
-<meta property="og:title" content="redis cluster - kingjcy blog">
+<meta property="og:title" content="redis cluster - kingjcy Blog">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://kingjcy.github.io/post/redis-cluster/">
-<meta property="og:image" content="http://kingjcy.github.io/images/default.png">
-<meta property="og:site_name" content="kingjcy blog">
+<meta property="og:image" content="http://kingjcy.github.ioimages/default.png">
+<meta property="og:site_name" content="kingjcy Blog">
 <meta property="og:description" content="&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="kingjcy blog">
+<meta name="twitter:site" content="kingjcy Blog">
 <meta name="twitter:url" content="http://kingjcy.github.io/post/redis-cluster/">
-<meta name="twitter:title" content="redis cluster - kingjcy blog">
+<meta name="twitter:title" content="redis cluster - kingjcy Blog">
 <meta name="twitter:description" content="&lt;p&gt;自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;">
-<meta name="twitter:image" content="http://kingjcy.github.io/images/default.png">
+<meta name="twitter:image" content="http://kingjcy.github.ioimages/default.png">
 
 
 <script type="application/ld+json">
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"http:\/\/kingjcy.github.io\/"
+      "@id":"http://kingjcy.github.io"
     },
-    "headline": "redis cluster - kingjcy blog",
+    "headline": "redis cluster - kingjcy Blog",
     "image": {
       "@type": "ImageObject",
-      "url": "http:\/\/kingjcy.github.io\/images\/default.png",
+      "url": "http://kingjcy.github.ioimages/default.png",
       "height": 800,
       "width": 800
     },
@@ -53,24 +53,28 @@
     "dateModified": "2016-07-21T17:12:36JST",
     "author": {
       "@type": "Person",
-      "name": "kingjcy blog"
+      "name": "kingjcy Blog"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "kingjcy blog",
+      "name": "kingjcy Blog",
       "logo": {
         "@type": "ImageObject",
-        "url": "http:\/\/kingjcy.github.io\/images/logo.png",
+        "url": "http://kingjcy.github.ioimages/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "\x3cp\x3e自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。\n首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，\n可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e"
+    "description": "<p>自从研究了redis的监控工具之后，对于redis的集群实现方案又回头做了一个系统的研究。
+首先，先说一下redis，是一个高性能的key-value类型的NoSQL数据库，支持较为丰富的数据类型，
+可以满足一般公司的需求，所以使用比较多，但是随着数据的越来越多，也迫切需求支持分布式集群。</p>
+
+<p></p>"
   }
 </script>
 
 
-    <link href="http://kingjcy.github.io/css/styles.css" rel="stylesheet">
+    <link href="http://kingjcy.github.iocss/styles.css" rel="stylesheet">
   </head>
 
   <body>
@@ -88,7 +92,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://kingjcy.github.io/">kingjcy blog</a>
+            <a class="navbar-brand" href="http://kingjcy.github.io">kingjcy Blog</a>
           </div>
 
           
@@ -121,9 +125,9 @@
 
     <nav class="p-crumb">
       <ol class="breadcrumb">
-        <li><a href="http://kingjcy.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a href="http://kingjcy.github.io"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.io/post/" itemprop="url"><span itemprop="title">post</span></a></li>
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://kingjcy.github.iopost/" itemprop="url"><span itemprop="title">post</span></a></li>
         
         <li class="active">redis cluster</li>
       </ol>
@@ -133,7 +137,7 @@
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-07-21T17:12:36JST">Jul 21, 2016</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.io/post/">post</a></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://kingjcy.github.iopost/">post</a></li>
       
     </ul>
 
@@ -165,6 +169,16 @@
 
 <li><p>不能动态扩容</p></li>
 </ul>
+
+<h1 id="分片的实现">分片的实现</h1>
+
+<ol>
+<li><p>范围分区：将固定范围的数据key放到对应的实例中。这个方案不是太好，需要维护映射关系。</p></li>
+
+<li><p>hash分区（一致性分区）：用哈希函数（例如crc32）将key转化为一个数字，然后取模来分配到不同的实例中。</p></li>
+</ol>
+
+<p>codis分区和redis3.0分区都是分了N个slot，先对key到slot进行hash分区再对slot进行范围分区或者hash分区。</p>
 
 <blockquote>
 <p><strong>目前集群主要有四种部署方案</strong></p>
@@ -259,7 +273,37 @@
     
     
     
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a></li>
+          
+        </ul>
+      </div>
+    </section>
     
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://kingjcy.github.iotags/redis/">redis</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/redis-cluster/">redis cluster</a></li>
+          
+          <li><a href="http://kingjcy.github.iotags/database/">database</a></li>
+          
+        </ul>
+      </div>
+    </section>
     
     
   </footer>
@@ -280,23 +324,25 @@
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/post/gitandgithub/" class="list-group-item">工具系列(一)：git和github的使用总结</a>
+      <a href="http://kingjcy.github.io/post/restful/" class="list-group-item">restful架构</a>
       
-      <a href="http://kingjcy.github.io/post/redis-source-parse-1/" class="list-group-item">redis源码解析</a>
+      <a href="http://kingjcy.github.io/post/rbac/" class="list-group-item">rbac框架</a>
       
-      <a href="http://kingjcy.github.io/post/redis-cluster/" class="list-group-item">redis cluster</a>
+      <a href="http://kingjcy.github.io/post/beego/" class="list-group-item">从harbor入手beego框架</a>
       
-      <a href="http://kingjcy.github.io/post/Installation_of_some_applications_bymyself/" class="list-group-item">Installation_of_some_applications</a>
+      <a href="http://kingjcy.github.io/post/chrome-dev-tool/" class="list-group-item">chrome的开发者工具</a>
       
-      <a href="http://kingjcy.github.io/post/life_experience/" class="list-group-item">life experience</a>
+      <a href="http://kingjcy.github.io/post/gulp/" class="list-group-item">gulp</a>
       
-      <a href="http://kingjcy.github.io/post/myfuturedirection/" class="list-group-item">My Future Direction</a>
+      <a href="http://kingjcy.github.io/post/typescript/" class="list-group-item">typescript</a>
       
-      <a href="http://kingjcy.github.io/post/technology-manage/" class="list-group-item">觉得很有想法，也许对以后的道路会有影响。</a>
+      <a href="http://kingjcy.github.io/post/web/" class="list-group-item">web</a>
       
-      <a href="http://kingjcy.github.io/post/hugo-github-blog/" class="list-group-item">用hugo&#43;github构建自己的blog</a>
+      <a href="http://kingjcy.github.io/post/mac/" class="list-group-item">mac os</a>
       
-      <a href="http://kingjcy.github.io/about" class="list-group-item">关于我</a>
+      <a href="http://kingjcy.github.io/post/go/" class="list-group-item">go积累</a>
+      
+      <a href="http://kingjcy.github.io/post/kickstart/" class="list-group-item">kickstart</a>
       
     </div>
   </section>
@@ -308,9 +354,9 @@
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
+      <a href="http://kingjcy.github.iocategories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0" class="list-group-item">技术文章</a>
       
-      <a href="http://kingjcy.github.io/categories/thought" class="list-group-item">thought</a>
+      <a href="http://kingjcy.github.iocategories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F" class="list-group-item">人生感悟</a>
       
     </div>
   </section>
@@ -321,13 +367,25 @@
     </div>
     <div class="list-group">
       
-      <a href="http://kingjcy.github.io/tags/thought" class="list-group-item">thought</a>
+      <a href="http://kingjcy.github.iotags/tool" class="list-group-item">tool</a>
       
-      <a href="http://kingjcy.github.io/tags/tool" class="list-group-item">tool</a>
+      <a href="http://kingjcy.github.iotags/linux" class="list-group-item">linux</a>
       
-      <a href="http://kingjcy.github.io/tags/applications" class="list-group-item">applications</a>
+      <a href="http://kingjcy.github.iotags/go" class="list-group-item">go</a>
       
-      <a href="http://kingjcy.github.io/tags/life" class="list-group-item">life</a>
+      <a href="http://kingjcy.github.iotags/language" class="list-group-item">language</a>
+      
+      <a href="http://kingjcy.github.iotags/redis" class="list-group-item">redis</a>
+      
+      <a href="http://kingjcy.github.iotags/thought" class="list-group-item">thought</a>
+      
+      <a href="http://kingjcy.github.iotags/centos" class="list-group-item">centos</a>
+      
+      <a href="http://kingjcy.github.iotags/ceph" class="list-group-item">ceph</a>
+      
+      <a href="http://kingjcy.github.iotags/database" class="list-group-item">database</a>
+      
+      <a href="http://kingjcy.github.iotags/fs" class="list-group-item">fs</a>
       
     </div>
   </section>
@@ -344,7 +402,7 @@
 
     <footer class="l-footer">
       <div class="container">
-        <p>Copyright (c) 2016. All rights reserved.</p>
+        <p>Copyright (c) 2017. All rights reserved.</p>
         <aside>
           <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
           <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
